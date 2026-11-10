@@ -1,0 +1,900 @@
+[
+  "Part 1: Personal Information",
+  {
+    "id": "purposeApp",
+    "en": "Purpose of Application"
+  },
+  {
+    "id": "purposeApp_opt_Xin visa du lß╗ïch/ c├┤ng t├íc (B1,B2)",
+    "en": "Xin visa du lß╗ïch/ c├┤ng t├íc (B1,B2)"
+  },
+  {
+    "id": "purposeApp_opt_Xin visa diß╗çn h├┤n phu, h├┤n th├¬ (K1)",
+    "en": "Xin visa diß╗çn h├┤n phu, h├┤n th├¬ (K1)"
+  },
+  {
+    "id": "fullName",
+    "en": "Full Name"
+  },
+  {
+    "id": "otherName",
+    "en": "Other Names Used (if any)"
+  },
+  {
+    "id": "gender",
+    "en": "Gender"
+  },
+  {
+    "id": "gender_opt_Nam",
+    "en": "Male"
+  },
+  {
+    "id": "gender_opt_Nß╗»",
+    "en": "Female"
+  },
+  {
+    "id": "birthDate",
+    "en": "Date of Birth (dd/mm/yyyy)"
+  },
+  {
+    "id": "placeBirth",
+    "en": "Place of Birth"
+  },
+  {
+    "id": "maritalStatus",
+    "en": "Marital Status"
+  },
+  {
+    "id": "maritalStatus_opt_─Éß╗Öc th├ón (ch╞░a kß║┐t h├┤n lß║ºn n├áo)",
+    "en": "Single (Never married)"
+  },
+  {
+    "id": "maritalStatus_opt_Kß║┐t h├┤n lß║ºn ─æß║ºu",
+    "en": "First Marriage"
+  },
+  {
+    "id": "maritalStatus_opt_T├íi h├┤n",
+    "en": "Remarried"
+  },
+  {
+    "id": "maritalStatus_opt_Ly h├┤n",
+    "en": "Divorced"
+  },
+  {
+    "id": "maritalStatus_opt_G├│a",
+    "en": "Widowed"
+  },
+  {
+    "id": "numberOfMarriages",
+    "en": "How many times have you been married?"
+  },
+  {
+    "id": "hasChild",
+    "en": "Do you have children?"
+  },
+  {
+    "id": "hasChild_opt_C├│",
+    "en": "Yes"
+  },
+  {
+    "id": "hasChild_opt_Ch╞░a",
+    "en": "No"
+  },
+  {
+    "id": "educationSecondary",
+    "en": "Did you continue education after secondary school?"
+  },
+  {
+    "id": "educationSecondary_opt_C├│",
+    "en": "Yes"
+  },
+  {
+    "id": "educationSecondary_opt_Kh├┤ng",
+    "en": "No"
+  },
+  "Contact Information in Vietnam",
+  {
+    "id": "contactPrimary",
+    "en": "Primary Phone Number"
+  },
+  {
+    "id": "contactSecondary",
+    "en": "Secondary Phone Number (if any)"
+  },
+  {
+    "id": "email",
+    "en": "Email"
+  },
+  {
+    "id": "currentAddressVN",
+    "en": "Current Address in Vietnam"
+  },
+  {
+    "id": "mailingAddressVN",
+    "en": "Mailing Address in Vietnam"
+  },
+  "Identification Documents",
+  {
+    "id": "idNumber",
+    "en": "National ID Number"
+  },
+  {
+    "id": "passportNumberVN",
+    "en": "Passport Number"
+  },
+  {
+    "id": "passportIssuePlaceVN",
+    "en": "Place of Passport Issuance"
+  },
+  {
+    "id": "passportIssueDateVN",
+    "en": "Passport Issue Date"
+  },
+  {
+    "id": "passportExpiryDateVN",
+    "en": "Passport Expiration Date"
+  },
+  {
+    "id": "lostPassport",
+    "en": "Have you ever lost your passport?"
+  },
+  {
+    "id": "lostPassport_opt_C├│",
+    "en": "Yes"
+  },
+  {
+    "id": "lostPassport_opt_Kh├┤ng",
+    "en": "No"
+  },
+  {
+    "id": "lostPassportNumberVN",
+    "en": "Lost Vietnam Passport Number"
+  },
+  {
+    "id": "reasonLostPassportVN",
+    "en": "Reason for losing Vietnam Passport"
+  },
+  "Part 2: Trip Information",
+  {
+    "id": "addressInUS",
+    "en": "Intended Address in the U.S."
+  },
+  {
+    "id": "expectedDateToUS",
+    "en": "Expected Date of Arrival"
+  },
+  {
+    "id": "durationInUS",
+    "en": "Intended Length of Stay"
+  },
+  {
+    "id": "tripSponsor",
+    "en": "Who is paying for your trip?"
+  },
+  {
+    "id": "tripSponsor_opt_Bß║ún th├ón",
+    "en": "Self"
+  },
+  {
+    "id": "tripSponsor_opt_Ng╞░ß╗¥i th├ón",
+    "en": "Relative"
+  },
+  {
+    "id": "tripSponsor_opt_C├┤ng ty",
+    "en": "Company"
+  },
+  {
+    "id": "sponsorDetails",
+    "en": "Sponsor details (Full name, Address, Relationship)\ne.g., Nguyen Thi A - G27 D3 Tan Thoi Nhat - Mother"
+  },
+  {
+    "id": "companionsToUS",
+    "en": "Are there other persons traveling with you?"
+  },
+  {
+    "id": "companionsToUS_opt_C├│",
+    "en": "Yes"
+  },
+  {
+    "id": "companionsToUS_opt_Kh├┤ng",
+    "en": "No"
+  },
+  {
+    "id": "companionDetails",
+    "en": "List of companions (Full name and Relationship)"
+  },
+  "Past 5 Years Information",
+  {
+    "id": "otherPhoneNumbers",
+    "en": "Other Phone Numbers Used in Last 5 Years"
+  },
+  {
+    "id": "otherEmails",
+    "en": "Other Emails Used in Last 5 Years"
+  },
+  {
+    "id": "useSocialMedia",
+    "en": "Do you use social media?"
+  },
+  {
+    "id": "useSocialMedia_opt_C├│",
+    "en": "Yes"
+  },
+  {
+    "id": "useSocialMedia_opt_Kh├┤ng c├│",
+    "en": "No"
+  },
+  {
+    "id": "socialMediaLinks",
+    "en": "List of social media links (press Enter for new line)\ne.g.:\nfacebook.com/icaviet"
+  },
+  {
+    "id": "otherNationality",
+    "en": "Do you hold any other nationalities?"
+  },
+  {
+    "id": "otherNationality_opt_C├│",
+    "en": "Yes"
+  },
+  {
+    "id": "otherNationality_opt_Kh├┤ng",
+    "en": "No"
+  },
+  {
+    "id": "otherCountryName",
+    "en": "Name of that country"
+  },
+  {
+    "id": "otherPassportNumber",
+    "en": "Provide the Passport Number of that country:"
+  },
+  {
+    "id": "otherPassportImage",
+    "en": "If you have an image of that country's Passport, upload it here:"
+  },
+  {
+    "id": "otherLanguages",
+    "en": "Other languages spoken"
+  },
+  {
+    "id": "overseasSince16Over6Months",
+    "en": "Have you been abroad for >6 months since age 16?"
+  },
+  {
+    "id": "overseasSince16Over6Months_opt_C├│",
+    "en": "Yes"
+  },
+  {
+    "id": "overseasSince16Over6Months_opt_Kh├┤ng",
+    "en": "No"
+  },
+  {
+    "id": "overseasCountriesList",
+    "en": "List the countries you stayed in for more than 6 months since age 16:"
+  },
+  {
+    "id": "charityInvolvement",
+    "en": "Involved with charity?"
+  },
+  {
+    "id": "charityInvolvement_opt_C├│",
+    "en": "Yes"
+  },
+  {
+    "id": "charityInvolvement_opt_Kh├┤ng",
+    "en": "No"
+  },
+  {
+    "id": "charityDetails",
+    "en": "Specify the name of the charity/social organization you contributed to:"
+  },
+  {
+    "id": "hasVisitedOtherCountries5Years",
+    "en": "Have you traveled to any other countries in the last 5 years?"
+  },
+  {
+    "id": "countriesVisited5YearsList",
+    "en": "List of countries visited in the last 5 years"
+  },
+  "U.S. Travel History",
+  {
+    "id": "visitedUS",
+    "en": "Have you ever been to the U.S.?"
+  },
+  {
+    "id": "visitedUS_opt_─É├ú tß╗½ng",
+    "en": "Yes"
+  },
+  {
+    "id": "visitedUS_opt_Ch╞░a tß╗½ng",
+    "en": "No"
+  },
+  {
+    "id": "usArrivalDate1",
+    "en": "Date of 1st U.S. Arrival (dd/mm/yyyy)"
+  },
+  {
+    "id": "usStayDuration1",
+    "en": "Duration of 1st stay"
+  },
+  {
+    "id": "usArrivalDate2",
+    "en": "Date of 2nd U.S. Arrival (dd/mm/yyyy)"
+  },
+  {
+    "id": "usStayDuration2",
+    "en": "Duration of 2nd stay"
+  },
+  {
+    "id": "driverLicense",
+    "en": "Do you hold a U.S. driver's license?"
+  },
+  {
+    "id": "driverLicense_opt_C├│",
+    "en": "Yes"
+  },
+  {
+    "id": "driverLicense_opt_Kh├┤ng",
+    "en": "No"
+  },
+  {
+    "id": "relativesInUS",
+    "en": "Do you have any siblings or children living in the U.S.?"
+  },
+  {
+    "id": "relativesInUS_opt_Rß╗ôi",
+    "en": "Yes"
+  },
+  {
+    "id": "relativesInUS_opt_Kh├┤ng",
+    "en": "No"
+  },
+  {
+    "id": "relativesInUSList",
+    "en": "List siblings/children in the U.S. (Full name - Relationship - Immigration status)\ne.g., Nguyen Van A - Father - Permanent Resident"
+  },
+  {
+    "id": "otherRelativesInUS",
+    "en": "Do you have any other relatives (besides immediate family) living in the U.S.?"
+  },
+  {
+    "id": "otherRelativesInUS_opt_Rß╗ôi",
+    "en": "Yes"
+  },
+  {
+    "id": "otherRelativesInUS_opt_Kh├┤ng",
+    "en": "No"
+  },
+  {
+    "id": "otherRelativesInUSList",
+    "en": "List all other relatives living in the U.S. (Full name - Relationship - Immigration status):"
+  },
+  {
+    "id": "hasUSVisa",
+    "en": "Have you ever been issued a U.S. visa?"
+  },
+  {
+    "id": "hasUSVisa_opt_─É├ú tß╗½ng",
+    "en": "Yes"
+  },
+  {
+    "id": "hasUSVisa_opt_Ch╞░a tß╗½ng",
+    "en": "No"
+  },
+  {
+    "id": "usVisaIssueDate",
+    "en": "Date of U.S. Visa Issuance (dd/mm/yyyy)"
+  },
+  {
+    "id": "usVisaNumber",
+    "en": "U.S. Visa Number:"
+  },
+  {
+    "id": "visaUSRejected",
+    "en": "Have you ever been refused a U.S. visa?"
+  },
+  {
+    "id": "visaUSRejected_opt_Rß╗ôi",
+    "en": "Yes"
+  },
+  {
+    "id": "visaUSRejected_opt_Ch╞░a",
+    "en": "No"
+  },
+  {
+    "id": "visaUSRejectedDetails",
+    "en": "Provide number of times, date, visa type, and reason for U.S. visa refusal:"
+  },
+  {
+    "id": "entryDeniedUS",
+    "en": "Have you ever been denied entry into the U.S.?"
+  },
+  {
+    "id": "entryDeniedUS_opt_Rß╗ôi",
+    "en": "Yes"
+  },
+  {
+    "id": "entryDeniedUS_opt_Ch╞░a",
+    "en": "No"
+  },
+  {
+    "id": "entryDeniedUSDetails",
+    "en": "Provide number of times, date, visa type, and reason for denial:"
+  },
+  {
+    "id": "deported",
+    "en": "Have you ever been deported?"
+  },
+  {
+    "id": "deported_opt_Rß╗ôi",
+    "en": "Yes"
+  },
+  {
+    "id": "deported_opt_Ch╞░a",
+    "en": "No"
+  },
+  {
+    "id": "deportedReason",
+    "en": "Reason for deportation:"
+  },
+  {
+    "id": "illegalStayUS",
+    "en": "Have you ever stayed illegally in the U.S.?"
+  },
+  {
+    "id": "illegalStayUS_opt_Rß╗ôi",
+    "en": "Yes"
+  },
+  {
+    "id": "illegalStayUS_opt_Ch╞░a",
+    "en": "No"
+  },
+  {
+    "id": "illegalEntryDate",
+    "en": "Date of illegal entry (dd/mm/yyyy):"
+  },
+  {
+    "id": "illegalEntryReason",
+    "en": "Reason for illegal entry:"
+  },
+  {
+    "id": "previousSponsorship",
+    "en": "Have you ever been sponsored for immigration?"
+  },
+  {
+    "id": "previousSponsorship_opt_Rß╗ôi",
+    "en": "Yes"
+  },
+  {
+    "id": "previousSponsorship_opt_Ch╞░a",
+    "en": "No"
+  },
+  {
+    "id": "sponsorName",
+    "en": "Name of sponsor:"
+  },
+  {
+    "id": "sponsorRelationship",
+    "en": "Relationship:"
+  },
+  {
+    "id": "sponsorCaseNumber",
+    "en": "Case/File number:"
+  },
+  {
+    "id": "sponsorResult",
+    "en": "Result of sponsorship:"
+  },
+  "Background Questions",
+  {
+    "id": "militaryService",
+    "en": "Have you served in the military?"
+  },
+  {
+    "id": "militaryService_opt_Rß╗ôi",
+    "en": "Yes"
+  },
+  {
+    "id": "militaryService_opt_ch╞░a",
+    "en": "No"
+  },
+  {
+    "id": "militaryEnlistmentDate",
+    "en": "Date of enlistment (dd/mm/yyyy):"
+  },
+  {
+    "id": "militaryDischargeDate",
+    "en": "Date of discharge (dd/mm/yyyy):"
+  },
+  {
+    "id": "militaryRank",
+    "en": "Rank:"
+  },
+  {
+    "id": "militaryUnit",
+    "en": "Military unit:"
+  },
+  {
+    "id": "militaryBranch",
+    "en": "Military branch:"
+  },
+  {
+    "id": "militaryCommander",
+    "en": "Name of direct commander:"
+  },
+  {
+    "id": "militaryCountry",
+    "en": "Country of service:"
+  },
+  {
+    "id": "criminalRecord",
+    "en": "Do you have any criminal record?"
+  },
+  {
+    "id": "criminalRecord_opt_Rß╗ôi",
+    "en": "Yes"
+  },
+  {
+    "id": "criminalRecord_opt_Ch╞░a",
+    "en": "No"
+  },
+  {
+    "id": "criminalRecordDetails",
+    "en": "Specify criminal record and reason:"
+  },
+  {
+    "id": "partyMembership",
+    "en": "Are you or have you been a Communist Party member?"
+  },
+  {
+    "id": "partyMembership_opt_Rß╗ôi",
+    "en": "Yes"
+  },
+  {
+    "id": "partyMembership_opt_Ch╞░a",
+    "en": "No"
+  },
+  {
+    "id": "partyJoinDate",
+    "en": "Date of joining party (dd/mm/yyyy):"
+  },
+  {
+    "id": "partyLeaveDate",
+    "en": "Date of leaving party (dd/mm/yyyy):"
+  },
+  {
+    "id": "partyRole",
+    "en": "Role/Position:"
+  },
+  {
+    "id": "partyLeaveReason",
+    "en": "Reason for leaving party:"
+  },
+  "Part 3: Employment & Education",
+  "Job 1",
+  {
+    "id": "occupationTitle01",
+    "en": "Occupation Title 1"
+  },
+  {
+    "id": "companyName01",
+    "en": "Company Name 1"
+  },
+  {
+    "id": "companyAddress01",
+    "en": "Company Address 1"
+  },
+  {
+    "id": "companyPhone01",
+    "en": "Company Phone 1"
+  },
+  {
+    "id": "managerName01",
+    "en": "Manager Name 1"
+  },
+  {
+    "id": "jobDescription01",
+    "en": "Job Description 1"
+  },
+  {
+    "id": "monthlySalary01",
+    "en": "Monthly Salary 1"
+  },
+  {
+    "id": "employmentStartDate01",
+    "en": "Employment Start Date 1"
+  },
+  {
+    "id": "employmentEndDate01",
+    "en": "Employment End Date 1"
+  },
+  "Job 2",
+  {
+    "id": "occupationTitle02",
+    "en": "Occupation Title 2"
+  },
+  {
+    "id": "companyName02",
+    "en": "Company Name 2"
+  },
+  {
+    "id": "companyAddress02",
+    "en": "Company Address 2"
+  },
+  {
+    "id": "companyPhone02",
+    "en": "Company Phone 2"
+  },
+  {
+    "id": "managerName02",
+    "en": "Manager Name 2"
+  },
+  {
+    "id": "jobDescription02",
+    "en": "Job Description 2"
+  },
+  {
+    "id": "monthlySalary02",
+    "en": "Monthly Salary 2"
+  },
+  {
+    "id": "employmentStartDate02",
+    "en": "Employment Start Date 2"
+  },
+  {
+    "id": "employmentEndDate02",
+    "en": "Employment End Date 2"
+  },
+  "Job 3",
+  {
+    "id": "occupationTitle03",
+    "en": "Occupation Title 3"
+  },
+  {
+    "id": "companyName03",
+    "en": "Company Name 3"
+  },
+  {
+    "id": "companyAddress03",
+    "en": "Company Address 3"
+  },
+  {
+    "id": "companyPhone03",
+    "en": "Company Phone 3"
+  },
+  {
+    "id": "managerName03",
+    "en": "Manager Name 3"
+  },
+  {
+    "id": "jobDescription03",
+    "en": "Job Description 3"
+  },
+  {
+    "id": "monthlySalary03",
+    "en": "Monthly Salary 3"
+  },
+  {
+    "id": "employmentStartDate03",
+    "en": "Employment Start Date 3"
+  },
+  {
+    "id": "employmentEndDate03",
+    "en": "Employment End Date 3"
+  },
+  "Education Information",
+  {
+    "id": "schoolList",
+    "en": "Schools attended after secondary school"
+  },
+  "Previous Marriage Information",
+  "Previous Marriage Information",
+  {
+    "id": "exSpouseName",
+    "en": "Ex-spouse Full Name:"
+  },
+  {
+    "id": "exSpouseBirthDate",
+    "en": "Date of Birth (dd/mm/yyyy):"
+  },
+  {
+    "id": "exSpouseBirthPlace",
+    "en": "Place of Birth:"
+  },
+  {
+    "id": "exSpouseCurrentAddress",
+    "en": "Current Address:"
+  },
+  {
+    "id": "exSpouseOccupation",
+    "en": "Occupation:"
+  },
+  {
+    "id": "marriageDate",
+    "en": "Date of Marriage (dd/mm/yyyy):"
+  },
+  {
+    "id": "marriagePlace",
+    "en": "Place of Marriage:"
+  },
+  {
+    "id": "divorceDate",
+    "en": "Date of Divorce (dd/mm/yyyy):"
+  },
+  {
+    "id": "divorceReason",
+    "en": "Reason for end of marriage:"
+  },
+  "Current Marriage Information",
+  "Current Marriage Information",
+  {
+    "id": "spouseName",
+    "en": "Spouse Full Name:"
+  },
+  {
+    "id": "spouseBirthDate",
+    "en": "Spouse Date of Birth (dd/mm/yyyy):"
+  },
+  {
+    "id": "spouseBirthPlace",
+    "en": "Spouse Place of Birth:"
+  },
+  {
+    "id": "spouseCurrentAddress",
+    "en": "Spouse Current Address:"
+  },
+  {
+    "id": "spouseOccupation",
+    "en": "Spouse Occupation:"
+  },
+  {
+    "id": "spouseMarriageDate",
+    "en": "Date of Marriage (dd/mm/yyyy):"
+  },
+  {
+    "id": "spouseMarriagePlace",
+    "en": "Place of Marriage:"
+  },
+  "Part 4: Family Information",
+  "Father's Information",
+  {
+    "id": "fatherName",
+    "en": "Father's Full Name"
+  },
+  {
+    "id": "fatherBirthPlace",
+    "en": "Father's Place of Birth"
+  },
+  {
+    "id": "fatherBirthDate",
+    "en": "Father's Date of Birth"
+  },
+  {
+    "id": "fatherStatus",
+    "en": "Is your father living?"
+  },
+  {
+    "id": "fatherStatus_opt_C├▓n sß╗æng",
+    "en": "Living"
+  },
+  {
+    "id": "fatherStatus_opt_─É├ú mß║Ñt",
+    "en": "Deceased"
+  },
+  {
+    "id": "fatherDeathYear",
+    "en": "Year of death:"
+  },
+  {
+    "id": "fatherCurrentAddress",
+    "en": "Current address:"
+  },
+  "Mother's Information",
+  {
+    "id": "motherName",
+    "en": "Mother's Full Name"
+  },
+  {
+    "id": "motherBirthDate",
+    "en": "Mother's Date of Birth"
+  },
+  {
+    "id": "motherBirthPlace",
+    "en": "Mother's Place of Birth"
+  },
+  {
+    "id": "motherStatus",
+    "en": "Is your mother living?"
+  },
+  {
+    "id": "motherStatus_opt_C├▓n sß╗æng",
+    "en": "Living"
+  },
+  {
+    "id": "motherStatus_opt_─É├ú mß║Ñt",
+    "en": "Deceased"
+  },
+  {
+    "id": "motherDeathYear",
+    "en": "Year of death:"
+  },
+  {
+    "id": "motherCurrentAddress",
+    "en": "Current address:"
+  },
+  "Relatives in U.S.",
+  {
+    "id": "siblingsInUS",
+    "en": "Do you have siblings/children in the U.S.?"
+  },
+  {
+    "id": "siblingsInUS_opt_C├│",
+    "en": "Yes"
+  },
+  {
+    "id": "siblingsInUS_opt_Kh├┤ng c├│",
+    "en": "No"
+  },
+  {
+    "id": "otherRelativesInUS",
+    "en": "Do you have other relatives in the U.S.?"
+  },
+  {
+    "id": "otherRelativesInUS_opt_C├│",
+    "en": "Yes"
+  },
+  {
+    "id": "otherRelativesInUS_opt_Kh├┤ng",
+    "en": "No"
+  },
+  "Part 5: U.S. Contact Information",
+  {
+    "id": "usContactFullName",
+    "en": "Contact Full Name"
+  },
+  {
+    "id": "usContactAddress",
+    "en": "Contact Address"
+  },
+  {
+    "id": "usContactPhone",
+    "en": "Contact Phone in U.S."
+  },
+  {
+    "id": "usContactEmail",
+    "en": "Contact Email"
+  },
+  {
+    "id": "usContactRelationship",
+    "en": "Relationship to you"
+  },
+  {
+    "id": "currentOccupation",
+    "en": "Contact's Current Occupation"
+  },
+  {
+    "id": "dateOfBirth",
+    "en": "Contact's Date of Birth"
+  },
+  "Part 6: Additional Information & Signature",
+  {
+    "id": "additionalInfo",
+    "en": "Additional Information"
+  },
+  {
+    "id": "declarationCommitment",
+    "en": "I hereby certify that all information provided above is true and accurate. I take full responsibility for the content of my declaration."
+  },
+  {
+    "id": "declarantFullName",
+    "en": "Declarant Full Name"
+  },
+  {
+    "id": "declarantSignature",
+    "en": "Signature"
+  },
+  {
+    "id": "isGreenCardAddressSameAsPlanned",
+    "en": "Is the green card mailing address the same as the planned address in the U.S.?"
+  }
+]

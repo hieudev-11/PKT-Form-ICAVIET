@@ -1,0 +1,1949 @@
+export const useN400FormSchema = () => {
+    return {
+      id: 'n400',
+      code: 'N-400',
+      slug: 'n-400',
+      sections: [
+        {
+          id: 'part2',
+          title: { en: 'Information About You', vi: 'Thông tin đương đơn' },
+  
+          groups: [
+  
+            // ============================
+            // 1. TÊN HỢP PHÁP
+            // ============================
+            {
+              id: 'legal_name',
+              title: { en: 'Your Current Legal Name', vi: 'Tên hợp pháp' },
+              fields: [
+                {
+                  id: 'first_name',
+                  name: 'first_name',
+                  columnKey: 'Tên_Tên hợp pháp',
+                  type: 'text',
+                  label: { en: 'First Name', vi: 'Tên' }
+                },
+                {
+                  id: 'last_name',
+                  name: 'last_name',
+                  columnKey: 'Họ_Tên hợp pháp',
+                  type: 'text',
+                  label: { en: 'Last Name', vi: 'Họ' }
+                },
+                {
+                  id: 'middle_name',
+                  name: 'middle_name',
+                  columnKey: 'Tên lót_Tên hợp pháp',
+                  type: 'text',
+                  label: { en: 'Middle Name', vi: 'Tên lót' }
+                }
+              ]
+            },
+  
+            // ============================
+            // 2. TÊN TRÊN THẺ XANH
+            // ============================
+            {
+              id: 'green_card_name',
+              title: { en: 'Name on Green Card', vi: 'Tên trên thẻ xanh' },
+              fields: [
+                {
+                  id: 'gc_first_name',
+                  name: 'gc_first_name',
+                  columnKey: 'Tên_Tên trên thẻ xanh',
+                  type: 'text',
+                  label: { en: 'First Name', vi: 'Tên' }
+                },
+                {
+                  id: 'gc_last_name',
+                  name: 'gc_last_name',
+                  columnKey: 'Họ_Tên trên thẻ xanh',
+                  type: 'text',
+                  label: { en: 'Last Name', vi: 'Họ' }
+                },
+                {
+                  id: 'gc_middle_name',
+                  name: 'gc_middle_name',
+                  columnKey: 'Tên lót_Tên trên thẻ xanh',
+                  type: 'text',
+                  label: { en: 'Middle Name', vi: 'Tên lót' }
+                }
+              ]
+            },
+  
+            // ============================
+            // 3. TÊN GỌI KHÁC
+            // ============================
+            {
+              id: 'other_names',
+              title: {
+                en: 'Other Names (Nicknames, Maiden Name, etc.)',
+                vi: 'Tên gọi khác (biệt danh, tên thời con gái,...)'
+              },
+              fields: [
+                {
+                  id: 'other_first',
+                  name: 'other_first',
+                  columnKey: 'Tên_Tên gọi khác',
+                  type: 'text',
+                  label: { en: 'First Name', vi: 'Tên' }
+                },
+                {
+                  id: 'other_last',
+                  name: 'other_last',
+                  columnKey: 'Họ_Tên gọi khác',
+                  type: 'text',
+                  label: { en: 'Last Name', vi: 'Họ' }
+                },
+                {
+                  id: 'other_middle',
+                  name: 'other_middle',
+                  columnKey: 'Tên lót_Tên gọi khác',
+                  type: 'text',
+                  label: { en: 'Middle Name', vi: 'Tên lót' }
+                }
+              ]
+            },
+  
+            // ============================
+            // 4. ĐỔI TÊN HỢP PHÁP
+            // ============================
+            {
+              id: 'legal_name_change',
+              title: {
+                en: 'If you have legally changed your name',
+                vi: 'Nếu đổi tên hợp pháp thì ghi rõ ở dưới'
+              },
+              fields: [
+                {
+                  id: 'new_first',
+                  name: 'new_first',
+                  columnKey: 'Tên_Tên đổi',
+                  type: 'text',
+                  label: { en: 'First Name', vi: 'Tên' }
+                },
+                {
+                  id: 'new_last',
+                  name: 'new_last',
+                  columnKey: 'Họ_Tên đổi',
+                  type: 'text',
+                  label: { en: 'Last Name', vi: 'Họ' }
+                },
+                {
+                  id: 'new_middle',
+                  name: 'new_middle',
+                  columnKey: 'Tên lót_Tên đổi',
+                  type: 'text',
+                  label: { en: 'Middle Name', vi: 'Tên lót' }
+                },
+                {
+                  id: 'new_birthdate',
+                  name: 'new_birthdate',
+                  columnKey: 'Ngày sinh_Đổi tên hợp pháp',
+                  type: 'date',
+                  label: { en: 'Date of Birth', vi: 'Ngày sinh (dd/mm/yyyy)' },
+                  placeholder: 'dd/mm/yyyy',
+                  colSpan: 3
+                },
+                {
+                  id: 'new_birthplace',
+                  name: 'new_birthplace',
+                  columnKey: 'Nơi sinh_Đổi tên hợp pháp',
+                  type: 'text',
+                  label: {
+                    en: 'Place of Birth',
+                    vi: 'Nơi sinh (Tỉnh/bang, Quốc gia)'
+                  },
+                  colSpan: 3
+                }
+              ]
+            },
+  
+            // ============================
+            // 5. GIỚI TÍNH – CHIỀU CAO – CÂN NẶNG – MẮT – TÓC
+            // ============================
+            {
+              id: 'bio_info',
+              title: { en: 'Biometric Information', vi: 'Thông tin sinh trắc' },
+              gridCols: 2,
+              fields: [
+                {
+                  id: 'gender',
+                  name: 'gender',
+                  columnKey: 'Giới tính',
+                  type: 'radio',
+                  label: { en: 'Gender', vi: 'Giới tính' },
+                  options: [
+                    { value: 'male', label: { en: 'Male', vi: 'Nam' } },
+                    { value: 'female', label: { en: 'Female', vi: 'Nữ' } }
+                  ]
+                },
+                {
+                  id: 'is_hispanic_latino',
+                  name: 'is_hispanic_latino',
+                  columnKey: 'Có phải dân tộc Mỹ Latinh không?',
+                  type: 'radio',
+                  label: { en: 'Are you Hispanic or Latino?', vi: 'Có phải dân tộc Mỹ Latinh không?' },
+                  options: [
+                    { value: 'yes', label: { en: 'Yes', vi: 'Có' } },
+                    { value: 'no', label: { en: 'No', vi: 'Không' } }
+                  ],
+                  colSpan: 3
+                },
+
+                {
+                  id: 'race',
+                  name: 'race',
+                  columnKey: 'Chủng tộc',
+                  type: 'radio',
+                  label: { en: 'Race', vi: 'Chủng tộc' },
+                  options: [
+                    { value: 'white', label: { en: 'White', vi: 'Da trắng' } },
+                    { value: 'asian', label: { en: 'Asian', vi: 'Châu Á' } },
+                    { value: 'black_or_african_american', label: { en: 'Black or African American', vi: 'Người Mỹ gốc Phi' } },
+                    { value: 'american_indian_or_alaska_native', label: { en: 'American Indian or Alaska Native', vi: 'Người Mỹ gốc Ấn hoặc người Alaska bản xứ' } },
+                    { value: 'native_hawaiian_or_pacific_islander', label: { en: 'Native Hawaiian or Other Pacific Islander', vi: 'Người Hawaiian bản xứ hoặc cư dân đảo Thái Bình Dương' } }
+                  ],
+                  required: true,
+                  colSpan: 3
+                },
+                {
+                  id: 'height',
+                  name: 'height',
+                  columnKey: 'Chiều cao',
+                  type: 'text',
+                  label: { en: 'Height (inch)', vi: 'Chiều cao (inch)' },
+                  colSpan: 1
+                },
+                {
+                  id: 'weight',
+                  name: 'weight',
+                  columnKey: 'Cân nặng',
+                  type: 'text',
+                  label: { en: 'Weight (lbs)', vi: 'Cân nặng (pounds)' }
+                },
+                {
+                  id: 'eye_color',
+                  name: 'eye_color',
+                  columnKey: 'Màu mắt',
+                  type: 'radio',
+                  label: { en: 'Eye Color', vi: 'Màu mắt' },
+                  options: [
+                    { value: 'black', label: { en: 'Black', vi: 'Đen' } },
+                    { value: 'brown', label: { en: 'Brown', vi: 'Nâu' } },
+                    { value: 'green', label: { en: 'Green', vi: 'Xanh lá' } },
+                    { value: 'blue', label: { en: 'Blue', vi: 'Xanh dương' } },
+                    { value: 'hazel', label: { en: 'Hazel', vi: 'Nâu đỏ' } },
+                    { value: 'gray', label: { en: 'Gray', vi: 'Xám' } },
+                    { value: 'other', label: { en: 'Other', vi: 'Khác' } }
+                  ]
+                },
+                {
+                  id: 'hair_color',
+                  name: 'hair_color',
+                  columnKey: 'Màu tóc',
+                  type: 'radio',
+                  label: { en: 'Hair Color', vi: 'Màu tóc' },
+                  options: [
+                    { value: 'bald', label: { en: 'Bald', vi: 'Trọc' } },
+                    { value: 'blond', label: { en: 'Blond', vi: 'Vàng' } },
+                    { value: 'gray', label: { en: 'Gray', vi: 'Xám' } },
+                    { value: 'auburn', label: { en: 'Auburn', vi: 'Hưng' } },
+                    { value: 'brown', label: { en: 'Brown', vi: 'Nâu' } },
+                    { value: 'black', label: { en: 'Black', vi: 'Đen' } },
+                    { value: 'red', label: { en: 'Red', vi: 'Đỏ' } },
+                    { value: 'white', label: { en: 'White', vi: 'Trắng' } },
+                    { value: 'other', label: { en: 'Other', vi: 'Khác' } }
+                  ]
+                },
+              
+              ]
+            },
+  
+            // ============================
+            // 6. ĐỊA CHỈ
+            // ============================
+            {
+              id: 'address',
+              title: { en: 'Address Information', vi: 'Địa chỉ' },
+              fields: [
+                {
+                  id: 'address_vn',
+                  name: 'address_vn',
+                  columnKey: 'Địa chỉ tại VN',
+                  type: 'text',
+                  label: { en: 'Address in Vietnam', vi: 'Địa chỉ hiện tại ở Việt Nam' },
+                  colSpan: 3
+                },
+                {
+                  id: 'address_us',
+                  name: 'address_us',
+                  columnKey: 'Địa chỉ tại Mỹ',
+                  type: 'text',
+                  label: { en: 'Address in the U.S.', vi: 'Địa chỉ hiện tại ở Mỹ' },
+                  colSpan: 3
+                },
+                {
+                  id: 'address_us_start',
+                  name: 'address_us_start',
+                  columnKey: 'Ngày bắt đầu',
+                  type: 'date',
+                  label: { en: 'Start Date', vi: 'Ngày bắt đầu (dd/mm/yyyy)' },
+                  placeholder: 'dd/mm/yyyy',
+                  colSpan: 3
+                },
+                {
+                  id: 'mailing_address',
+                  name: 'mailing_address',
+                  columnKey: 'Địa chỉ nhận thư',
+                  type: 'text',
+                  label: { en: 'Mailing Address', vi: 'Địa chỉ nhận thư ở Mỹ' },
+                  colSpan: 3
+                }
+              ]
+        },
+  
+            // ============================
+            // 7. LIÊN HỆ
+            // ============================
+            {
+              id: 'contact',
+              title: { en: 'Contact', vi: 'Liên hệ' },
+              fields: [
+                {
+                  id: 'phone',
+                  name: 'phone',
+                  columnKey: 'Số điện thoại',
+                  type: 'text',
+                  label: { en: 'Phone Number', vi: 'Số điện thoại' }
+                },
+                {
+                  id: 'has_additional_phone',
+                  name: 'has_additional_phone',
+                  columnKey: 'Có số điện thoại khác',
+                  type: 'radio',
+                  label: { en: 'Do you use any other phone number?', vi: 'Bạn còn sử dụng số điện thoại nào khác không?' },
+                  options: [
+                    { value: 'yes', label: { en: 'Yes', vi: 'Có' } },
+                    { value: 'no', label: { en: 'No', vi: 'Không' } }
+                  ],
+                  colSpan: 3
+                },
+                {
+                  id: 'additional_phone_numbers',
+                  name: 'additional_phone_numbers',
+                  columnKey: 'Số điện thoại khác',
+                  type: 'text_repeater',
+                  label: { en: 'Other phone number(s)', vi: 'Số điện thoại khác' },
+                  placeholder: 'Nhập số điện thoại khác',
+                  colSpan: 3
+                },
+                {
+                  id: 'email',
+                  name: 'email',
+                  columnKey: 'Email',
+                  type: 'text',
+                  label: { en: 'Email', vi: 'Email' }
+                }
+              ]
+            },
+  
+            // ============================
+            // 8. THÔNG TIN DI TRÚ
+            // ============================
+            {
+              id: 'immigration',
+              title: { en: 'Immigration Details', vi: 'Thông tin di trú' },
+              fields: [
+                {
+                  id: 'ssn',
+                  name: 'ssn',
+                  columnKey: 'Số SSN',
+                  type: 'text',
+                  label: { en: 'SSN', vi: 'Số SSN' }
+                },
+                {
+                  id: 'uscis_online_account_number',
+                  name: 'uscis_online_account_number',
+                  columnKey: 'Số tài khoản USCIS online',
+                  type: 'text',
+                  label: {
+                    en: 'USCIS Online Account Number',
+                    vi: 'Số tài khoản USCIS online'
+                  },
+                  placeholder: '0000-0000-0000'
+                },
+                {
+                  id: 'lpr_date',
+                  name: 'lpr_date',
+                  columnKey: 'Ngày trở thành thường trú',
+                  type: 'date',
+                  label: {
+                    en: 'Date Became LPR',
+                    vi: 'Ngày trở thành thường trú nhân'
+                  },
+                  placeholder: 'dd/mm/yyyy'
+                },
+                {
+                  id: 'a_number',
+                  name: 'a_number',
+                  columnKey: 'Số A',
+                  type: 'text',
+                  label: {
+                    en: 'A-Number',
+                    vi: 'Số A'
+                  },
+                  placeholder: 'A-000 000 000'
+                }
+              ]
+            },
+  
+            // ============================
+            // 9. ĐỊA CHỈ 5 NĂM
+            // ============================
+            {
+              id: 'address_5year_group',
+              title: {
+                en: 'ADDRESS IN THE LAST 5 YEARS:',
+                vi: 'ĐỊA CHỈ Ở TRONG 5 NĂM QUA:'
+              },
+              fields: [
+                {
+                  id: 'address_5year',
+                  name: 'address_5year',
+                  columnKey: 'Địa chỉ 5 năm',
+                  type: 'address_history',
+                  label: {
+                    en: 'List all addresses you have had in the past 5 years, in any country: (List from most recent to oldest, including your current address)',
+                    vi: 'Liệt kê các địa chỉ đã có trong 5 năm qua, ở bất kỳ quốc gia nào: (Liệt kê từ gần tới xa, bao gồm địa chỉ hiện tại đang ở)'
+                  },
+                  isRepeatable: true
+                }
+              ]
+            },
+
+            // ============================
+            // 10. CÔNG VIỆC 5 NĂM
+            // ============================
+            {
+              id: 'work_5year_group',
+              title: {
+                en: 'WORK IN THE LAST 5 YEARS:',
+                vi: 'CÔNG VIỆC TRONG 5 NĂM QUA:'
+              },
+              fields: [
+                {
+                  id: 'work_5year',
+                  name: 'work_5year',
+                  columnKey: 'Công việc 5 năm',
+                  type: 'work_history',
+                  label: {
+                    en: 'List the jobs you have done in the last 5 years: (List from most recent to oldest, including your current job)',
+                    vi: 'Liệt kê những công việc đã làm trong 5 năm qua: (Liệt kê từ gần tới xa, bao gồm việc làm hiện tại đang làm)'
+                  },
+                  isRepeatable: true
+                }
+              ]
+            },
+
+            // ============================
+            // 11. HỌC VẤN 5 NĂM
+            // ============================
+            {
+              id: 'education_5year_group',
+              title: {
+                en: 'EDUCATION IN THE LAST 5 YEARS:',
+                vi: 'HỌC VẤN TRONG 5 NĂM QUA:'
+              },
+              fields: [
+                {
+                  id: 'education_5year',
+                  name: 'education_5year',
+                  columnKey: 'Học vấn 5 năm',
+                  type: 'education_history',
+                  label: {
+                    en: 'List the schools or education programs you have attended in the last 5 years: (List from most recent to oldest, including your current school/program)',
+                    vi: 'Liệt kê những trường học hoặc chương trình học đã tham gia trong 5 năm qua: (Liệt kê từ gần tới xa, bao gồm nơi học hiện tại nếu có)'
+                  },
+                  isRepeatable: true
+                }
+              ]
+            }
+  
+          ] // end groups
+        }, // end section
+
+        // ============================
+        // PHẦN B: THÔNG TIN CHA MẸ
+        // ============================
+        {
+          id: 'part2_parents',
+          title: { en: 'Part B: Applicant\'s parents\' information', vi: 'Phần B: Thông tin cha mẹ của đương đơn' },
+          groups: [
+            {
+              id: 'parents_marriage',
+              title: {
+                en: 'Parents Marriage Information',
+                vi: 'Thông tin kết hôn của cha mẹ'
+              },
+              fields: [
+                {
+                  id: 'parents_married_before_18',
+                  name: 'parents_married_before_18',
+                  columnKey: 'Cha mẹ kết hôn trước 18 tuổi',
+                  type: 'radio',
+                  label: {
+                    en: 'Did the applicant\'s parents marry before the applicant\'s 18th birthday?',
+                    vi: 'Cha mẹ đương đơn kết hôn trước sinh nhật 18 tuổi của đương đơn không?'
+                  },
+                  options: [
+                    { value: 'before', label: { en: 'Before', vi: 'Trước' } },
+                    { value: 'after', label: { en: 'After', vi: 'Sau' } }
+                  ]
+                },
+                {
+                  id: 'marriage_year',
+                  name: 'marriage_year',
+                  columnKey: 'Năm kết hôn',
+                  type: 'text',
+                  label: {
+                    en: 'Specify year of marriage:',
+                    vi: 'Ghi rõ năm kết hôn:'
+                  },
+                  colSpan: 3
+                }
+              ]
+            },
+
+            // ============================
+            // THÔNG TIN CHA
+            // ============================
+            {
+              id: 'father_info',
+              title: {
+                en: 'Father\'s Information',
+                vi: 'Thông tin cha'
+              },
+              fields: [
+                {
+                  id: 'father_first_name',
+                  name: 'father_first_name',
+                  columnKey: 'Tên_Cha',
+                  type: 'text',
+                  label: { en: 'First Name', vi: 'Tên' }
+                },
+                {
+                  id: 'father_last_name',
+                  name: 'father_last_name',
+                  columnKey: 'Họ_Cha',
+                  type: 'text',
+                  label: { en: 'Last Name', vi: 'Họ' }
+                },
+                {
+                  id: 'father_middle_name',
+                  name: 'father_middle_name',
+                  columnKey: 'Tên lót_Cha',
+                  type: 'text',
+                  label: { en: 'Middle Name', vi: 'Tên lót' }
+                },
+                {
+                  id: 'father_birthdate',
+                  name: 'father_birthdate',
+                  columnKey: 'Ngày sinh_Cha',
+                  type: 'text',
+                  label: { en: 'Date of birth (dd/mm/yyyy):', vi: 'Ngày sinh (dd/mm/yyyy):' },
+                  placeholder: 'dd/mm/yyyy',
+                  colSpan: 3
+                },
+                {
+                  id: 'father_birthplace',
+                  name: 'father_birthplace',
+                  columnKey: 'Nơi sinh_Cha',
+                  type: 'text',
+                  label: { en: 'Place of birth:', vi: 'Nơi sinh:' },
+                  colSpan: 3
+                },
+                {
+                  id: 'father_current_residence',
+                  name: 'father_current_residence',
+                  columnKey: 'Nơi ở hiện tại_Cha',
+                  type: 'text',
+                  label: { en: 'Current residence:', vi: 'Nơi ở hiện tại:' },
+                  colSpan: 3
+                },
+                {
+                  id: 'father_residency_status',
+                  name: 'father_residency_status',
+                  columnKey: 'Tình trạng cư trú_Cha',
+                  type: 'radio',
+                  label: { en: 'Residency status:', vi: 'Tình trạng cư trú:' },
+                  options: [
+                    { value: 'us_citizen', label: { en: 'US Citizen', vi: 'Công dân Mỹ' } },
+                    { value: 'permanent_resident', label: { en: 'Permanent Resident', vi: 'Thường trú nhân' } }
+                  ]
+                },
+                {
+                  id: 'father_naturalization_date',
+                  name: 'father_naturalization_date',
+                  columnKey: 'Ngày nhập tịch_Cha',
+                  type: 'text',
+                  label: { en: 'Date of naturalization (dd/mm/yyyy)', vi: 'Ngày nhập tịch Mỹ (dd/mm/yyyy)' },
+                  placeholder: 'dd/mm/yyyy',
+                  colSpan: 3
+                },
+                {
+                  id: 'father_alien_number',
+                  name: 'father_alien_number',
+                  columnKey: 'Số A_Cha',
+                  type: 'text',
+                  label: { en: 'Alien Number (if applicable):', vi: 'Số A: (Nếu có thì điền vào)' },
+                  colSpan: 3
+                }
+              ]
+            },
+
+            // ============================
+            // THÔNG TIN MẸ
+            // ============================
+            {
+              id: 'mother_info',
+              title: {
+                en: 'Mother\'s Information',
+                vi: 'Thông tin mẹ'
+              },
+              fields: [
+                {
+                  id: 'mother_first_name',
+                  name: 'mother_first_name',
+                  columnKey: 'Tên_Mẹ',
+                  type: 'text',
+                  label: { en: 'First Name', vi: 'Tên' }
+                },
+                {
+                  id: 'mother_last_name',
+                  name: 'mother_last_name',
+                  columnKey: 'Họ_Mẹ',
+                  type: 'text',
+                  label: { en: 'Last Name', vi: 'Họ' }
+                },
+                {
+                  id: 'mother_middle_name',
+                  name: 'mother_middle_name',
+                  columnKey: 'Tên lót_Mẹ',
+                  type: 'text',
+                  label: { en: 'Middle Name', vi: 'Tên lót' }
+                },
+                {
+                  id: 'mother_birthdate',
+                  name: 'mother_birthdate',
+                  columnKey: 'Ngày sinh_Mẹ',
+                  type: 'text',
+                  label: { en: 'Date of birth (dd/mm/yyyy):', vi: 'Ngày sinh (dd/mm/yyyy):' },
+                  placeholder: 'dd/mm/yyyy',
+                  colSpan: 3
+                },
+                {
+                  id: 'mother_birthplace',
+                  name: 'mother_birthplace',
+                  columnKey: 'Nơi sinh_Mẹ',
+                  type: 'text',
+                  label: { en: 'Place of birth:', vi: 'Nơi sinh:' },
+                  colSpan: 3
+                },
+                {
+                  id: 'mother_current_residence',
+                  name: 'mother_current_residence',
+                  columnKey: 'Nơi ở hiện tại_Mẹ',
+                  type: 'text',
+                  label: { en: 'Current residence:', vi: 'Nơi ở hiện tại:' },
+                  colSpan: 3
+                },
+                {
+                  id: 'mother_residency_status',
+                  name: 'mother_residency_status',
+                  columnKey: 'Tình trạng cư trú_Mẹ',
+                  type: 'radio',
+                  label: { en: 'Residency status:', vi: 'Tình trạng cư trú:' },
+                  options: [
+                    { value: 'us_citizen', label: { en: 'US Citizen', vi: 'Công dân Mỹ' } },
+                    { value: 'permanent_resident', label: { en: 'Permanent Resident', vi: 'Thường trú nhân' } }
+                  ]
+                },
+                {
+                  id: 'mother_naturalization_date',
+                  name: 'mother_naturalization_date',
+                  columnKey: 'Ngày nhập tịch_Mẹ',
+                  type: 'text',
+                  label: { en: 'Date of naturalization (dd/mm/yyyy)', vi: 'Ngày nhập tịch Mỹ (dd/mm/yyyy)' },
+                  placeholder: 'dd/mm/yyyy',
+                  colSpan: 3
+                },
+                {
+                  id: 'mother_alien_number',
+                  name: 'mother_alien_number',
+                  columnKey: 'Số A_Mẹ',
+                  type: 'text',
+                  label: { en: 'Alien Number (if applicable):', vi: 'Số A: (Nếu có thì điền vào)' },
+                  colSpan: 3
+                }
+              ]
+            }
+          ]
+        }, // end section
+
+        // ============================
+        // PHẦN C: TÌNH TRẠNG HÔN NHÂN
+        // ============================
+        {
+          id: 'part3_marital_status',
+          title: {
+            en: 'Part C: Marital Status',
+            vi: 'Phần C: Tình trạng hôn nhân'
+          },
+          groups: [
+            {
+              id: 'current_marital_status',
+              title: {
+                en: 'Current Marital Status',
+                vi: 'Tình trạng hôn nhân hiện tại'
+              },
+              fields: [
+                {
+                  id: 'marital_status',
+                  name: 'marital_status',
+                  columnKey: 'Tình trạng hôn nhân',
+                  type: 'radio',
+                  label: {
+                    en: 'What is your current marital status?',
+                    vi: 'Tình trạng hôn nhân hiện tại:'
+                  },
+                  options: [
+                    { value: 'married', label: { en: 'Married', vi: 'Kết hôn' } },
+                    { value: 'single', label: { en: 'Single', vi: 'Độc thân' } },
+                    { value: 'separated', label: { en: 'Separated', vi: 'Ly thân' } },
+                    { value: 'divorced', label: { en: 'Divorced', vi: 'Ly hôn' } },
+                    { value: 'widowed', label: { en: 'Widowed', vi: 'Góa' } }
+                  ]
+                },
+                {
+                  id: 'marriage_count',
+                  name: 'marriage_count',
+                  columnKey: 'Số lần kết hôn',
+                  type: 'text',
+                  label: {
+                    en: 'Number of times married (include current marriage):',
+                    vi: 'Số lần kết hôn (tính luôn hôn nhân hiện tại):'
+                  },
+                  colSpan: 3
+                }
+              ]
+            },
+            {
+              id: 'former_spouse_info',
+              title: {
+                en: 'Former Spouse Information',
+                vi: 'Thông tin người hôn phối cũ'
+              },
+              fields: [
+                {
+                  id: 'former_spouse_first_name',
+                  name: 'former_spouse_first_name',
+                  columnKey: 'Tên_Hôn phối cũ',
+                  type: 'text',
+                  label: { en: 'First Name', vi: 'Tên' }
+                },
+                {
+                  id: 'former_spouse_last_name',
+                  name: 'former_spouse_last_name',
+                  columnKey: 'Họ_Hôn phối cũ',
+                  type: 'text',
+                  label: { en: 'Last Name', vi: 'Họ' }
+                },
+                {
+                  id: 'former_spouse_middle_name',
+                  name: 'former_spouse_middle_name',
+                  columnKey: 'Tên lót_Hôn phối cũ',
+                  type: 'text',
+                  label: { en: 'Middle Name', vi: 'Tên lót' }
+                },
+                {
+                  id: 'former_spouse_birthdate',
+                  name: 'former_spouse_birthdate',
+                  columnKey: 'Ngày sinh_Hôn phối cũ',
+                  type: 'text',
+                  label: { en: 'Date of birth (dd/mm/yyyy):', vi: 'Ngày sinh (dd/mm/yyyy):' },
+                  placeholder: 'dd/mm/yyyy',
+                  colSpan: 3
+                },
+                {
+                  id: 'former_spouse_gender',
+                  name: 'former_spouse_gender',
+                  columnKey: 'Giới tính_Hôn phối cũ',
+                  type: 'radio',
+                  label: { en: 'Gender:', vi: 'Giới tính:' },
+                  options: [
+                    { value: 'male', label: { en: 'Male', vi: 'Nam' } },
+                    { value: 'female', label: { en: 'Female', vi: 'Nữ' } }
+                  ]
+                },
+                {
+                  id: 'former_spouse_birthplace',
+                  name: 'former_spouse_birthplace',
+                  columnKey: 'Nơi sinh_Hôn phối cũ',
+                  type: 'text',
+                  label: { en: 'Place of birth:', vi: 'Nơi sinh:' },
+                  colSpan: 3
+                },
+                {
+                  id: 'former_spouse_nationality',
+                  name: 'former_spouse_nationality',
+                  columnKey: 'Quốc tịch_Hôn phối cũ',
+                  type: 'text',
+                  label: { en: 'Nationality:', vi: 'Quốc tịch:' },
+                  colSpan: 3
+                },
+                {
+                  id: 'former_spouse_marriage_date',
+                  name: 'former_spouse_marriage_date',
+                  columnKey: 'Ngày kết hôn_Hôn phối cũ',
+                  type: 'text',
+                  label: { en: 'Previous marriage date (dd/mm/yyyy):', vi: 'Ngày kết hôn trước đây (dd/mm/yyyy):' },
+                  placeholder: 'dd/mm/yyyy',
+                  colSpan: 3
+                },
+                {
+                  id: 'former_spouse_divorce_date',
+                  name: 'former_spouse_divorce_date',
+                  columnKey: 'Ngày ly hôn_Hôn phối cũ',
+                  type: 'text',
+                  label: { en: 'Previous divorce date (dd/mm/yyyy):', vi: 'Ngày ly hôn trước đây (dd/mm/yyyy):' },
+                  placeholder: 'dd/mm/yyyy',
+                  colSpan: 3
+                },
+                {
+                  id: 'former_spouse_divorce_reason',
+                  name: 'former_spouse_divorce_reason',
+                  columnKey: 'Lý do ly hôn',
+                  type: 'radio',
+                  label: { en: 'Reason for divorce:', vi: 'Lý do ly hôn:' },
+                  options: [
+                    { value: 'divorce', label: { en: 'Divorce', vi: 'Ly hôn' } },
+                    { value: 'death', label: { en: 'Death', vi: 'Qua đời' } },
+                    { value: 'other', label: { en: 'Other', vi: 'Khác' } }
+                  ]
+                },
+                {
+                  id: 'former_spouse_divorce_reason_other',
+                  name: 'former_spouse_divorce_reason_other',
+                  columnKey: 'Giải thích lý do khác',
+                  type: 'text',
+                  label: { en: 'If other, explain:', vi: 'Khác, giải thích:' },
+                  colSpan: 3
+                },
+                {
+                  id: 'former_spouse_residency_status',
+                  name: 'former_spouse_residency_status',
+                  columnKey: 'Tình trạng cư trú_Hôn phối cũ',
+                  type: 'radio',
+                  label: { en: 'Residency status:', vi: 'Tình trạng cư trú:' },
+                  options: [
+                    { value: 'us_citizen', label: { en: 'US Citizen', vi: 'Công dân Mỹ' } },
+                    { value: 'permanent_resident', label: { en: 'Permanent Resident', vi: 'Thường trú nhân' } },
+                    { value: 'other', label: { en: 'Other', vi: 'Khác' } }
+                  ]
+                },
+                {
+                  id: 'former_spouse_naturalization_date',
+                  name: 'former_spouse_naturalization_date',
+                  columnKey: 'Ngày nhập tịch_Hôn phối cũ',
+                  type: 'text',
+                  label: { en: 'Date of naturalization (dd/mm/yyyy)', vi: 'Ngày nhập tịch Mỹ (dd/mm/yyyy)' },
+                  placeholder: 'dd/mm/yyyy',
+                  colSpan: 3
+                },
+                {
+                  id: 'former_spouse_alien_number',
+                  name: 'former_spouse_alien_number',
+                  columnKey: 'Số A_Hôn phối cũ',
+                  type: 'text',
+                  label: { en: 'Alien Number (if applicable):', vi: 'Số A: (Nếu có thì điền vào)' },
+                  colSpan: 3
+                },
+                {
+                  id: 'former_spouse_residency_other',
+                  name: 'former_spouse_residency_other',
+                  columnKey: 'Giải thích tình trạng cư trú khác',
+                  type: 'text',
+                  label: { en: 'If other, explain:', vi: 'Khác, giải thích:' },
+                  colSpan: 3
+                }
+              ]
+            }
+          ]
+        }, // end section
+
+        // ============================
+        // PHẦN D: HÔN NHÂN HIỆN TẠI
+        // ============================
+        {
+          id: 'part4_current_marriage',
+          title: {
+            en: 'Part D: Current Marriage Information',
+            vi: 'Phần D: Thông tin cuộc hôn nhân hiện tại'
+          },
+          groups: [
+            {
+              id: 'current_spouse_name',
+              title: {
+                en: 'Current Legal Name',
+                vi: 'Tên hợp pháp hiện tại'
+              },
+              fields: [
+                {
+                  id: 'current_spouse_first_name',
+                  name: 'current_spouse_first_name',
+                  columnKey: 'Tên_Hôn phối hiện tại',
+                  type: 'text',
+                  label: { en: 'First Name', vi: 'Tên' }
+                },
+                {
+                  id: 'current_spouse_last_name',
+                  name: 'current_spouse_last_name',
+                  columnKey: 'Họ_Hôn phối hiện tại',
+                  type: 'text',
+                  label: { en: 'Last Name', vi: 'Họ' }
+                },
+                {
+                  id: 'current_spouse_middle_name',
+                  name: 'current_spouse_middle_name',
+                  columnKey: 'Tên lót_Hôn phối hiện tại',
+                  type: 'text',
+                  label: { en: 'Middle Name', vi: 'Tên lót' }
+                }
+              ]
+            },
+            {
+              id: 'current_spouse_previous_name',
+              title: {
+                en: 'Previous Legal Name',
+                vi: 'Tên hợp pháp trước đây'
+              },
+              fields: [
+                {
+                  id: 'current_spouse_prev_first_name',
+                  name: 'current_spouse_prev_first_name',
+                  columnKey: 'Tên_Tên hợp pháp trước đây',
+                  type: 'text',
+                  label: { en: 'First Name', vi: 'Tên' }
+                },
+                {
+                  id: 'current_spouse_prev_last_name',
+                  name: 'current_spouse_prev_last_name',
+                  columnKey: 'Họ_Tên hợp pháp trước đây',
+                  type: 'text',
+                  label: { en: 'Last Name', vi: 'Họ' }
+                },
+                {
+                  id: 'current_spouse_prev_middle_name',
+                  name: 'current_spouse_prev_middle_name',
+                  columnKey: 'Tên lót_Tên hợp pháp trước đây',
+                  type: 'text',
+                  label: { en: 'Middle Name', vi: 'Tên lót' }
+                }
+              ]
+            },
+            {
+              id: 'current_spouse_other_names',
+              title: {
+                en: 'Other Names (nicknames, maiden name, etc.)',
+                vi: 'Tên gọi khác (biệt danh, tên thời con gái,...)'
+              },
+              fields: [
+                {
+                  id: 'current_spouse_other_first_name',
+                  name: 'current_spouse_other_first_name',
+                  columnKey: 'Tên_Tên gọi khác HPH',
+                  type: 'text',
+                  label: { en: 'First Name', vi: 'Tên' }
+                },
+                {
+                  id: 'current_spouse_other_last_name',
+                  name: 'current_spouse_other_last_name',
+                  columnKey: 'Họ_Tên gọi khác HPH',
+                  type: 'text',
+                  label: { en: 'Last Name', vi: 'Họ' }
+                },
+                {
+                  id: 'current_spouse_other_middle_name',
+                  name: 'current_spouse_other_middle_name',
+                  columnKey: 'Tên lót_Tên gọi khác HPH',
+                  type: 'text',
+                  label: { en: 'Middle Name', vi: 'Tên lót' }
+                },
+                {
+                  id: 'current_spouse_birthdate',
+                  name: 'current_spouse_birthdate',
+                  columnKey: 'Ngày sinh_Hôn phối hiện tại',
+                  type: 'date',
+                  label: { en: 'Date of birth (dd/mm/yyyy):', vi: 'Ngày sinh (dd/mm/yyyy):' },
+                  placeholder: 'dd/mm/yyyy',
+                  colSpan: 3
+                },
+                {
+                  id: 'current_spouse_gender',
+                  name: 'current_spouse_gender',
+                  columnKey: 'Giới tính_Hôn phối hiện tại',
+                  type: 'radio',
+                  label: { en: 'Gender:', vi: 'Giới tính:' },
+                  options: [
+                    { value: 'male', label: { en: 'Male', vi: 'Nam' } },
+                    { value: 'female', label: { en: 'Female', vi: 'Nữ' } }
+                  ]
+                },
+                {
+                  id: 'current_spouse_birthplace',
+                  name: 'current_spouse_birthplace',
+                  columnKey: 'Nơi sinh_Hôn phối hiện tại',
+                  type: 'text',
+                  label: { en: 'Place of birth:', vi: 'Nơi sinh:' },
+                  colSpan: 3
+                },
+                {
+                  id: 'current_spouse_nationality',
+                  name: 'current_spouse_nationality',
+                  columnKey: 'Quốc tịch_Hôn phối hiện tại',
+                  type: 'text',
+                  label: { en: 'Nationality:', vi: 'Quốc tịch:' },
+                  colSpan: 3
+                },
+                {
+                  id: 'current_spouse_residency_status',
+                  name: 'current_spouse_residency_status',
+                  columnKey: 'Tình trạng cư trú_Hôn phối hiện tại',
+                  type: 'radio',
+                  label: { en: 'Residency status:', vi: 'Tình trạng cư trú:' },
+                  options: [
+                    { value: 'us_citizen', label: { en: 'US Citizen', vi: 'Công dân Mỹ' } },
+                    { value: 'permanent_resident', label: { en: 'Permanent Resident', vi: 'Thường trú nhân' } },
+                    { value: 'other', label: { en: 'Other', vi: 'Khác' } }
+                  ]
+                },
+                {
+                  id: 'current_spouse_naturalization_date',
+                  name: 'current_spouse_naturalization_date',
+                  columnKey: 'Ngày nhập tịch_Hôn phối hiện tại',
+                  type: 'text',
+                  label: { en: 'Date of naturalization (dd/mm/yyyy)', vi: 'Ngày nhập tịch Mỹ (dd/mm/yyyy)' },
+                  placeholder: 'dd/mm/yyyy',
+                  colSpan: 3
+                },
+
+                {
+                  id: 'current_spouse_residency_other',
+                  name: 'current_spouse_residency_other',
+                  columnKey: 'Giải thích tình trạng cư trú khác HPH',
+                  type: 'text',
+                  label: { en: 'If other, explain:', vi: 'Khác, giải thích:' },
+                  colSpan: 3
+                },
+                {
+                  id: 'current_spouse_same_address',
+                  name: 'current_spouse_same_address',
+                  columnKey: 'Địa chỉ hôn phối giống đương đơn',
+                  type: 'radio',
+                  label: {
+                    en: "Is your current spouse's address the same as yours?",
+                    vi: 'Địa chỉ của người hôn phối hiện tại có giống địa chỉ của bạn không?'
+                  },
+                  options: [
+                    { value: 'yes', label: { en: 'Yes', vi: 'Có' } },
+                    { value: 'no', label: { en: 'No', vi: 'Không' } }
+                  ],
+                  colSpan: 3
+                },
+                {
+                  id: 'current_spouse_current_residence',
+                  name: 'current_spouse_current_residence',
+                  columnKey: 'Địa chỉ cư trú_Hôn phối hiện tại',
+                  type: 'text',
+                  label: { en: 'Current residence address:', vi: 'Địa chỉ cư trú hiện tại:' },
+                  colSpan: 3
+                },
+                {
+                  id: 'current_spouse_occupation',
+                  name: 'current_spouse_occupation',
+                  columnKey: 'Nghề nghiệp_Hôn phối hiện tại',
+                  type: 'text',
+                  label: { en: 'Occupation:', vi: 'Nghề nghiệp:' },
+                  colSpan: 3
+                },
+                {
+                  id: 'current_spouse_employer',
+                  name: 'current_spouse_employer',
+                  columnKey: 'Nơi làm việc_Hôn phối hiện tại',
+                  type: 'text',
+                  label: { en: 'Employer name:', vi: 'Tên nơi làm việc:' },
+                  colSpan: 3
+                },
+
+                {
+                  id: 'current_spouse_marriage_date',
+                  name: 'current_spouse_marriage_date',
+                  columnKey: 'Ngày kết hôn hiện tại',
+                  type: 'date',
+                  label: { en: 'Current marriage date (dd/mm/yyyy):', vi: 'Ngày kết hôn của cuộc hôn nhân hiện tại (dd/mm/yyyy):' },
+                  placeholder: 'dd/mm/yyyy',
+                  colSpan: 3
+                },
+                {
+                  id: 'current_spouse_citizenship_method',
+                  name: 'current_spouse_citizenship_method',
+                  columnKey: 'Cách trở thành công dân Mỹ_Hôn phối hiện tại',
+                  type: 'radio',
+                  label: {
+                    en: 'When did your current spouse become a U.S. citizen?',
+                    vi: 'Người hôn phối hiện tại của bạn trở thành công dân Mỹ khi nào?'
+                  },
+                  options: [
+                    { value: 'born_in_us', label: { en: 'Born in the United States', vi: 'Sinh ra tại Mỹ' } },
+                    { value: 'other', label: { en: 'Other', vi: 'Khác' } }
+                  ]
+                },
+                {
+                  id: 'current_spouse_citizenship_date',
+                  name: 'current_spouse_citizenship_date',
+                  columnKey: 'Ngày trở thành công dân Mỹ_Hôn phối hiện tại',
+                  type: 'date',
+                  label: {
+                    en: 'Date your current spouse became a U.S. citizen (dd/mm/yyyy):',
+                    vi: 'Ngày người hôn phối hiện tại của bạn trở thành công dân Mỹ (dd/mm/yyyy):'
+                  },
+                  placeholder: 'dd/mm/yyyy',
+                  colSpan: 3
+                },
+                {
+                  id: 'current_spouse_alien_number',
+                  name: 'current_spouse_alien_number',
+                  columnKey: 'Số A_Hôn phối hiện tại',
+                  type: 'text',
+                  label: { en: 'Current spouse Alien Number (A-Number):', vi: 'Số A của người hôn phối hiện tại' },
+                  placeholder: 'A-000 000 000',
+                  colSpan: 3
+                },
+                {
+                  id: 'current_spouse_marriage_count',
+                  name: 'current_spouse_marriage_count',
+                  columnKey: 'Số lần kết hôn_Hôn phối hiện tại',
+                  type: 'text',
+                  label: { en: 'Number of marriages of your current spouse:', vi: 'Số lần kết hôn của người hôn phối hiện tại' },
+                  colSpan: 3
+                },
+                {
+                  id: 'current_spouse_marriage_place',
+                  name: 'current_spouse_marriage_place',
+                  columnKey: 'Nơi kết hôn hiện tại',
+                  type: 'text',
+                  label: { en: 'Place of current marriage:', vi: 'Nơi kết hôn của cuộc hôn nhân hiện tại:' },
+                  colSpan: 3
+                }
+              ]
+            },
+
+            // ============================
+            // HÔN NHÂN CŨ CỦA HÔN PHỐI HIỆN TẠI
+            // ============================
+            {
+              id: 'current_spouse_former_marriage',
+              title: {
+                en: 'Former Marriage of Current Spouse',
+                vi: 'Thông tin cuộc hôn nhân cũ của người hôn phối của đương đơn'
+              },
+              fields: [
+                {
+                  id: 'current_spouse_former_first_name',
+                  name: 'current_spouse_former_first_name',
+                  columnKey: 'Tên_Hôn nhân cũ của hôn phối',
+                  type: 'text',
+                  label: { en: 'First Name', vi: 'Tên' }
+                },
+                {
+                  id: 'current_spouse_former_last_name',
+                  name: 'current_spouse_former_last_name',
+                  columnKey: 'Họ_Hôn nhân cũ của hôn phối',
+                  type: 'text',
+                  label: { en: 'Last Name', vi: 'Họ' }
+                },
+                {
+                  id: 'current_spouse_former_middle_name',
+                  name: 'current_spouse_former_middle_name',
+                  columnKey: 'Tên lót_Hôn nhân cũ của hôn phối',
+                  type: 'text',
+                  label: { en: 'Middle Name', vi: 'Tên lót' }
+                },
+                {
+                  id: 'current_spouse_former_birthdate',
+                  name: 'current_spouse_former_birthdate',
+                  columnKey: 'Ngày sinh_Hôn nhân cũ của hôn phối',
+                  type: 'text',
+                  label: { en: 'Date of birth (dd/mm/yyyy):', vi: 'Ngày sinh (dd/mm/yyyy):' },
+                  placeholder: 'dd/mm/yyyy',
+                  colSpan: 3
+                },
+                {
+                  id: 'current_spouse_former_gender',
+                  name: 'current_spouse_former_gender',
+                  columnKey: 'Giới tính_Hôn nhân cũ của hôn phối',
+                  type: 'radio',
+                  label: { en: 'Gender:', vi: 'Giới tính:' },
+                  options: [
+                    { value: 'male', label: { en: 'Male', vi: 'Nam' } },
+                    { value: 'female', label: { en: 'Female', vi: 'Nữ' } }
+                  ]
+                },
+                {
+                  id: 'current_spouse_former_birthplace',
+                  name: 'current_spouse_former_birthplace',
+                  columnKey: 'Nơi sinh_Hôn nhân cũ của hôn phối',
+                  type: 'text',
+                  label: { en: 'Place of birth:', vi: 'Nơi sinh:' },
+                  colSpan: 3
+                },
+                {
+                  id: 'current_spouse_former_nationality',
+                  name: 'current_spouse_former_nationality',
+                  columnKey: 'Quốc tịch_Hôn nhân cũ của hôn phối',
+                  type: 'text',
+                  label: { en: 'Nationality:', vi: 'Quốc tịch:' },
+                  colSpan: 3
+                },
+                {
+                  id: 'current_spouse_former_marriage_date',
+                  name: 'current_spouse_former_marriage_date',
+                  columnKey: 'Ngày kết hôn_Hôn nhân cũ của hôn phối',
+                  type: 'text',
+                  label: { en: 'Previous marriage date (dd/mm/yyyy):', vi: 'Ngày kết hôn trước đây (dd/mm/yyyy):' },
+                  placeholder: 'dd/mm/yyyy',
+                  colSpan: 3
+                },
+                {
+                  id: 'current_spouse_former_divorce_date',
+                  name: 'current_spouse_former_divorce_date',
+                  columnKey: 'Ngày ly hôn_Hôn nhân cũ của hôn phối',
+                  type: 'text',
+                  label: { en: 'Previous divorce date (dd/mm/yyyy):', vi: 'Ngày ly hôn trước đây (dd/mm/yyyy):' },
+                  placeholder: 'dd/mm/yyyy',
+                  colSpan: 3
+                },
+                {
+                  id: 'current_spouse_former_divorce_reason',
+                  name: 'current_spouse_former_divorce_reason',
+                  columnKey: 'Lý do ly hôn_Hôn nhân cũ của hôn phối',
+                  type: 'radio',
+                  label: { en: 'Reason for divorce:', vi: 'Lý do ly hôn:' },
+                  options: [
+                    { value: 'divorce', label: { en: 'Divorce', vi: 'Ly hôn' } },
+                    { value: 'death', label: { en: 'Death', vi: 'Qua đời' } },
+                    { value: 'other', label: { en: 'Other', vi: 'Khác' } }
+                  ]
+                },
+                {
+                  id: 'current_spouse_former_divorce_reason_other',
+                  name: 'current_spouse_former_divorce_reason_other',
+                  columnKey: 'Giải thích lý do khác_Hôn nhân cũ của hôn phối',
+                  type: 'text',
+                  label: { en: 'If other, explain:', vi: 'Khác, giải thích:' },
+                  colSpan: 3
+                },
+                {
+                  id: 'current_spouse_former_residency_status',
+                  name: 'current_spouse_former_residency_status',
+                  columnKey: 'Tình trạng cư trú_Hôn nhân cũ của hôn phối',
+                  type: 'radio',
+                  label: { en: 'Residency status:', vi: 'Tình trạng cư trú:' },
+                  options: [
+                    { value: 'us_citizen', label: { en: 'US Citizen', vi: 'Công dân Mỹ' } },
+                    { value: 'permanent_resident', label: { en: 'Permanent Resident', vi: 'Thường trú nhân' } },
+                    { value: 'other', label: { en: 'Other', vi: 'Khác' } }
+                  ]
+                },
+                {
+                  id: 'current_spouse_former_naturalization_date',
+                  name: 'current_spouse_former_naturalization_date',
+                  columnKey: 'Ngày nhập tịch_Hôn nhân cũ của hôn phối',
+                  type: 'text',
+                  label: { en: 'Date of naturalization (dd/mm/yyyy)', vi: 'Ngày nhập tịch Mỹ (dd/mm/yyyy)' },
+                  placeholder: 'dd/mm/yyyy',
+                  colSpan: 3
+                },
+                {
+                  id: 'current_spouse_former_alien_number',
+                  name: 'current_spouse_former_alien_number',
+                  columnKey: 'Số A_Hôn nhân cũ của hôn phối',
+                  type: 'text',
+                  label: { en: 'Alien Number (if applicable):', vi: 'Số A: (Nếu có thì điền vào)' },
+                  colSpan: 3
+                },
+                {
+                  id: 'current_spouse_former_residency_other',
+                  name: 'current_spouse_former_residency_other',
+                  columnKey: 'Giải thích tình trạng cư trú khác_Hôn nhân cũ của hôn phối',
+                  type: 'text',
+                  label: { en: 'If other, explain:', vi: 'Khác, giải thích:' },
+                  colSpan: 3
+                }
+              ]
+            }
+          ]
+        }, // end section
+
+        // ============================
+        // PHẦN E: THÔNG TIN CÁC CON
+        // ============================
+        {
+          id: 'part5_children_information',
+          title: {
+            en: 'Part E: Children Information',
+            vi: 'Phần E: Thông tin về các con'
+          },
+          groups: [
+            {
+              id: 'children_summary',
+              title: {
+                en: 'Children Summary',
+                vi: 'Tổng quan về con'
+              },
+              fields: [
+                {
+                  id: 'children_count',
+                  name: 'children_count',
+                  columnKey: 'Tổng số con',
+                  type: 'text',
+                  label: {
+                    en: 'Total number of children:',
+                    vi: 'Tổng số con của đương đơn:'
+                  },
+                  colSpan: 3
+                }
+              ]
+            },
+            {
+              id: 'children_details',
+              title: {
+                en: 'Children Details',
+                vi: 'Thông tin từng con'
+              },
+              fields: [
+                {
+                  id: 'children_info_list',
+                  name: 'children_info_list',
+                  columnKey: 'Thông tin chi tiết các con',
+                  type: 'children_info',
+                  label: {
+                    en: 'Children information',
+                    vi: 'Thông tin con'
+                  }
+                }
+              ]
+            }
+          ]
+        }, // end section
+
+        // ============================
+        // PHẦN F: THÔNG TIN XUẤT CẢNH
+        // ============================
+        {
+          id: 'part6_departure_information',
+          title: {
+            en: 'Part F: Departure Information',
+            vi: 'Phần F: Thông tin xuất cảnh'
+          },
+          groups: [
+            {
+              id: 'travel_history_group',
+              title: {
+                en: 'Trips outside the United States',
+                vi: 'Thông tin những lần ra khỏi Mỹ'
+              },
+              fields: [
+                {
+                  id: 'travel_history',
+                  name: 'travel_history',
+                  columnKey: 'Thông tin xuất cảnh',
+                  type: 'travel_history',
+                  label: {
+                    en: 'List every trip outside the United States (based on the entry/exit stamps in your passport).',
+                    vi: 'Liệt kê những lần ra khỏi Mỹ (dựa trên dấu mộc xuất nhập cảnh ở hộ chiếu).'
+                  }
+                },
+
+                {
+                  id: 'applicant_age_status',
+                  name: 'applicant_age_status',
+                  columnKey: 'Điều kiện nộp đơn',
+                  type: 'radio',
+                  label: {
+                    en: 'The applicant is at least 18 years old and:',
+                    vi: 'Người nộp đơn hiện tại đủ 18 tuổi và:'
+                  },
+                  options: [
+                    {
+                      value: 'five_year_resident',
+                      label: {
+                        en: 'Has been a permanent resident for at least 5 years',
+                        vi: 'Thường trú nhân trong ít nhất 5 năm'
+                      }
+                    },
+                    {
+                      value: 'three_year_spouse',
+                      label: {
+                        en: 'Permanent resident for at least 3 years and has been married to and living with a U.S. citizen spouse for the last 3 years at the time you file Form N-400',
+                        vi: 'Thường trú nhân ít nhất 3 năm. Đồng thời bạn đã kết hôn và hiện sống chung với vợ/chồng là công dân Mỹ trong 3 năm qua tại thời điểm bạn nộp mẫu đơn N-400.'
+                      }
+                    },
+                    {
+                      value: 'vawa',
+                      label: {
+                        en: 'Spouse, former spouse, or child of a U.S. citizen under the Violence Against Women Act (VAWA)',
+                        vi: 'Vợ/chồng, vợ/chồng cũ, hoặc con của công dân Hoa Kỳ theo Đạo luật Chống Bạo lực đối với Phụ nữ (VAWA)'
+                      }
+                    },
+                    {
+                      value: 'uscis_office',
+                      label: {
+                        en: 'A permanent resident of the United States, and you are the spouse of a U.S. citizen, and your U.S. citizen spouse regularly works abroad. If your residential address is outside the United States and you are filing under section 319(b), provide the USCIS office address where you want to be interviewed for naturalization.',
+                        vi: 'Một thường trú nhân Hoa Kỳ, và bạn là người phối ngẫu của công dân Mỹ, và người vợ/chồng là công dân Mỹ của bạn thường làm việc ở nước ngoài. Nếu địa chỉ nơi cư ngụ của bạn ngoài Mỹ và bạn nộp đơn theo mục 319 (b), xin địa chỉ văn phòng Sở Di Trú (USCIS) tại nơi bạn muốn phỏng vấn nhập tịch.'
+                      }
+                    },
+                    {
+                      value: 'military_wartime',
+                      label: {
+                        en: 'Served in the U.S. armed forces during a period of hostility',
+                        vi: 'Đã phục vụ trong quân đội thời kỳ có chiến tranh'
+                      }
+                    },
+                    {
+                      value: 'military_honorable_service',
+                      label: {
+                        en: 'Served at least 1 year in the U.S. armed forces with honorable service, regardless of when the service occurred',
+                        vi: 'Đã có ít nhất 1 năm phục vụ quân đội với thành tích/phẩm chất phục vụ danh dự, bất kể thời gian phục vụ là khi nào'
+                      }
+                    },
+                    {
+                      value: 'other',
+                      label: {
+                        en: 'Other',
+                        vi: 'Khác'
+                      }
+                    }
+                  ],
+                  colSpan: 3
+                },
+                {
+                  id: 'uscis_office_address',
+                  name: 'uscis_office_address',
+                  columnKey: 'Địa chỉ USCIS',
+                  type: 'text',
+                  label: {
+                    en: 'USCIS office address where you want to be interviewed for naturalization',
+                    vi: 'Địa chỉ văn phòng Sở Di Trú (USCIS) nơi bạn muốn phỏng vấn nhập tịch'
+                  },
+                  colSpan: 3
+                },
+                {
+                  id: 'applicant_age_status_other',
+                  name: 'applicant_age_status_other',
+                  columnKey: 'Điều kiện khác',
+                  type: 'text',
+                  label: {
+                    en: 'Specify other case',
+                    vi: 'Ghi rõ trong trường hợp khác'
+                  },
+                  colSpan: 3
+                },
+                {
+                  id: 'english_exam_exemption',
+                  name: 'english_exam_exemption',
+                  columnKey: 'Miễn thi tiếng Anh',
+                  type: 'radio',
+                  label: {
+                    en: 'English test exemption cases:',
+                    vi: 'Các trường hợp được miễn thi tiếng Anh:'
+                  },
+                  options: [
+                    {
+                      value: 'age50_resident20',
+                      label: {
+                        en: '50 years old or older and a permanent resident for at least 20 years by the filing date.',
+                        vi: 'Từ 50 tuổi trở lên và là thường trú nhân ít nhất 20 năm tính tới thời điểm nộp đơn.'
+                      }
+                    },
+                    {
+                      value: 'age55_resident15',
+                      label: {
+                        en: '55 years old or older and a permanent resident for at least 15 years by the filing date.',
+                        vi: 'Từ 55 tuổi trở lên và là thường trú nhân ít nhất 15 năm tính tới thời điểm nộp đơn.'
+                      }
+                    },
+                    {
+                      value: 'age65_resident20',
+                      label: {
+                        en: '65 years old or older and a permanent resident for at least 20 years by the filing date.',
+                        vi: 'Từ 65 tuổi trở lên và là thường trú nhân ít nhất 20 năm tính tới thời điểm nộp đơn.'
+                      }
+                    }
+                  ],
+                  colSpan: 3
+                },
+                {
+                  id: 'medical_condition_details',
+                  name: 'medical_condition_details',
+                  columnKey: 'Tình trạng sức khỏe',
+                  type: 'textarea',
+                  label: {
+                    en: 'If you have ever had or currently have any physical, mental, or nervous disorder, describe the condition:',
+                    vi: 'Nếu đã từng bị hoặc đang bị bệnh rối loạn thể chất, thần kinh thì ghi rõ tình trạng:'
+                  },
+                  colSpan: 3
+                },
+                {
+                  id: 'health_accommodation_request',
+                  name: 'health_accommodation_request',
+                  columnKey: 'Yêu cầu hỗ trợ sức khỏe',
+                  type: 'textarea',
+                  label: {
+                    en: 'If you need accommodations because of a health condition (disability, vision or hearing impairment), describe the condition and assistance needed:',
+                    vi: 'Nếu cần hỗ trợ vì tình trạng sức khỏe trong khi thi thì ghi rõ tình trạng và yêu cầu hỗ trợ (Bị khuyết tật, thị lực hoặc thính giác bị suy yếu):'
+                  },
+                  colSpan: 3
+                },
+                {
+                  id: 'offense_history',
+                  name: 'offense_history',
+                  columnKey: 'Tiền án tiền sự',
+                  type: 'offense_history',
+                  label: {
+                    en: 'List any criminal offenses (including dismissed charges), if applicable:',
+                    vi: 'Liệt kê các tiền án (kể cả án oan) đã mắc phải: (nếu có)'
+                  }
+                },
+                {
+                  id: 'organization_history',
+                  name: 'organization_history',
+                  columnKey: 'Tổ chức hiệp hội',
+                  type: 'organization_history',
+                  label: {
+                    en: 'List organizations, associations, foundations, clubs, political parties you have participated in:',
+                    vi: 'Liệt kê các tổ chức, hiệp hội, Quỹ, câu lạc bộ, Đảng phái đã tham gia:'
+                  }
+                },
+                {
+                  id: 'claimed_us_citizen',
+                  name: 'claimed_us_citizen',
+                  columnKey: 'Tự nhận công dân Mỹ',
+                  type: 'radio',
+                  label: {
+                    en: 'Have you ever claimed to be a U.S. citizen?',
+                    vi: 'Đã bao giờ tự nhận là một công dân Hoa Kỳ?'
+                  },
+                  options: [
+                    { value: 'yes', label: { en: 'Yes', vi: 'Có' } },
+                    { value: 'no', label: { en: 'No', vi: 'Không' } }
+                  ],
+                  colSpan: 3
+                },
+                {
+                  id: 'claimed_us_citizen_explanation',
+                  name: 'claimed_us_citizen_explanation',
+                  columnKey: 'Giải thích tự nhận công dân Mỹ',
+                  type: 'textarea',
+                  label: {
+                    en: 'Please explain:',
+                    vi: 'Vui lòng nhập lý do/giải thích:'
+                  },
+                  colSpan: 3
+                },
+                {
+                  id: 'registered_voted_us',
+                  name: 'registered_voted_us',
+                  columnKey: 'Đăng ký bầu cử',
+                  type: 'radio',
+                  label: {
+                    en: 'Have you ever registered to vote or voted in the U.S.?',
+                    vi: 'Đã bao giờ đăng ký bầu cử hoặc bầu cử ở Mỹ chưa?'
+                  },
+                  options: [
+                    { value: 'yes', label: { en: 'Yes', vi: 'Có' } },
+                    { value: 'no', label: { en: 'No', vi: 'Không' } }
+                  ],
+                  colSpan: 3
+                },
+                {
+                  id: 'registered_voted_us_explanation',
+                  name: 'registered_voted_us_explanation',
+                  columnKey: 'Giải thích đăng ký/bầu cử ở Mỹ',
+                  type: 'textarea',
+                  label: {
+                    en: 'Please explain:',
+                    vi: 'Vui lòng nhập lý do/giải thích:'
+                  },
+                  colSpan: 3
+                },
+
+                {
+                  id: 'has_foreign_hereditary_title',
+                  name: 'has_foreign_hereditary_title',
+                  columnKey: 'Tước hiệu cha truyền con nối hoặc huân chương quý tộc',
+                  type: 'radio',
+                  label: {
+                    en: 'Do you now have, or did you ever have, a hereditary title or an order of nobility in any foreign country?',
+                    vi: 'Bạn đang có, hoặc đã từng có, tước hiệu cha truyền con nối hoặc huân chương quý tộc ở bất kỳ quốc gia nào khác không?'
+                  },
+                  options: [
+                    { value: 'yes', label: { en: 'Yes', vi: 'Có' } },
+                    { value: 'no', label: { en: 'No', vi: 'Không' } }
+                  ],
+                  colSpan: 3
+                },
+                {
+                  id: 'willing_to_renounce_foreign_titles',
+                  name: 'willing_to_renounce_foreign_titles',
+                  columnKey: 'Sẵn sàng từ bỏ tước hiệu/huân chương quý tộc',
+                  type: 'radio',
+                  label: {
+                    en: 'Are you willing to renounce any hereditary titles or orders of nobility that you have in a foreign country at your naturalization ceremony?',
+                    vi: 'Bạn có sẵn sàng từ bỏ bất kỳ tước hiệu cha truyền con nối hoặc huân chương quý tộc nào mà bạn có ở nước ngoài trong nghi lễ nhập tịch của mình không?'
+                  },
+                  options: [
+                    { value: 'yes', label: { en: 'Yes', vi: 'Có' } },
+                    { value: 'no', label: { en: 'No', vi: 'Không' } }
+                  ],
+                  colSpan: 3
+                },
+                {
+                  id: 'foreign_titles_to_renounce',
+                  name: 'foreign_titles_to_renounce',
+                  columnKey: 'Danh sách tước hiệu/huân chương sẽ từ bỏ',
+                  type: 'text_repeater',
+                  label: {
+                    en: 'List the hereditary titles or orders of nobility you will renounce:',
+                    vi: 'Nhập các tước hiệu cha truyền con nối hoặc huân chương quý tộc mà bạn sẽ từ bỏ:'
+                  },
+                  placeholder: 'Nhập tước hiệu hoặc huân chương quý tộc',
+                  colSpan: 3
+                },
+                {
+                  id: 'legally_incompetent',
+                  name: 'legally_incompetent',
+                  columnKey: 'Mất năng lực pháp lý',
+                  type: 'radio',
+                  label: {
+                    en: 'Have you ever been declared legally incompetent or been confined to a mental institution?',
+                    vi: 'Đã bao giờ bị mất năng lực pháp lý hoặc bị quản chế ở bệnh viện tâm thần chưa?'
+                  },
+                  options: [
+                    { value: 'yes', label: { en: 'Yes', vi: 'Có' } },
+                    { value: 'no', label: { en: 'No', vi: 'Không' } }
+                  ],
+                  colSpan: 3
+                },
+                {
+                  id: 'legally_incompetent_explanation',
+                  name: 'legally_incompetent_explanation',
+                  columnKey: 'Giải thích mất năng lực pháp lý/bệnh viện tâm thần',
+                  type: 'textarea',
+                  label: {
+                    en: 'Please explain:',
+                    vi: 'Vui lòng nhập lý do/giải thích:'
+                  },
+                  colSpan: 3
+                },
+                {
+                  id: 'filed_taxes_late',
+                  name: 'filed_taxes_late',
+                  columnKey: 'Đóng thuế quá hạn',
+                  type: 'radio',
+                  label: {
+                    en: 'Have you ever filed taxes late in the U.S.?',
+                    vi: 'Đã bao giờ đóng thuế quá hạn ở Mỹ chưa?'
+                  },
+                  options: [
+                    { value: 'yes', label: { en: 'Yes', vi: 'Có' } },
+                    { value: 'no', label: { en: 'No', vi: 'Không' } }
+                  ],
+                  colSpan: 3
+                },
+                {
+                  id: 'filed_taxes_late_explanation',
+                  name: 'filed_taxes_late_explanation',
+                  columnKey: 'Giải thích đóng thuế quá hạn',
+                  type: 'textarea',
+                  label: {
+                    en: 'Please explain:',
+                    vi: 'Vui lòng giải thích:'
+                  },
+                  colSpan: 3
+                },
+                {
+                  id: 'non_resident_tax_since_lpr',
+                  name: 'non_resident_tax_since_lpr',
+                  columnKey: 'Khai không cư trú tại Mỹ sau khi thành thường trú nhân',
+                  type: 'radio',
+                  label: {
+                    en: 'Since becoming a lawful permanent resident, have you ever claimed to be a nonresident of the United States on a tax return, or failed to file a tax return because you considered yourself to be a nonresident?',
+                    vi: 'Từ khi trở thành thường trú nhân, bạn đã từng khai là "không phải người cư trú tại Mỹ" trên tờ khai thuế, hoặc không nộp thuế vì cho rằng mình không phải cư trú tại Mỹ chưa?'
+                  },
+                  options: [
+                    { value: 'yes', label: { en: 'Yes', vi: 'Có' } },
+                    { value: 'no', label: { en: 'No', vi: 'Không' } }
+                  ],
+                  colSpan: 3
+                },
+                {
+                  id: 'non_resident_tax_since_lpr_explanation',
+                  name: 'non_resident_tax_since_lpr_explanation',
+                  columnKey: 'Giải thích khai không cư trú tại Mỹ sau khi thành thường trú nhân',
+                  type: 'textarea',
+                  label: {
+                    en: 'Please explain:',
+                    vi: 'Vui lòng giải thích:'
+                  },
+                  colSpan: 3
+                },
+                {
+                  id: 'served_prison',
+                  name: 'served_prison',
+                  columnKey: 'Phục vụ trong nhà tù',
+                  type: 'radio',
+                  label: {
+                    en: 'Have you ever served time in a prison, jail, detention center, or correctional facility?',
+                    vi: 'Đã bao giờ phục vụ trong nhà tù, trại giam, nơi tạm giam hoặc trại cải tạo không?'
+                  },
+                  options: [
+                    { value: 'yes', label: { en: 'Yes', vi: 'Có' } },
+                    { value: 'no', label: { en: 'No', vi: 'Không' } }
+                  ],
+                  colSpan: 3
+                },
+                {
+                  id: 'served_prison_explanation',
+                  name: 'served_prison_explanation',
+                  columnKey: 'Giải thích phục vụ trong nhà tù/trại giam',
+                  type: 'textarea',
+                  label: {
+                    en: 'Please explain:',
+                    vi: 'Vui lòng nhập lý do/giải thích:'
+                  },
+                  colSpan: 3
+                },
+                {
+                  id: 'military_training',
+                  name: 'military_training',
+                  columnKey: 'Huấn luyện quân sự',
+                  type: 'radio',
+                  label: {
+                    en: 'Have you ever received military, paramilitary, or weapons training?',
+                    vi: 'Đã bao giờ nhận được huấn luyện quân sự, bán quân sự hoặc đào tạo vũ khí không?'
+                  },
+                  options: [
+                    { value: 'no', label: { en: 'No', vi: 'Không' } },
+                    { value: 'yes', label: { en: 'Yes', vi: 'Có' } }
+                  ],
+                  colSpan: 3
+                },
+                {
+                  id: 'military_training_explanation',
+                  name: 'military_training_explanation',
+                  columnKey: 'Giải thích huấn luyện quân sự',
+                  type: 'textarea',
+                  label: {
+                    en: 'Please explain:',
+                    vi: 'Vui lòng giải thích:'
+                  },
+                  colSpan: 3
+                },
+                {
+                  id: 'arrested_detained',
+                  name: 'arrested_detained',
+                  columnKey: 'Bị bắt giữ phạt giam giữ',
+                  type: 'radio',
+                  label: {
+                    en: 'Have you ever been arrested, fined, or detained by law enforcement officers (including any immigration officials or U.S. armed forces)?',
+                    vi: 'Đã bao giờ bị bắt giữ, phạt, hoặc giam giữ bởi viên chức thực thi pháp luật (bao gồm bất kỳ quan chức nhập cư hoặc các lực lượng vũ trang Hoa Kỳ) không?'
+                  },
+                  options: [
+                    { value: 'no', label: { en: 'No', vi: 'Không' } },
+                    { value: 'yes', label: { en: 'Yes', vi: 'Có' } }
+                  ],
+                  colSpan: 3
+                },
+                {
+                  id: 'arrested_detained_explanation',
+                  name: 'arrested_detained_explanation',
+                  columnKey: 'Giải thích bị bắt giữ/phạt/giam giữ',
+                  type: 'textarea',
+                  label: {
+                    en: 'Please explain:',
+                    vi: 'Vui lòng nhập lý do/giải thích:'
+                  },
+                  colSpan: 3
+                },
+                {
+                  id: 'serving_us_military',
+                  name: 'serving_us_military',
+                  columnKey: 'Đang phục vụ quân đội Mỹ',
+                  type: 'radio',
+                  label: {
+                    en: 'Are you currently serving in the U.S. military?',
+                    vi: 'Có đang phục vụ quân đội Mỹ hay không?'
+                  },
+                  options: [
+                    { value: 'yes', label: { en: 'Yes', vi: 'Có' } },
+                    { value: 'no', label: { en: 'No', vi: 'Không' } }
+                  ],
+                  colSpan: 3
+                },
+                {
+                  id: 'ever_served_us_military',
+                  name: 'ever_served_us_military',
+                  columnKey: 'Đã từng phục vụ quân đội Mỹ',
+                  type: 'radio',
+                  label: {
+                    en: 'Have you ever served in the U.S. military?',
+                    vi: 'Bạn đã từng phục vụ trong quân đội Mỹ chưa?'
+                  },
+                  options: [
+                    { value: 'yes', label: { en: 'Yes', vi: 'Có' } },
+                    { value: 'no', label: { en: 'No', vi: 'Không' } }
+                  ],
+                  colSpan: 3
+                },
+                {
+                  id: 'male_lived_us_18_26',
+                  name: 'male_lived_us_18_26',
+                  columnKey: 'Nam sống ở Hoa Kỳ từ 18-26 tuổi',
+                  type: 'radio',
+                  label: {
+                    en: 'Are you a male who lived in the United States at any time between 18 and 26 years old?',
+                    vi: 'Bạn có phải là nam sống ở Hoa Kỳ ở bất kỳ thời điểm nào từ 18-26 tuổi không?'
+                  },
+                  options: [
+                    { value: 'yes', label: { en: 'Yes', vi: 'Có' } },
+                    { value: 'no', label: { en: 'No', vi: 'Không' } }
+                  ],
+                  colSpan: 3
+                },
+                {
+                  id: 'selective_service_registered',
+                  name: 'selective_service_registered',
+                  columnKey: 'Đã đăng ký Selective Service',
+                  type: 'radio',
+                  label: {
+                    en: 'Have you registered for Selective Service?',
+                    vi: 'Bạn đã đăng ký nghĩa vụ quân sự (Selective Service) chưa?'
+                  },
+                  options: [
+                    { value: 'yes', label: { en: 'Yes', vi: 'Có' } },
+                    { value: 'no', label: { en: 'No', vi: 'Không' } }
+                  ],
+                  colSpan: 3
+                },
+                {
+                  id: 'military_registration_date',
+                  name: 'military_registration_date',
+                  columnKey: 'Ngày đăng ký Selective Service',
+                  type: 'date',
+                  label: {
+                    en: 'Selective Service registration date (dd/mm/yyyy):',
+                    vi: 'Ngày đăng ký nghĩa vụ quân sự (Selective Service) (dd/mm/yyyy):'
+                  },
+                  placeholder: 'dd/mm/yyyy',
+                  colSpan: 3
+                },
+                {
+                  id: 'military_registration_number',
+                  name: 'military_registration_number',
+                  columnKey: 'Số đăng ký Selective Service',
+                  type: 'text',
+                  label: {
+                    en: 'Your Selective Service registration number:',
+                    vi: 'Số đăng ký Selective Service của bạn:'
+                  },
+                  colSpan: 3
+                }
+              ]
+            }
+          ]
+        }, // end section
+
+        // ============================
+        // PHẦN F: THÔNG TIN BỔ SUNG
+        // ============================
+        {
+          id: 'part7_additional_info',
+          title: {
+            en: 'Part F: Additional Information',
+            vi: 'Phần F: Thông tin bổ sung'
+          },
+          groups: [
+            {
+              id: 'additional_info_group',
+              title: {
+                en: 'Additional Information',
+                vi: 'Thông tin bổ sung'
+              },
+              fields: [
+                {
+                  id: 'additional_info_note',
+                  name: 'additional_info_note',
+                  columnKey: 'Lưu ý thông tin bổ sung',
+                  type: 'textarea',
+                  label: {
+                    en: 'Note: Please write clearly in Vietnamese with proper diacritics to avoid confusion:',
+                    vi: 'Lưu ý: Ghi rõ câu hỏi và điền bằng tiếng Việt có dấu để tránh nhầm lẫn thông tin:'
+                  },
+                  colSpan: 3
+                },
+                {
+                  id: 'submission_notice',
+                  name: 'submission_notice',
+                  columnKey: 'Thông báo trước khi gửi',
+                  type: 'info',
+                  label: {
+                    en: 'Please carefully review all information before signing (use your real signature) and click "Submit" to send the information to ICAVIET staff.',
+                    vi: 'Vui lòng kiểm tra kỹ các thông tin đã điền trước ký tên xác nhận (dùng chữ ký thật) và bấm "Gửi" để các thông tin đã điền được gửi tới chuyên viên ICAVIET.'
+                  },
+                  colSpan: 3
+                },
+                {
+                  id: 'applicant_full_name',
+                  name: 'applicant_full_name',
+                  columnKey: 'Họ và tên người điền đơn',
+                  type: 'text',
+                  label: {
+                    en: 'Full name of the applicant:',
+                    vi: 'Họ và tên của người điền đơn:'
+                  },
+                  required: true,
+                  colSpan: 3
+                },
+                {
+                  id: 'applicant_signature',
+                  name: 'applicant_signature',
+                  columnKey: 'Chữ ký người điền đơn',
+                  type: 'signature',
+                  label: {
+                    en: 'Signature:',
+                    vi: 'Chữ ký:'
+                  },
+                  required: true,
+                  colSpan: 3
+                }
+              ]
+            }
+          ]
+        } // end section
+      ] // end sections
+    }
+  }
+ 

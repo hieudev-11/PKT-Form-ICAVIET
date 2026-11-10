@@ -1,0 +1,10 @@
+{
+    "name": "icaviet/icaviet-forms",
+    "description": "ICAVIET Forms WordPress Plugin",
+    "require": {
+        "dompdf/dompdf": "^3.0"
+    },
+    "config": {
+        "vendor-dir": "vendor"
+    }
+}

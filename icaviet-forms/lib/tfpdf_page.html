@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>tFPDF</title>
+<link type="text/css" rel="stylesheet" href="../fpdf.css">
+</head>
+<body onload="if(window.focus) window.focus()">
+<h1>tFPDF</h1>
+<h2>Informations</h2>
+Author: <script type="text/javascript">document.write('<a h'+'ref="m'+'ailto:ian'+'&#'+'64;'+'bpm1.com?subject=tFPDF">');</script>Ian Back<script type="text/javascript">document.write('<\/a>');</script><br>
+License: LGPL
+<h2>Description</h2>
+This class is a modified version of FPDF that adds UTF-8 support. Moreover, it embeds only
+the necessary parts of the fonts that are used in the document, making the file size much
+smaller than if the whole fonts were embedded. These features were originally developed
+for the <a href="https://mpdf.github.io/" target="_blank">mPDF</a> project.<br>
+<br>
+To use a Unicode font in your script, pass the font file name as third parameter of
+<code>AddFont()</code> and <code>true</code> as fourth parameter. The font may be located
+either in the font/unifont directory or directly in the system font folder (in case the
+<code>_SYSTEM_TTFONTS</code> constant is defined).
+The package ships with the <a href="https://dejavu-fonts.github.io/" target="_blank">DejaVu</a>
+font family.<br>
+<br>
+<strong>Note:</strong> this class requires the mbstring extension.
+<h2>Example</h2>This example uses the DejaVu Sans Condensed font to display some Unicode strings.
+<div class="source">
+<pre><code>&lt;?php
+
+<span class="cmt">// Optionally define the filesystem path to your system fonts
+// otherwise tFPDF will use [path to tFPDF]/font/unifont/ directory
+// define("_SYSTEM_TTFONTS", "C:/Windows/Fonts/");
+
+</span><span class="kw">require(</span><span class="str">'tfpdf.php'</span><span class="kw">);
+
+</span>$pdf <span class="kw">= new </span>tFPDF<span class="kw">();
+</span>$pdf<span class="kw">-&gt;</span>AddPage<span class="kw">();
+
+</span><span class="cmt">// Add a Unicode font (uses UTF-8)
+</span>$pdf<span class="kw">-&gt;</span>AddFont<span class="kw">(</span><span class="str">'DejaVu'</span><span class="kw">,</span><span class="str">''</span><span class="kw">,</span><span class="str">'DejaVuSansCondensed.ttf'</span><span class="kw">,</span>true<span class="kw">);
+</span>$pdf<span class="kw">-&gt;</span>SetFont<span class="kw">(</span><span class="str">'DejaVu'</span><span class="kw">,</span><span class="str">''</span><span class="kw">,</span>14<span class="kw">);
+
+</span><span class="cmt">// Load a UTF-8 string from a file and print it
+</span>$txt <span class="kw">= </span>file_get_contents<span class="kw">(</span><span class="str">'HelloWorld.txt'</span><span class="kw">);
+</span>$pdf<span class="kw">-&gt;</span>Write<span class="kw">(</span>8<span class="kw">,</span>$txt<span class="kw">);
+
+</span><span class="cmt">// Select a standard font (uses windows-1252)
+</span>$pdf<span class="kw">-&gt;</span>SetFont<span class="kw">(</span><span class="str">'Arial'</span><span class="kw">,</span><span class="str">''</span><span class="kw">,</span>14<span class="kw">);
+</span>$pdf<span class="kw">-&gt;</span>Ln<span class="kw">(</span>10<span class="kw">);
+</span>$pdf<span class="kw">-&gt;</span>Write<span class="kw">(</span>5<span class="kw">,</span><span class="str">'The file size of this PDF is only 13 KB.'</span><span class="kw">);
+
+</span>$pdf<span class="kw">-&gt;</span>Output<span class="kw">();
+</span>?&gt;</code></pre>
+</div>
+View the result <a href="ex92.pdf" target="_blank">here</a>.
+<h2>Download</h2>
+<a href="dl.php?id=92&amp;f=zip">ZIP</a> | <a href="dl.php?id=92&amp;f=tgz">TGZ</a>
+</body>
+</html>

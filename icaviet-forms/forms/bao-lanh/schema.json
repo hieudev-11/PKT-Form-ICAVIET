@@ -1,0 +1,15 @@
+{
+    "id": "bao-lanh",
+    "code": "BAO-LANH",
+    "slug": "bao-lanh",
+    "sections": [
+        {
+            "id": "section_placeholder",
+            "title": {
+                "en": "Placeholder for dynamic Vue forms",
+                "vi": "Placeholder cho các form Vue tự thiết kế"
+            },
+            "groups": []
+        }
+    ]
+}

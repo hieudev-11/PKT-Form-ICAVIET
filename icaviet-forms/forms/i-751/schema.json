@@ -1,0 +1,594 @@
+{
+    "id": "i751",
+    "code": "I-751",
+    "slug": "i-751",
+    "sections": [
+        {
+            "id": "part1_conditional_resident_info",
+            "title": {
+                "en": "Part 1: Information About You, the Conditional Resident",
+                "vi": "Phần 1: Thông tin về đương đơn (thường trú nhân có điều kiện)"
+            },
+            "groups": [
+                {
+                    "id": "legal_name",
+                    "title": {
+                        "en": "Legal Name",
+                        "vi": "Họ tên theo giấy tờ:"
+                    },
+                    "fields": [
+                        {
+                            "id": "first_name",
+                            "name": "first_name",
+                            "columnKey": "Tên theo giấy tờ",
+                            "type": "text",
+                            "label": { "en": "Given Name (First Name)", "vi": "Tên" },
+                            "required": false
+                        },
+                        {
+                            "id": "middle_name",
+                            "name": "middle_name",
+                            "columnKey": "Tên lót theo giấy tờ",
+                            "type": "text",
+                            "label": { "en": "Middle Name", "vi": "Tên lót" },
+                            "required": false
+                        },
+                        {
+                            "id": "last_name",
+                            "name": "last_name",
+                            "columnKey": "Họ theo giấy tờ",
+                            "type": "text",
+                            "label": { "en": "Family Name (Last Name)", "vi": "Họ" },
+                            "required": false
+                        }
+                    ]
+                },
+                {
+                    "id": "other_name",
+                    "title": {
+                        "en": "Other Names Used (if applicable)",
+                        "vi": "Tên gọi khác (nếu trước đây đã từng đổi tên):"
+                    },
+                    "fields": [
+                        {
+                            "id": "other_first_name",
+                            "name": "other_first_name",
+                            "columnKey": "Tên tên gọi khác",
+                            "type": "text",
+                            "label": { "en": "Given Name (First Name)", "vi": "Tên" },
+                            "required": false
+                        },
+                        {
+                            "id": "other_middle_name",
+                            "name": "other_middle_name",
+                            "columnKey": "Tên lót tên gọi khác",
+                            "type": "text",
+                            "label": { "en": "Middle Name", "vi": "Tên Lót" },
+                            "required": false
+                        },
+                        {
+                            "id": "other_last_name",
+                            "name": "other_last_name",
+                            "columnKey": "Họ tên gọi khác",
+                            "type": "text",
+                            "label": { "en": "Family Name (Last Name)", "vi": "Họ" },
+                            "required": false
+                        }
+                    ]
+                },
+                {
+                    "id": "other_information",
+                    "title": {
+                        "en": "Other Information",
+                        "vi": "Thông tin khác"
+                    },
+                    "fields": [
+                        {
+                            "id": "date_of_birth",
+                            "name": "date_of_birth",
+                            "columnKey": "Ngày sinh",
+                            "type": "text",
+                            "label": { "en": "Date of Birth (dd/mm/yyyy)", "vi": "Ngày sinh: (dd/mm/yyyy)" },
+                            "required": false
+                        },
+                        {
+                            "id": "place_of_birth",
+                            "name": "place_of_birth",
+                            "columnKey": "Nơi sinh",
+                            "type": "text",
+                            "label": { "en": "Place of Birth", "vi": "Nơi sinh:" },
+                            "required": false
+                        },
+                        {
+                            "id": "country_of_citizenship",
+                            "name": "country_of_citizenship",
+                            "columnKey": "Quốc tịch",
+                            "type": "text",
+                            "label": { "en": "Country of Citizenship", "vi": "Quốc tịch:" },
+                            "required": false
+                        },
+                        {
+                            "id": "phone_number",
+                            "name": "phone_number",
+                            "columnKey": "Số điện thoại",
+                            "type": "text",
+                            "label": { "en": "Phone Number", "vi": "Số điện thoại:" },
+                            "required": false
+                        },
+                        {
+                            "id": "other_phone_number",
+                            "name": "other_phone_number",
+                            "columnKey": "Số điện thoại khác (nếu có)",
+                            "type": "text",
+                            "label": { "en": "Other Phone Number (if any)", "vi": "Số điện thoại khác (nếu có):" },
+                            "required": false
+                        },
+                        {
+                            "id": "email_address",
+                            "name": "email_address",
+                            "columnKey": "Địa chỉ email (nếu có)",
+                            "type": "text",
+                            "label": { "en": "Email Address (if any)", "vi": "Địa chỉ email (nếu có):" },
+                            "required": false
+                        },
+                        {
+                            "id": "mailing_address",
+                            "name": "mailing_address",
+                            "columnKey": "Địa chỉ nhận thư",
+                            "type": "textarea",
+                            "label": { "en": "Mailing Address", "vi": "Địa chỉ nhận thư:" },
+                            "required": false
+                        },
+                        {
+                            "id": "living_at_mailing_address",
+                            "name": "living_at_mailing_address",
+                            "columnKey": "Đương đơn đang sống ở địa chỉ nhận thư",
+                            "type": "radio",
+                            "label": { "en": "Are you living at the mailing address?", "vi": "Đương đơn đang sống ở địa chỉ nhận thư?" },
+                            "required": false,
+                            "options": [
+                                { "value": "Đúng", "label": { "en": "Yes", "vi": "Đúng" } },
+                                { "value": "Không đúng", "label": { "en": "No", "vi": "Không đúng" } }
+                            ]
+                        },
+                        {
+                            "id": "uscis_account_number",
+                            "name": "uscis_account_number",
+                            "columnKey": "Số tài khoản USCIS",
+                            "type": "text",
+                            "label": { "en": "USCIS Account Number", "vi": "Số tài khoản USCIS:" },
+                            "required": false
+                        },
+                        {
+                            "id": "ssn",
+                            "name": "ssn",
+                            "columnKey": "Số SSN (Số An sinh xã hội)",
+                            "type": "text",
+                            "label": { "en": "Social Security Number (SSN)", "vi": "Số SSN (Số An sinh xã hội):" },
+                            "required": false
+                        },
+                        {
+                            "id": "alien_number",
+                            "name": "alien_number",
+                            "columnKey": "Số A (xem trên thẻ xanh hoặc giấy quốc tịch)",
+                            "type": "text",
+                            "label": { "en": "A-Number", "vi": "Số A (xem trên thẻ xanh):" },
+                            "required": false
+                        },
+                        {
+                            "id": "marital_status",
+                            "name": "marital_status",
+                            "columnKey": "Tình trạng hôn nhân",
+                            "type": "radio",
+                            "label": { "en": "Marital Status", "vi": "Tình trạng hôn nhân:" },
+                            "required": false,
+                            "options": [
+                                { "value": "Độc thân (chưa từng kết hôn)", "label": { "en": "Single (Never married)", "vi": "Độc thân (chưa từng kết hôn)" } },
+                                { "value": "Kết hôn", "label": { "en": "Married", "vi": "Kết hôn" } },
+                                { "value": "Ly hôn", "label": { "en": "Divorced", "vi": "Ly hôn" } },
+                                { "value": "Góa", "label": { "en": "Widowed", "vi": "Góa" } }
+                            ]
+                        },
+                        {
+                            "id": "number_of_marriages",
+                            "name": "number_of_marriages",
+                            "columnKey": "Số lần kết hôn",
+                            "type": "text",
+                            "label": { "en": "Number of Marriages", "vi": "Số lần kết hôn:" },
+                            "required": false
+                        },
+                        {
+                            "id": "date_marriage_ended",
+                            "name": "date_marriage_ended",
+                            "columnKey": "Ngày kết thúc của cuộc hôn nhân mà bạn dựa vào để lấy thẻ xanh 2 năm (nếu có)",
+                            "type": "text",
+                            "label": { "en": "Date the marriage ended (if applicable) (dd/mm/yyyy)", "vi": "Ngày kết thúc của cuộc hôn nhân mà bạn dựa vào để lấy thẻ xanh 2 năm (nếu có) (dd/mm/yyyy):" },
+                            "required": false
+                        },
+                        {
+                            "id": "date_cr_expires",
+                            "name": "date_cr_expires",
+                            "columnKey": "Ngày hết hạn của thẻ xanh 2 năm",
+                            "type": "text",
+                            "label": { "en": "Date conditional residence expires (dd/mm/yyyy)", "vi": "Ngày hết hạn của thẻ xanh 2 năm (dd/mm/yyyy):" },
+                            "required": false
+                        },
+                        {
+                            "id": "in_deportation_proceedings",
+                            "name": "in_deportation_proceedings",
+                            "columnKey": "Hiện bạn đang trong quá trình bị trục xuất hay không",
+                            "type": "radio",
+                            "label": { "en": "Are you currently in removal/deportation proceedings?", "vi": "Hiện bạn đang trong quá trình bị trục xuất hay không?" },
+                            "required": false,
+                            "options": [
+                                { "value": "Có", "label": { "en": "Yes", "vi": "Có" } },
+                                { "value": "Không", "label": { "en": "No", "vi": "Không" } }
+                            ]
+                        },
+                        {
+                            "id": "paid_fee_to_someone",
+                            "name": "paid_fee_to_someone",
+                            "columnKey": "Bạn có trả phí cho ai khác liên quan đến hồ sơ này không",
+                            "type": "radio",
+                            "label": { "en": "Have you paid a fee to anyone related to this petition?", "vi": "Bạn có trả phí cho ai khác liên quan đến hồ sơ này không?" },
+                            "required": false,
+                            "options": [
+                                { "value": "Có", "label": { "en": "Yes", "vi": "Có" } },
+                                { "value": "Không", "label": { "en": "No", "vi": "Không" } }
+                            ]
+                        },
+                        {
+                            "id": "ever_arrested_or_convicted",
+                            "name": "ever_arrested_or_convicted",
+                            "columnKey": "Đã từng bị bắt giam giữ hoặc bị kết án về bất kỳ tội nào không",
+                            "type": "radio",
+                            "label": { "en": "Have you ever been arrested, detained, or convicted of any crime?", "vi": "Đã từng bị bắt, giam giữ hoặc bị kết án về bất kỳ tội nào không?" },
+                            "required": false,
+                            "options": [
+                                { "value": "Có", "label": { "en": "Yes", "vi": "Có" } },
+                                { "value": "Không", "label": { "en": "No", "vi": "Không" } }
+                            ]
+                        },
+                        {
+                            "id": "is_different_marriage",
+                            "name": "is_different_marriage",
+                            "columnKey": "Nếu bạn kết hôn đây có phải là một cuộc hôn nhân khác với cuộc hôn nhân mà bạn dựa vào để có thẻ xanh 2 năm không",
+                            "type": "radio",
+                            "label": { "en": "If married, is this a different marriage than the one your conditional residence was based on?", "vi": "Nếu bạn kết hôn, đây có phải là một cuộc hôn nhân khác với cuộc hôn nhân mà bạn dựa vào để có thẻ xanh 2 năm không?" },
+                            "required": false,
+                            "options": [
+                                { "value": "Đúng", "label": { "en": "Yes", "vi": "Đúng" } },
+                                { "value": "Không", "label": { "en": "No", "vi": "Không" } }
+                            ]
+                        },
+                        {
+                            "id": "lived_at_different_address",
+                            "name": "lived_at_different_address",
+                            "columnKey": "Bạn từng ở địa chỉ khác từ khi bạn là thường trú nhân",
+                            "type": "radio",
+                            "label": { "en": "Have you lived at a different address since becoming a permanent resident?", "vi": "Bạn từng ở địa chỉ khác từ khi bạn là thường trú nhân?" },
+                            "required": false,
+                            "options": [
+                                { "value": "Có", "label": { "en": "Yes", "vi": "Có" } },
+                                { "value": "Không", "label": { "en": "No", "vi": "Không" } }
+                            ]
+                        },
+                        {
+                            "id": "spouse_in_us_government",
+                            "name": "spouse_in_us_government",
+                            "columnKey": "Vợ chồng bạn hoặc vợ chồng của ba mẹ bạn đang phục vụ trong chính phủ Mỹ và đang hoạt động ngoài nước Mỹ",
+                            "type": "radio",
+                            "label": { "en": "Is your spouse or your parent's spouse serving in the U.S. government abroad?", "vi": "Vợ/chồng bạn hoặc vợ/chồng của ba/mẹ bạn đang phục vụ trong chính phủ Mỹ và đang hoạt động ngoài nước Mỹ?" },
+                            "required": false,
+                            "options": [
+                                { "value": "Có", "label": { "en": "Yes", "vi": "Có" } },
+                                { "value": "Không", "label": { "en": "No", "vi": "Không" } }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "part2_biographic_info",
+            "title": {
+                "en": "Part 2: Biographic Information",
+                "vi": "Phần 2: Thông tin khác về đương đơn"
+            },
+            "groups": [
+                {
+                    "id": "biographic",
+                    "fields": [
+                        {
+                            "id": "gender",
+                            "name": "gender",
+                            "columnKey": "Giới tính",
+                            "type": "radio",
+                            "label": { "en": "Gender", "vi": "Giới tính:" },
+                            "required": false,
+                            "options": [
+                                { "value": "Nam", "label": { "en": "Male", "vi": "Nam" } },
+                                { "value": "Nữ", "label": { "en": "Female", "vi": "Nữ" } }
+                            ]
+                        },
+                        {
+                            "id": "ethnicity",
+                            "name": "ethnicity",
+                            "columnKey": "Dân tộc",
+                            "type": "radio",
+                            "label": { "en": "Ethnicity", "vi": "Dân tộc:" },
+                            "required": false,
+                            "options": [
+                                { "value": "Gốc Latinh và Tây Ban Nha", "label": { "en": "Hispanic or Latino", "vi": "Gốc Latinh và Tây Ban Nha" } },
+                                { "value": "Không phải gốc Latinh và Tây Ban Nha", "label": { "en": "Not Hispanic or Latino", "vi": "Không phải gốc Latinh và Tây Ban Nha" } }
+                            ]
+                        },
+                        {
+                            "id": "race",
+                            "name": "race",
+                            "columnKey": "Chủng tộc",
+                            "type": "radio",
+                            "label": { "en": "Race", "vi": "Chủng tộc:" },
+                            "required": false,
+                            "options": [
+                                { "value": "Người da trắng", "label": { "en": "White", "vi": "Người da trắng" } },
+                                { "value": "Người da vàng", "label": { "en": "Asian", "vi": "Người da vàng" } },
+                                { "value": "Người da đen/châu Phi", "label": { "en": "Black/African American", "vi": "Người da đen/châu Phi" } },
+                                { "value": "Người Mỹ/Alaska Bản Địa", "label": { "en": "American Indian/Alaska Native", "vi": "Người Mỹ/Alaska Bản Địa" } },
+                                { "value": "Người Hawaii Bản Địa/người dân đảo Thái Bình Dương", "label": { "en": "Native Hawaiian/Pacific Islander", "vi": "Người Hawaii Bản Địa/người dân đảo Thái Bình Dương" } }
+                            ]
+                        },
+                        {
+                            "id": "height",
+                            "name": "height",
+                            "columnKey": "Chiều cao",
+                            "type": "text",
+                            "label": { "en": "Height (Feet. Inches)", "vi": "Chiều cao (Feet. Inches)" },
+                            "required": false
+                        },
+                        {
+                            "id": "weight",
+                            "name": "weight",
+                            "columnKey": "Cân nặng",
+                            "type": "text",
+                            "label": { "en": "Weight (Pounds)", "vi": "Cân nặng (Pounds):" },
+                            "required": false
+                        },
+                        {
+                            "id": "eye_color",
+                            "name": "eye_color",
+                            "columnKey": "Màu mắt",
+                            "type": "radio",
+                            "label": { "en": "Eye Color", "vi": "Màu mắt" },
+                            "required": false,
+                            "options": [
+                                { "value": "Đen", "label": { "en": "Black", "vi": "Đen" } },
+                                { "value": "Xám", "label": { "en": "Gray", "vi": "Xám" } },
+                                { "value": "Nâu hạt dẻ", "label": { "en": "Hazel", "vi": "Nâu hạt dẻ" } },
+                                { "value": "Xanh dương", "label": { "en": "Blue", "vi": "Xanh dương" } },
+                                { "value": "Xanh lá", "label": { "en": "Green", "vi": "Xanh lá" } },
+                                { "value": "Hồng", "label": { "en": "Pink", "vi": "Hồng" } },
+                                { "value": "Nâu", "label": { "en": "Brown", "vi": "Nâu" } },
+                                { "value": "Lục vàng ánh kim", "label": { "en": "Maroon", "vi": "Lục vàng ánh kim" } },
+                                { "value": "Không biết/Khác", "label": { "en": "Unknown/Other", "vi": "Không biết/Khác" } }
+                            ]
+                        },
+                        {
+                            "id": "hair_color",
+                            "name": "hair_color",
+                            "columnKey": "Màu tóc",
+                            "type": "radio",
+                            "label": { "en": "Hair Color", "vi": "Màu tóc" },
+                            "required": false,
+                            "options": [
+                                { "value": "Trọc (Không có tóc)", "label": { "en": "Bald (No hair)", "vi": "Trọc (Không có tóc)" } },
+                                { "value": "Nâu", "label": { "en": "Brown", "vi": "Nâu" } },
+                                { "value": "Vàng cát", "label": { "en": "Sandy", "vi": "Vàng cát" } },
+                                { "value": "Đen", "label": { "en": "Black", "vi": "Đen" } },
+                                { "value": "Xám", "label": { "en": "Gray", "vi": "Xám" } },
+                                { "value": "Trắng", "label": { "en": "White", "vi": "Trắng" } },
+                                { "value": "Vàng", "label": { "en": "Blond", "vi": "Vàng" } },
+                                { "value": "Đỏ", "label": { "en": "Red", "vi": "Đỏ" } },
+                                { "value": "Không biết/Khác", "label": { "en": "Unknown/Other", "vi": "Không biết/Khác" } }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "part3_spouse_info",
+            "title": {
+                "en": "Part 3: Information About the U.S. Citizen or Lawful Permanent Resident Spouse/Parent",
+                "vi": "Phần 3: Thông tin về vợ/chồng là Công dân Mỹ hoặc Thường trú nhân. Hoặc thông tin về bố mẹ kế bảo lãnh là Công dân Mỹ hoặc Thường trú nhân (nếu đây là đơn nộp riêng cho con)."
+            },
+            "groups": [
+                {
+                    "id": "spouse_relationship",
+                    "fields": [
+                        {
+                            "id": "spouse_relationship_type",
+                            "name": "spouse_relationship_type",
+                            "columnKey": "Mối quan hệ",
+                            "type": "radio",
+                            "label": { "en": "Relationship", "vi": "Mối quan hệ:" },
+                            "required": false,
+                            "options": [
+                                { "value": "Vợ/chồng hoặc vợ/chồng trước", "label": { "en": "Spouse or former spouse", "vi": "Vợ/chồng hoặc vợ/chồng trước" } },
+                                { "value": "Vợ/chồng của ba/mẹ hoặc vợ/chồng trước của ba/mẹ", "label": { "en": "Parent's spouse or former spouse", "vi": "Vợ/chồng của ba/mẹ hoặc vợ/chồng trước của ba/mẹ" } }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "spouse_name",
+                    "title": {
+                        "en": "Legal Name",
+                        "vi": "Họ tên theo giấy tờ:"
+                    },
+                    "fields": [
+                        {
+                            "id": "spouse_first_name",
+                            "name": "spouse_first_name",
+                            "columnKey": "Tên vợ chồng",
+                            "type": "text",
+                            "label": { "en": "Given Name (First Name)", "vi": "Tên" },
+                            "required": false
+                        },
+                        {
+                            "id": "spouse_middle_name",
+                            "name": "spouse_middle_name",
+                            "columnKey": "Tên lót vợ chồng",
+                            "type": "text",
+                            "label": { "en": "Middle Name", "vi": "Tên lót" },
+                            "required": false
+                        },
+                        {
+                            "id": "spouse_last_name",
+                            "name": "spouse_last_name",
+                            "columnKey": "Họ vợ chồng",
+                            "type": "text",
+                            "label": { "en": "Family Name (Last Name)", "vi": "Họ" },
+                            "required": false
+                        }
+                    ]
+                },
+                {
+                    "id": "spouse_other_info",
+                    "fields": [
+                        {
+                            "id": "spouse_date_of_birth",
+                            "name": "spouse_date_of_birth",
+                            "columnKey": "Ngày sinh vợ chồng",
+                            "type": "text",
+                            "label": { "en": "Date of Birth (dd/mm/yyyy)", "vi": "Ngày sinh (dd/mm/yyyy)" },
+                            "required": false
+                        },
+                        {
+                            "id": "spouse_ssn",
+                            "name": "spouse_ssn",
+                            "columnKey": "Số SSN vợ chồng",
+                            "type": "text",
+                            "label": { "en": "Social Security Number (SSN)", "vi": "Số SSN:" },
+                            "required": false
+                        },
+                        {
+                            "id": "spouse_alien_number",
+                            "name": "spouse_alien_number",
+                            "columnKey": "Số A vợ chồng",
+                            "type": "text",
+                            "label": { "en": "A-Number", "vi": "Số A (xem trên thẻ xanh hoặc giấy quốc tịch):" },
+                            "required": false
+                        },
+                        {
+                            "id": "spouse_current_address",
+                            "name": "spouse_current_address",
+                            "columnKey": "Địa chỉ ở hiện tại vợ chồng",
+                            "type": "text",
+                            "label": { "en": "Current Physical Address", "vi": "Địa chỉ ở hiện tại:" },
+                            "required": false
+                        },
+                        {
+                            "id": "spouse_phone_number",
+                            "name": "spouse_phone_number",
+                            "columnKey": "Số điện thoại vợ chồng",
+                            "type": "text",
+                            "label": { "en": "Phone Number", "vi": "Số điện thoại:" },
+                            "required": false
+                        },
+                        {
+                            "id": "spouse_other_phone_number",
+                            "name": "spouse_other_phone_number",
+                            "columnKey": "Số điện thoại khác (nếu có) vợ chồng",
+                            "type": "text",
+                            "label": { "en": "Other Phone Number (if any)", "vi": "Số điện thoại khác (nếu có):" },
+                            "required": false
+                        },
+                        {
+                            "id": "spouse_email_address",
+                            "name": "spouse_email_address",
+                            "columnKey": "Địa chỉ email (nếu có) vợ chồng",
+                            "type": "text",
+                            "label": { "en": "Email Address (if any)", "vi": "Địa chỉ email (nếu có):" },
+                            "required": false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "part4_children_info",
+            "title": {
+                "en": "Part 4: Information About Your Children",
+                "vi": "Phần 4: Thông tin về con của đương đơn (qua Mỹ cùng 1 lúc với đương đơn)"
+            },
+            "groups": [
+                {
+                    "id": "children_info",
+                    "fields": [
+                        {
+                            "id": "number_of_children",
+                            "name": "number_of_children",
+                            "columnKey": "Bạn có bao nhiêu người con",
+                            "type": "text",
+                            "label": { "en": "How many children do you have?", "vi": "Bạn có bao nhiêu người con?" },
+                            "required": false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "part_additional_info",
+            "title": {
+                "en": "Additional Information",
+                "vi": "Thông tin bổ sung"
+            },
+            "groups": [
+                {
+                    "id": "additional_info",
+                    "fields": [
+                        {
+                            "id": "additional_information",
+                            "name": "additional_information",
+                            "columnKey": "Thông tin cần bổ sung",
+                            "type": "textarea",
+                            "label": { "en": "Do you need to provide any other additional information?", "vi": "Bạn có cần bổ sung thêm thông tin nào khác không?" },
+                            "required": false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "signature_section",
+            "title": {
+                "en": "Signature",
+                "vi": "Chữ ký"
+            },
+            "groups": [
+                {
+                    "id": "signature_group",
+                    "fields": [
+                        {
+                            "id": "applicant_full_name",
+                            "name": "applicant_full_name",
+                            "columnKey": "Họ và tên người ký",
+                            "type": "text",
+                            "label": { "en": "Applicant Full Name", "vi": "Họ và tên người ký" },
+                            "required": true
+                        },
+                        {
+                            "id": "applicant_signature",
+                            "name": "applicant_signature",
+                            "columnKey": "Chữ ký",
+                            "type": "signature",
+                            "label": { "en": "Signature", "vi": "Chữ ký" },
+                            "required": true
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

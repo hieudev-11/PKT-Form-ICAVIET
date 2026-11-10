@@ -1,0 +1,1950 @@
+{
+  "id": "ds260",
+  "code": "DS-260",
+  "slug": "ds-260",
+  "sections": [
+    {
+      "id": "part1_personal_info",
+      "title": {
+        "en": "Part 1: Personal Information",
+        "vi": "Phần 1: Thông tin cá nhân của đương đơn"
+      },
+      "groups": [
+        {
+          "id": "identity",
+          "grid_cols": 3,
+          "fields": [
+            {
+              "id": "lastName",
+              "name": "lastName",
+              "columnKey": "Họ:",
+              "type": "text",
+              "label": { "en": "Last Name", "vi": "Họ:" },
+              "required": true,
+              "col_span": 1
+            },
+            {
+              "id": "middleName",
+              "name": "middleName",
+              "columnKey": "Tên lót:",
+              "type": "text",
+              "label": { "en": "Middle Name", "vi": "Tên lót:" },
+              "required": false,
+              "col_span": 1
+            },
+            {
+              "id": "firstName",
+              "name": "firstName",
+              "columnKey": "Tên:",
+              "type": "text",
+              "label": { "en": "First Name", "vi": "Tên:" },
+              "required": true,
+              "col_span": 1
+            },
+            {
+              "id": "otherLastName",
+              "name": "otherLastName",
+              "columnKey": "Họ (tên gọi khác nếu có):",
+              "type": "text",
+              "label": { "en": "Other Last Name", "vi": "Họ (tên gọi khác nếu có):" },
+              "required": false,
+              "col_span": 1
+            },
+            {
+              "id": "otherMiddleName",
+              "name": "otherMiddleName",
+              "columnKey": "Tên lót (tên gọi khác nếu có):",
+              "type": "text",
+              "label": { "en": "Other Middle Name", "vi": "Tên lót (tên gọi khác nếu có):" },
+              "required": false,
+              "col_span": 1
+            },
+            {
+              "id": "otherFirstName",
+              "name": "otherFirstName",
+              "columnKey": "Tên (tên gọi khác nếu có):",
+              "type": "text",
+              "label": { "en": "Other First Name", "vi": "Tên (tên gọi khác nếu có):" },
+              "required": false,
+              "col_span": 1
+            },
+            {
+              "id": "birthDate",
+              "name": "birthDate",
+              "columnKey": "Ngày sinh (dd/mm/yyyy):",
+              "type": "date_parts",
+              "label": { "en": "Date of Birth (dd/mm/yyyy):", "vi": "Ngày sinh (Ngày tháng năm):" },
+              "required": true,
+              "col_span": 2
+            },
+            {
+              "id": "gender",
+              "name": "gender",
+              "columnKey": "Giới tính:",
+              "type": "radio",
+              "label": { "en": "Gender", "vi": "Giới tính:" },
+              "required": true,
+              "inline": true,
+              "options": [
+                { "value": "Nam", "label": { "en": "Male", "vi": "Nam" } },
+                { "value": "Nữ", "label": { "en": "Female", "vi": "Nữ" } }
+              ],
+              "col_span": 1
+            },
+            {
+              "id": "birthPlace",
+              "name": "birthPlace",
+              "columnKey": "Nơi sinh:",
+              "type": "birth_place_parts",
+              "label": { "en": "Place of Birth", "vi": "Nơi sinh:" },
+              "required": true,
+              "col_span": 3
+            },
+            {
+              "id": "maritalStatus",
+              "name": "maritalStatus",
+              "columnKey": "Tình trạng hôn nhân:",
+              "type": "radio",
+              "label": { "en": "Marital Status", "vi": "Tình trạng hôn nhân:" },
+              "required": true,
+              "options": [
+                { "value": "Độc thân (chưa kết hôn lần nào)", "label": { "en": "Single (Never married)", "vi": "Độc thân (chưa kết hôn lần nào)" } },
+                { "value": "Kết hôn", "label": { "en": "Married", "vi": "Kết hôn" } },
+                { "value": "Góa", "label": { "en": "Widowed", "vi": "Góa" } },
+                { "value": "Ly hôn", "label": { "en": "Divorced", "vi": "Ly hôn" } }
+              ],
+              "col_span": 3
+            },
+            {
+              "id": "marriageCount",
+              "name": "marriageCount",
+              "columnKey": "Số lần kết hôn:",
+              "type": "text",
+              "label": { "en": "Number of marriages", "vi": "Số lần kết hôn:" },
+              "required": false,
+              "col_span": 1,
+              "show_if": {
+                "maritalStatus": ["Kết hôn", "Góa", "Ly hôn"]
+              }
+            }
+          ]
+        },
+        {
+          "id": "contact",
+          "title": { "en": "Contact Information", "vi": "Thông tin liên hệ" },
+          "grid_cols": 2,
+          "fields": [
+            {
+              "id": "primaryPhone",
+              "name": "primaryPhone",
+              "columnKey": "Số điện thoại của Người được bảo lãnh:",
+              "type": "text",
+              "label": { "en": "Primary Phone Number", "vi": "Số điện thoại của Người được bảo lãnh:" },
+              "required": true
+            },
+            {
+              "id": "primaryEmail",
+              "name": "primaryEmail",
+              "columnKey": "Email của Người được bảo lãnh:",
+              "type": "text",
+              "label": { "en": "Primary Email", "vi": "Email của Người được bảo lãnh:" },
+              "required": true
+            },
+            {
+              "id": "previousPhones",
+              "name": "previousPhones",
+              "columnKey": "Các số điện thoại khác đã từng dùng trong 5 năm qua:",
+              "type": "textarea",
+              "label": { "en": "Other Phone Numbers Used in Last 5 Years", "vi": "Các số điện thoại khác đã từng dùng trong 5 năm qua:" },
+              "required": false,
+              "col_span": 2
+            },
+            {
+              "id": "previousEmails",
+              "name": "previousEmails",
+              "columnKey": "Các email khác từng dùng trong 5 năm qua:",
+              "type": "textarea",
+              "label": { "en": "Other Emails Used in Last 5 Years", "vi": "Các email khác từng dùng trong 5 năm qua:" },
+              "required": false,
+              "col_span": 2
+            }
+          ]
+        },
+        {
+          "id": "address",
+          "title": { "en": "Address Information", "vi": "Thông tin địa chỉ" },
+          "grid_cols": 2,
+          "fields": [
+            {
+              "id": "currentAddressVN",
+              "name": "currentAddressVN",
+              "columnKey": "Địa chỉ hiện tại đang ở (VN):",
+              "type": "address_parts",
+              "label": { "en": "Current Address in Vietnam", "vi": "Địa chỉ hiện tại đang ở (VN):" },
+              "required": true,
+              "col_span": 2
+            },
+            {
+              "id": "currentAddressStartDate",
+              "name": "currentAddressStartDate",
+              "columnKey": "Thời gian bắt đầu ở địa chỉ hiện tại:",
+              "type": "date_parts",
+              "label": { "en": "Start Date at Current Address", "vi": "Thời gian bắt đầu ở địa chỉ hiện tại:" },
+              "required": false
+            },
+            {
+              "id": "isMailingSameAsCurrent",
+              "name": "isMailingSameAsCurrent",
+              "columnKey": "Địa chỉ nhận thư ở Việt Nam có giống với địa chỉ hiện tại không?",
+              "type": "radio",
+              "label": {
+                "en": "Is your mailing address in Vietnam the same as your current address?",
+                "vi": "Địa chỉ nhận thư ở Việt Nam có giống với địa chỉ hiện tại không?"
+              },
+              "required": true,
+              "inline": true,
+              "options": [
+                { "value": "Có", "label": { "en": "Yes", "vi": "Có" } },
+                { "value": "Không", "label": { "en": "No", "vi": "Không" } }
+              ],
+              "col_span": 2
+            },
+            {
+              "id": "mailingAddressVN",
+              "name": "mailingAddressVN",
+              "columnKey": "Địa chỉ nhận thư (VN):",
+              "type": "address_parts",
+              "label": { "en": "Mailing Address in Vietnam", "vi": "Địa chỉ nhận thư (VN):" },
+              "required": false,
+              "col_span": 2,
+              "show_if": {
+                "isMailingSameAsCurrent": "Không"
+              }
+            },
+            {
+              "id": "plannedAddressUS",
+              "name": "plannedAddressUS",
+              "columnKey": "Địa chỉ dự định ở khi qua Mỹ:",
+              "type": "address_parts",
+              "label": { "en": "Planned Address in the U.S.", "vi": "Địa chỉ dự định ở khi qua Mỹ:" },
+              "required": true,
+              "col_span": 2
+            },
+            {
+              "id": "contactNameUS",
+              "name": "contactNameUS",
+              "columnKey": "Người liên hệ:",
+              "type": "text",
+              "label": { "en": "U.S. Contact Name", "vi": "Người liên hệ:" },
+              "required": false
+            },
+            {
+              "id": "contactPhoneUS",
+              "name": "contactPhoneUS",
+              "columnKey": "Số điện thoại liên hệ:",
+              "type": "text",
+              "label": { "en": "U.S. Contact Phone", "vi": "Số điện thoại liên hệ:" },
+              "required": false
+            },
+            {
+              "id": "isGreenCardAddressSameAsPlanned",
+              "name": "isGreenCardAddressSameAsPlanned",
+              "columnKey": "Địa chỉ nhận thẻ xanh có giống với địa chỉ dự định ở khi qua Mỹ không?",
+              "type": "radio",
+              "label": {
+                "en": "Is the green card mailing address the same as the planned address in the U.S.?",
+                "vi": "Địa chỉ nhận thẻ xanh có giống với địa chỉ dự định ở khi qua Mỹ không?"
+              },
+              "required": true,
+              "inline": true,
+              "options": [
+                { "value": "Có", "label": { "en": "Yes", "vi": "Có" } },
+                { "value": "Không", "label": { "en": "No", "vi": "Không" } }
+              ],
+              "col_span": 2
+            },
+            {
+              "id": "greenCardAddressUS",
+              "name": "greenCardAddressUS",
+              "columnKey": "Địa chỉ muốn nhận thẻ xanh (Mỹ):",
+              "type": "address_parts",
+              "label": { "en": "Address to receive Green Card in U.S.", "vi": "Địa chỉ muốn nhận thẻ xanh (Mỹ):" },
+              "required": false,
+              "col_span": 2,
+              "show_if": {
+                "isGreenCardAddressSameAsPlanned": "Không"
+              }
+            },
+            {
+              "id": "alternateContactNameUS",
+              "name": "alternateContactNameUS",
+              "columnKey": "Người liên hệ",
+              "type": "text",
+              "label": { "en": "Alternate U.S. Contact Name", "vi": "Người liên hệ (Dự phòng)" },
+              "required": false,
+              "show_if": {
+                "isGreenCardAddressSameAsPlanned": "Không"
+              }
+            },
+            {
+              "id": "alternateContactPhoneUS",
+              "name": "alternateContactPhoneUS",
+              "columnKey": "Số điện thoại liên hệ:",
+              "type": "text",
+              "label": { "en": "Alternate U.S. Contact Phone", "vi": "Số điện thoại liên hệ:" },
+              "required": false,
+              "show_if": {
+                "isGreenCardAddressSameAsPlanned": "Không"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "part2_background",
+      "title": {
+        "en": "Part 2: Background & History",
+        "vi": "Phần 2: Quá khứ & Lý lịch"
+      },
+      "groups": [
+        {
+          "id": "social_media_others",
+          "grid_cols": 2,
+          "fields": [
+            {
+              "id": "listSocialNetworks",
+              "name": "listSocialNetworks",
+              "columnKey": "Các mạng xã hội đã sử dụng trong 5 năm qua:",
+              "type": "textarea",
+              "label": { "en": "Social Media Used in Last 5 Years", "vi": "Các mạng xã hội đã sử dụng trong 5 năm qua:" },
+              "required": false,
+              "col_span": 2
+            },
+            {
+              "id": "otherNationality",
+              "name": "otherNationality",
+              "columnKey": "Ngoài quốc tịch Việt Nam thì còn có quốc tịch nào khác không?",
+              "type": "radio",
+              "label": { "en": "Do you hold any other nationalities?", "vi": "Ngoài quốc tịch Việt Nam thì còn có quốc tịch nào khác không?" },
+              "required": false,
+              "options": [
+                { "value": "Có", "label": { "en": "Yes", "vi": "Có" } },
+                { "value": "Không", "label": { "en": "No", "vi": "Không" } }
+              ],
+              "col_span": 2
+            },
+            {
+              "id": "otherCountryName",
+              "name": "otherCountryName",
+              "columnKey": "Tên quốc gia đó:",
+              "type": "text",
+              "label": { "en": "Name of that country:", "vi": "Tên quốc gia đó:" },
+              "required": true,
+              "show_if": { "otherNationality": "Có" },
+              "col_span": 2
+            },
+            {
+              "id": "otherPassportNumber",
+              "name": "otherPassportNumber",
+              "columnKey": "Cung cấp số Passport của nước đó:",
+              "type": "text",
+              "label": { "en": "Provide the Passport Number of that country:", "vi": "Cung cấp số Passport của nước đó:" },
+              "required": true,
+              "show_if": { "otherNationality": "Có" },
+              "col_span": 2
+            },
+            {
+              "id": "hasOtherPassports15Years",
+              "name": "hasOtherPassports15Years",
+              "columnKey": "Bạn có sở hữu hộ chiếu nào khác trong vòng 15 năm qua mà chưa được đề cập ở trên không?",
+              "type": "radio",
+              "label": {
+                "en": "Have you owned any other passports within the past fifteen years that have not already been mentioned above?",
+                "vi": "Bạn có sở hữu hộ chiếu nào khác trong vòng 15 năm qua mà chưa được đề cập ở trên không?"
+              },
+              "required": false,
+              "options": [
+                { "value": "Có", "label": { "en": "Yes", "vi": "Có" } },
+                { "value": "Không", "label": { "en": "No", "vi": "Không" } }
+              ],
+              "col_span": 2
+            },
+            {
+              "id": "otherPassports15YearsList",
+              "name": "otherPassports15YearsList",
+              "columnKey": "Hộ chiếu của quốc tịch khác trong vòng 15 năm",
+              "type": "residence_period_table",
+              "label": {
+                "en": "Other passports held within the past 15 years (if any):",
+                "vi": "Hộ chiếu của quốc tịch khác trong vòng 15 năm (nếu có):"
+              },
+              "required": false,
+              "isRepeatable": true,
+              "is_repeatable": true,
+              "col_span": 2,
+              "show_if": { "hasOtherPassports15Years": "Có" },
+              "fields_template": [
+                {
+                  "id": "issuingCountry",
+                  "name": "issuingCountry",
+                  "type": "text",
+                  "label": { "vi": "Quốc gia cấp", "en": "Country/Region of Issuance" },
+                  "placeholder": { "vi": "Quốc gia cấp", "en": "Country/Region of Issuance" },
+                  "required": false
+                },
+                {
+                  "id": "passportNumber",
+                  "name": "passportNumber",
+                  "type": "text",
+                  "label": { "vi": "Số hộ chiếu", "en": "Passport Number" },
+                  "placeholder": { "vi": "Số hộ chiếu", "en": "Passport Number" },
+                  "required": false
+                }
+              ]
+            },
+            {
+              "id": "foreignStayOver6Months",
+              "name": "foreignStayOver6Months",
+              "columnKey": "Đã từng ở nước ngoài trên 6 tháng chưa?",
+              "type": "radio",
+              "label": { "en": "Have you lived abroad for over 6 months?", "vi": "Đã từng ở nước ngoài trên 6 tháng chưa?" },
+              "required": false,
+              "options": [
+                { "value": "Đã từng", "label": { "en": "Yes", "vi": "Đã từng" } },
+                { "value": "Chưa", "label": { "en": "No", "vi": "Chưa" } }
+              ],
+              "col_span": 2
+            },
+            {
+              "id": "foreignCountriesList",
+              "name": "foreignCountriesList",
+              "columnKey": "Liệt kê các nước ở trên 6 tháng từ khi 16 tuổi:",
+              "type": "textarea",
+              "label": { "en": "List the countries you stayed in for more than 6 months since age 16:", "vi": "Liệt kê các nước ở trên 6 tháng từ khi 16 tuổi:" },
+              "required": true,
+              "show_if": { "foreignStayOver6Months": "Đã từng" },
+              "col_span": 2
+            },
+            {
+              "id": "hasVisitedOtherCountries5Years",
+              "name": "hasVisitedOtherCountries5Years",
+              "columnKey": "Trong 15 năm qua bạn đã từng đặt chân đến quốc gia nào khác không? (ngoại trừ Mỹ)",
+              "type": "radio",
+              "label": {
+                "en": "Have you traveled to any countries/regions, other than the United States, within the last fifteen years?",
+                "vi": "Trong 15 năm qua bạn đã từng đặt chân đến quốc gia nào khác không? (ngoại trừ Mỹ)"
+              },
+              "required": true,
+              "inline": true,
+              "options": [
+                { "value": "Đã từng", "label": { "en": "Yes", "vi": "Đã từng" } },
+                { "value": "Chưa từng", "label": { "en": "No", "vi": "Chưa từng" } }
+              ],
+              "col_span": 2
+            },
+            {
+              "id": "countriesVisited5YearsList",
+              "name": "countriesVisited5YearsList",
+              "columnKey": "Các quốc gia đã từng đặt chân đến trong vòng 15 năm qua:",
+              "type": "residence_period_table",
+              "label": {
+                "en": "List of countries/regions visited in the last 15 years:",
+                "vi": "Danh sách các quốc gia đã từng đặt chân đến trong vòng 15 năm qua:"
+              },
+              "required": true,
+              "isRepeatable": true,
+              "is_repeatable": true,
+              "col_span": 2,
+              "show_if": {
+                "hasVisitedOtherCountries5Years": "Đã từng"
+              },
+              "fields_template": [
+                {
+                  "id": "countryName",
+                  "name": "countryName",
+                  "type": "text",
+                  "label": { "vi": "Tên quốc gia", "en": "Country Name" },
+                  "placeholder": { "vi": "Nhập tên quốc gia", "en": "Enter country name" },
+                  "required": true
+                },
+                {
+                  "id": "citiesVisited",
+                  "name": "citiesVisited",
+                  "type": "text",
+                  "label": { "vi": "Địa điểm đến (các thành phố)", "en": "Locations (cities visited)" },
+                  "placeholder": { "vi": "Địa điểm đến (các thành phố)", "en": "Locations (cities visited)" },
+                  "required": false
+                },
+                {
+                  "id": "arrivalDate",
+                  "name": "arrivalDate",
+                  "type": "date_parts",
+                  "label": { "vi": "Ngày nhập cảnh", "en": "Date Arrived" },
+                  "required": false
+                },
+                {
+                  "id": "lengthOfStay",
+                  "name": "lengthOfStay",
+                  "type": "text",
+                  "label": { "vi": "Thời gian lưu trú", "en": "Length of Stay" },
+                  "placeholder": { "vi": "Thời gian lưu trú", "en": "Length of Stay" },
+                  "required": false
+                },
+                {
+                  "id": "tripPayer",
+                  "name": "tripPayer",
+                  "type": "select",
+                  "label": { "vi": "Người chi trả chuyến đi", "en": "Person/Entity Who Paid for Trip" },
+                  "placeholder": { "vi": "-- Chọn --", "en": "-- Select One --" },
+                  "required": false,
+                  "options": [
+                    { "value": "Tự chi trả", "label": { "vi": "Tự chi trả", "en": "Self" } },
+                    { "value": "Người khác", "label": { "vi": "Người khác", "en": "Other Person" } },
+                    { "value": "Công ty hiện đang làm", "label": { "vi": "Công ty hiện đang làm", "en": "Present Employer" } },
+                    { "value": "Công ty ở Mỹ", "label": { "vi": "Công ty ở Mỹ", "en": "Employer in the U.S." } },
+                    { "value": "Công ty/tổ chức khác", "label": { "vi": "Công ty/tổ chức khác", "en": "Other Company/Organization" } }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "us_travel_history",
+          "title": { "en": "U.S. Travel History", "vi": "Lịch sử du lịch Mỹ" },
+          "grid_cols": 2,
+          "fields": [
+            {
+              "id": "enteredUSBefore",
+              "name": "enteredUSBefore",
+              "columnKey": "Đã từng nhập cảnh Mỹ lần nào chưa?",
+              "type": "radio",
+              "label": { "en": "Have you ever entered the U.S.?", "vi": "Đã từng nhập cảnh Mỹ lần nào chưa?" },
+              "required": false,
+              "options": [
+                { "value": "Đã từng", "label": { "en": "Yes", "vi": "Đã từng" } },
+                { "value": "Chưa từng", "label": { "en": "No", "vi": "Chưa từng" } }
+              ],
+              "col_span": 2
+            },
+            {
+              "id": "hasANumber",
+              "name": "hasANumber",
+              "columnKey": "Bạn đã từng được Bộ An Ninh Nội địa Hoa Kỳ cấp số A-Number (Số đăng ký người nước ngoài) chưa?",
+              "type": "radio",
+              "label": {
+                "en": "Have you ever been issued an Alien Registration Number (A-Number) by the U.S. Department of Homeland Security?",
+                "vi": "Bạn đã từng được Bộ An Ninh Nội địa Hoa Kỳ cấp số A-Number (Số đăng ký người nước ngoài) chưa?"
+              },
+              "required": false,
+              "options": [
+                { "value": "Đã từng", "label": { "en": "Yes", "vi": "Đã từng" } },
+                { "value": "Chưa từng", "label": { "en": "No", "vi": "Chưa từng" } }
+              ],
+              "show_if": {
+                "enteredUSBefore": "Đã từng"
+              },
+              "col_span": 2
+            },
+            {
+              "id": "aNumber",
+              "name": "aNumber",
+              "columnKey": "Số A-Number:",
+              "type": "text",
+              "label": { "en": "A-Number:", "vi": "Số A-Number:" },
+              "required": true,
+              "show_if": {
+                "enteredUSBefore": "Đã từng",
+                "hasANumber": "Đã từng"
+              },
+              "col_span": 2
+            },
+            {
+              "id": "usArrivalsList",
+              "name": "usArrivalsList",
+              "columnKey": "Thông tin nhập cảnh và thời gian ở",
+              "type": "textarea",
+              "label": {
+                "en": "U.S. Arrival dates and stay durations:",
+                "vi": "Thông tin ngày nhập cảnh Mỹ và thời gian ở:"
+              },
+              "required": false,
+              "show_if": {
+                "enteredUSBefore": "Đã từng",
+                "hasANumber": "Đã từng"
+              },
+              "col_span": 2
+            },
+            {
+              "id": "hasBeenIssuedUSVisa",
+              "name": "hasBeenIssuedUSVisa",
+              "columnKey": "Đã từng được cấp visa Mỹ chưa?",
+              "type": "radio",
+              "label": { "en": "Have you ever been issued a U.S. visa?", "vi": "Đã từng được cấp visa Mỹ chưa?" },
+              "required": false,
+              "options": [
+                { "value": "Đã từng", "label": { "en": "Yes", "vi": "Đã từng" } },
+                { "value": "Chưa từng", "label": { "en": "No", "vi": "Chưa từng" } }
+              ],
+              "col_span": 2
+            },
+            {
+              "id": "issuedUSVisaNumber",
+              "name": "issuedUSVisaNumber",
+              "columnKey": "Số visa:",
+              "type": "text",
+              "label": { "en": "Visa Number:", "vi": "Số visa:" },
+              "required": true,
+              "show_if": { "hasBeenIssuedUSVisa": "Đã từng" }
+            },
+            {
+              "id": "issuedUSVisaClass",
+              "name": "issuedUSVisaClass",
+              "columnKey": "Diện:",
+              "type": "text",
+              "label": { "en": "Visa Class:", "vi": "Diện:" },
+              "required": true,
+              "show_if": { "hasBeenIssuedUSVisa": "Đã từng" }
+            },
+            {
+              "id": "issuedUSVisaDate",
+              "name": "issuedUSVisaDate",
+              "columnKey": "Ngày cấp:",
+              "type": "date_parts",
+              "label": { "en": "Date of Issuance:", "vi": "Ngày cấp:" },
+              "required": true,
+              "show_if": { "hasBeenIssuedUSVisa": "Đã từng" },
+              "col_span": 2
+            },
+            {
+              "id": "visaDeniedUS",
+              "name": "visaDeniedUS",
+              "columnKey": "Đã từng rớt visa Mỹ chưa?",
+              "type": "radio",
+              "label": { "en": "Have you ever been denied a U.S. visa?", "vi": "Đã từng rớt visa Mỹ chưa?" },
+              "required": false,
+              "options": [
+                { "value": "Đã từng", "label": { "en": "Yes", "vi": "Đã từng" } },
+                { "value": "Chưa từng", "label": { "en": "No", "vi": "Chưa từng" } }
+              ],
+              "col_span": 2
+            },
+            {
+              "id": "visaDeniedDetailsUS",
+              "name": "visaDeniedDetailsUS",
+              "columnKey": "Cung cấp chi tiết rớt visa Mỹ:",
+              "type": "textarea",
+              "label": { "en": "Provide details of visa denial:", "vi": "Cung cấp chi tiết rớt visa Mỹ:" },
+              "required": true,
+              "show_if": { "visaDeniedUS": "Đã từng" },
+              "col_span": 2
+            },
+            {
+              "id": "visaLostRevokedUS",
+              "name": "visaLostRevokedUS",
+              "columnKey": "Đã từng bị mất, hủy, thu hồi visa Mỹ chưa?",
+              "type": "radio",
+              "label": { "en": "Have you ever had a U.S. visa lost/revoked?", "vi": "Đã từng bị mất, hủy, thu hồi visa Mỹ chưa?" },
+              "required": false,
+              "options": [
+                { "value": "Đã từng", "label": { "en": "Yes", "vi": "Đã từng" } },
+                { "value": "Chưa từng", "label": { "en": "No", "vi": "Chưa từng" } }
+              ]
+            },
+            {
+              "id": "visaLostRevokedDetailsUS",
+              "name": "visaLostRevokedDetailsUS",
+              "columnKey": "Lý do mất, hủy, thu hồi visa:",
+              "type": "text",
+              "label": { "en": "Reason for lost/cancelled/revoked visa:", "vi": "Lý do mất, hủy, thu hồi visa:" },
+              "required": true,
+              "show_if": { "visaLostRevokedUS": "Đã từng" },
+              "col_span": 2
+            },
+            {
+              "id": "deportedCountryReason",
+              "name": "deportedCountryReason",
+              "columnKey": "Bị trục xuất khỏi nước nào chưa?",
+              "type": "radio",
+              "label": { "en": "Have you ever been deported from any country?", "vi": "Bị trục xuất khỏi nước nào chưa?" },
+              "required": false,
+              "options": [
+                { "value": "Đã từng", "label": { "en": "Yes", "vi": "Đã từng" } },
+                { "value": "Chưa từng", "label": { "en": "No", "vi": "Chưa từng" } }
+              ]
+            },
+            {
+              "id": "deportedDetails",
+              "name": "deportedDetails",
+              "columnKey": "Lý do trục xuất:",
+              "type": "text",
+              "label": { "en": "Reason for deportation:", "vi": "Lý do trục xuất:" },
+              "required": true,
+              "show_if": { "deportedCountryReason": "Đã từng" },
+              "col_span": 2
+            }
+          ]
+        },
+        {
+          "id": "security_background",
+          "title": { "en": "Security & Background", "vi": "An ninh & Lý lịch" },
+          "grid_cols": 2,
+          "fields": [
+            {
+              "id": "servedMilitary",
+              "name": "servedMilitary",
+              "columnKey": "Có từng phục vụ trong quân đội chưa?",
+              "type": "radio",
+              "label": { "en": "Have you ever served in the military?", "vi": "Có từng phục vụ trong quân đội chưa?" },
+              "required": false,
+              "options": [
+                { "value": "Có", "label": { "en": "Yes", "vi": "Có" } },
+                { "value": "Không", "label": { "en": "No", "vi": "Không" } }
+              ],
+              "col_span": 2
+            },
+            {
+              "id": "militaryRank",
+              "name": "militaryRank",
+              "columnKey": "Cấp bậc:",
+              "type": "text",
+              "label": { "en": "Rank/Position:", "vi": "Cấp bậc:" },
+              "required": true,
+              "show_if": { "servedMilitary": "Có" }
+            },
+            {
+              "id": "militaryUnit",
+              "name": "militaryUnit",
+              "columnKey": "Đơn vị:",
+              "type": "text",
+              "label": { "en": "Military Specialty / Unit:", "vi": "Đơn vị:" },
+              "required": true,
+              "show_if": { "servedMilitary": "Có" }
+            },
+            {
+              "id": "militaryBranch",
+              "name": "militaryBranch",
+              "columnKey": "Binh chủng:",
+              "type": "text",
+              "label": { "en": "Branch of Service:", "vi": "Binh chủng:" },
+              "required": true,
+              "show_if": { "servedMilitary": "Có" }
+            },
+            {
+              "id": "militaryCommander",
+              "name": "militaryCommander",
+              "columnKey": "Tên chỉ huy trực tiếp:",
+              "type": "text",
+              "label": { "en": "Name of direct commander:", "vi": "Tên chỉ huy trực tiếp:" },
+              "required": true,
+              "show_if": { "servedMilitary": "Có" }
+            },
+            {
+              "id": "militaryEnlistmentDate",
+              "name": "militaryEnlistmentDate",
+              "columnKey": "Ngày nhập ngũ:",
+              "type": "date_parts",
+              "label": { "en": "Date of Service From:", "vi": "Ngày nhập ngũ:" },
+              "required": true,
+              "show_if": { "servedMilitary": "Có" }
+            },
+            {
+              "id": "militaryDischargeDate",
+              "name": "militaryDischargeDate",
+              "columnKey": "Ngày giải ngũ:",
+              "type": "date_parts",
+              "label": { "en": "Date of Service To:", "vi": "Ngày giải ngũ:" },
+              "required": true,
+              "show_if": { "servedMilitary": "Có" }
+            },
+            {
+              "id": "militaryCountry",
+              "name": "militaryCountry",
+              "columnKey": "Quốc gia đóng quân:",
+              "type": "text",
+              "label": { "en": "Name of Country/Region:", "vi": "Quốc gia đóng quân:" },
+              "required": true,
+              "show_if": { "servedMilitary": "Có" },
+              "col_span": 2
+            },
+            {
+              "id": "hasCriminalRecord",
+              "name": "hasCriminalRecord",
+              "columnKey": "Có án tích không?",
+              "type": "radio",
+              "label": { "en": "Do you have any criminal record?", "vi": "Có án tích không?" },
+              "required": false,
+              "options": [
+                { "value": "Có", "label": { "en": "Yes", "vi": "Có" } },
+                { "value": "Không", "label": { "en": "No", "vi": "Không" } }
+              ],
+              "col_span": 2
+            },
+            {
+              "id": "criminalRecordDetails",
+              "name": "criminalRecordDetails",
+              "columnKey": "Chi tiết án tích:",
+              "type": "textarea",
+              "label": { "en": "Explain criminal record details:", "vi": "Ghi rõ án tích và lý do dính phải:" },
+              "required": true,
+              "show_if": { "hasCriminalRecord": "Có" },
+              "col_span": 2
+            },
+            {
+              "id": "speakOtherLanguage",
+              "name": "speakOtherLanguage",
+              "columnKey": "Có thể nói ngoại ngữ khác ngoài tiếng Việt không?",
+              "type": "radio",
+              "label": { "en": "Do you speak other languages besides Vietnamese?", "vi": "Có thể nói ngoại ngữ khác ngoài tiếng Việt không?" },
+              "required": false,
+              "options": [
+                { "value": "Có", "label": { "en": "Yes", "vi": "Có" } },
+                { "value": "Không", "label": { "en": "No", "vi": "Không" } }
+              ],
+              "col_span": 2
+            },
+            {
+              "id": "otherLanguages",
+              "name": "otherLanguages",
+              "columnKey": "Các ngoại ngữ nói được:",
+              "type": "text",
+              "label": { "en": "Languages:", "vi": "Các ngoại ngữ nói được:" },
+              "required": true,
+              "show_if": { "speakOtherLanguage": "Có" },
+              "col_span": 2
+            },
+            {
+              "id": "communistPartyMember",
+              "name": "communistPartyMember",
+              "columnKey": "Có là/đã từng là Đảng viên Đảng Cộng sản Việt Nam không?",
+              "type": "radio",
+              "label": { "en": "Are you or have you ever been a Communist Party member?", "vi": "Có là/đã từng là Đảng viên Đảng Cộng sản Việt Nam không?" },
+              "required": false,
+              "options": [
+                { "value": "Có", "label": { "en": "Yes", "vi": "Có" } },
+                { "value": "Không", "label": { "en": "No", "vi": "Không" } }
+              ],
+              "col_span": 2
+            },
+            {
+              "id": "partyJoinDate",
+              "name": "partyJoinDate",
+              "columnKey": "Ngày vào Đảng:",
+              "type": "date_parts",
+              "label": { "en": "Date of joining party:", "vi": "Ngày vào Đảng:" },
+              "required": true,
+              "show_if": { "communistPartyMember": "Có" }
+            },
+            {
+              "id": "partyLeaveDate",
+              "name": "partyLeaveDate",
+              "columnKey": "Ngày ra khỏi Đảng:",
+              "type": "date_parts",
+              "label": { "en": "Date of leaving party:", "vi": "Ngày ra khỏi Đảng:" },
+              "required": true,
+              "show_if": { "communistPartyMember": "Có" }
+            },
+            {
+              "id": "partyRole",
+              "name": "partyRole",
+              "columnKey": "Chức vụ:",
+              "type": "text",
+              "label": { "en": "Role/Position:", "vi": "Chức vụ:" },
+              "required": true,
+              "show_if": { "communistPartyMember": "Có" }
+            },
+            {
+              "id": "partyLeaveReason",
+              "name": "partyLeaveReason",
+              "columnKey": "Lý do ra khỏi Đảng:",
+              "type": "textarea",
+              "label": { "en": "Reason for leaving party:", "vi": "Lý do ra khỏi Đảng:" },
+              "required": true,
+              "show_if": { "communistPartyMember": "Có" },
+              "col_span": 2
+            },
+            {
+              "id": "terroristOrgMember",
+              "name": "terroristOrgMember",
+              "columnKey": "Có là/đã từng là tham gia tổ chức khủng bố không?",
+              "type": "radio",
+              "label": {
+                "en": "Are you or have you ever been a member or representative of a terrorist organization?",
+                "vi": "Có là/đã từng là tham gia tổ chức khủng bố không?"
+              },
+              "required": false,
+              "options": [
+                { "value": "Có", "label": { "en": "Yes", "vi": "Có" } },
+                { "value": "Không", "label": { "en": "No", "vi": "Không" } }
+              ],
+              "col_span": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "part3_residence_employment",
+      "title": {
+        "en": "Part 3: Residence, Employment & Education",
+        "vi": "Phần 3: Nơi ở, Nghề nghiệp & Học vấn"
+      },
+      "groups": [
+        {
+          "id": "residence_jobs",
+          "grid_cols": 2,
+          "fields": [
+            {
+              "id": "residenceHistory",
+              "name": "residenceHistory",
+              "columnKey": "Liệt kê những nơi ở từ năm 16 tuổi cho đến hiện tại:",
+              "type": "residence_period_table",
+              "label": { "en": "Residence History since age 16", "vi": "Liệt kê những nơi ở từ năm 16 tuổi cho đến hiện tại:" },
+              "required": false,
+              "isRepeatable": true,
+              "is_repeatable": true,
+              "col_span": 2,
+              "fields_template": [
+                {
+                  "id": "street",
+                  "name": "street",
+                  "type": "text",
+                  "label": { "vi": "Số nhà/đường/xã/phường/quận", "en": "Street/ward/district" },
+                  "placeholder": { "vi": "Số nhà/đường/xã/phường/quận", "en": "Số nhà/đường/xã/phường/quận" },
+                  "required": true
+                },
+                {
+                  "id": "city",
+                  "name": "city",
+                  "type": "text",
+                  "label": { "vi": "Huyện/Thành phố", "en": "City/District" },
+                  "placeholder": { "vi": "Huyện/Thành phố", "en": "Huyện/Thành phố" },
+                  "required": true
+                },
+                {
+                  "id": "province",
+                  "name": "province",
+                  "type": "text",
+                  "label": { "vi": "Tỉnh/Bang", "en": "State/Province" },
+                  "placeholder": { "vi": "Tỉnh/Bang", "en": "Tỉnh/Bang" },
+                  "required": true
+                },
+                {
+                  "id": "zipCode",
+                  "name": "zipCode",
+                  "type": "text",
+                  "label": { "vi": "Mã Zip", "en": "Zip Code" },
+                  "placeholder": { "vi": "Mã Zip", "en": "Mã Zip" },
+                  "required": false
+                },
+                {
+                  "id": "country",
+                  "name": "country",
+                  "type": "text",
+                  "label": { "vi": "Quốc gia", "en": "Country" },
+                  "placeholder": { "vi": "Quốc gia", "en": "Quốc gia" },
+                  "required": true
+                },
+                {
+                  "id": "dateFrom",
+                  "name": "dateFrom",
+                  "type": "date_parts",
+                  "label": { "vi": "NGÀY BẤT ĐẦU Ở", "en": "NGÀY BẤT ĐẦU Ở" },
+                  "required": true
+                },
+                {
+                  "id": "dateTo",
+                  "name": "dateTo",
+                  "type": "date_parts",
+                  "label": { "vi": "NGÀY CHUYỂN ĐI", "en": "NGÀY CHUYỂN ĐI" },
+                  "required": false
+                }
+              ]
+            },
+            {
+              "id": "workInfoHeading",
+              "name": "workInfoHeading",
+              "type": "section_heading",
+              "label": { "en": "WORK INFORMATION", "vi": "THÔNG TIN CÔNG VIỆC" },
+              "col_span": 2
+            },
+            {
+              "id": "intendedOccupationUS",
+              "name": "intendedOccupationUS",
+              "columnKey": "Nghề nghiệp muốn làm khi đến Mỹ:",
+              "type": "text",
+              "label": { "en": "Intended Occupation in U.S.", "vi": "Nghề nghiệp muốn làm khi đến Mỹ:" },
+              "required": false
+            },
+            {
+              "id": "jobsTenYears",
+              "name": "jobsTenYears",
+              "columnKey": "Công việc hiện tại",
+              "type": "residence_period_table",
+              "label": { "en": "List all current jobs:", "vi": "Liệt kê tất cả các công việc hiện tại:" },
+              "required": false,
+              "isRepeatable": true,
+              "is_repeatable": true,
+              "col_span": 2,
+              "fields_template": [
+                {
+                  "id": "occupation",
+                  "name": "occupation",
+                  "type": "text",
+                  "label": { "vi": "NGHỀ NGHIỆP", "en": "Occupation" },
+                  "placeholder": { "vi": "NGHỀ NGHIỆP", "en": "Occupation" },
+                  "required": true
+                },
+                {
+                  "id": "employer",
+                  "name": "employer",
+                  "type": "text",
+                  "label": { "vi": "TÊN CÔNG TY", "en": "Employer Name" },
+                  "placeholder": { "vi": "TÊN CÔNG TY", "en": "Employer Name" },
+                  "required": true
+                },
+                {
+                  "id": "street",
+                  "name": "street",
+                  "type": "text",
+                  "label": { "vi": "Số nhà/đường/xã/phường/quận", "en": "Street/ward/district" },
+                  "placeholder": { "vi": "Số nhà/đường/xã/phường/quận", "en": "Số nhà/đường/xã/phường/quận" },
+                  "required": true
+                },
+                {
+                  "id": "city",
+                  "name": "city",
+                  "type": "text",
+                  "label": { "vi": "Huyện/Thành phố", "en": "City/District" },
+                  "placeholder": { "vi": "Huyện/Thành phố", "en": "Huyện/Thành phố" },
+                  "required": true
+                },
+                {
+                  "id": "province",
+                  "name": "province",
+                  "type": "text",
+                  "label": { "vi": "Tỉnh/Bang", "en": "State/Province" },
+                  "placeholder": { "vi": "Tỉnh/Bang", "en": "Tỉnh/Bang" },
+                  "required": true
+                },
+                {
+                  "id": "zipCode",
+                  "name": "zipCode",
+                  "type": "text",
+                  "label": { "vi": "Mã Zip", "en": "Zip Code" },
+                  "placeholder": { "vi": "Mã Zip", "en": "Mã Zip" },
+                  "required": false
+                },
+                {
+                  "id": "country",
+                  "name": "country",
+                  "type": "text",
+                  "label": { "vi": "Quốc gia", "en": "Country" },
+                  "placeholder": { "vi": "Quốc gia", "en": "Quốc gia" },
+                  "required": true
+                },
+                {
+                  "id": "dateFrom",
+                  "name": "dateFrom",
+                  "type": "date_parts",
+                  "label": { "vi": "NGÀY NHẬN VIỆC", "en": "NGÀY NHẬN VIỆC" },
+                  "required": true
+                },
+                {
+                  "id": "dateTo",
+                  "name": "dateTo",
+                  "type": "date_parts",
+                  "label": { "vi": "NGÀY NGHỈ VIỆC", "en": "NGÀY NGHỈ VIỆC" },
+                  "required": false
+                }
+              ]
+            },
+            {
+              "id": "hasPreviousJobs",
+              "name": "hasPreviousJobs",
+              "columnKey": "Trước đây bạn còn công việc nào không?",
+              "type": "radio",
+              "label": { "en": "Did you have any previous employment?", "vi": "Trước đây bạn còn công việc nào không?" },
+              "required": true,
+              "inline": true,
+              "options": [
+                { "value": "Có", "label": { "en": "Yes", "vi": "Có" } },
+                { "value": "Không", "label": { "en": "No", "vi": "Không" } }
+              ],
+              "col_span": 2
+            },
+            {
+              "id": "previousJobs",
+              "name": "previousJobs",
+              "columnKey": "Các công việc trước đây (trong vòng 15 năm)",
+              "type": "residence_period_table",
+              "label": { "en": "List all previous jobs (within the last 15 years):", "vi": "Liệt kê tất cả các công việc trước đây (trong vòng 15 năm):" },
+              "required": false,
+              "isRepeatable": true,
+              "is_repeatable": true,
+              "col_span": 2,
+              "show_if": {
+                "hasPreviousJobs": "Có"
+              },
+              "fields_template": [
+                {
+                  "id": "occupation",
+                  "name": "occupation",
+                  "type": "text",
+                  "label": { "vi": "NGHỀ NHIỆP", "en": "Occupation" },
+                  "placeholder": { "vi": "NGHỀ NHIỆP", "en": "Occupation" },
+                  "required": true
+                },
+                {
+                  "id": "employer",
+                  "name": "employer",
+                  "type": "text",
+                  "label": { "vi": "TÊN CÔNG TY", "en": "Employer Name" },
+                  "placeholder": { "vi": "TÊN CÔNG TY", "en": "Employer Name" },
+                  "required": true
+                },
+                {
+                  "id": "street",
+                  "name": "street",
+                  "type": "text",
+                  "label": { "vi": "Số nhà/đường/xã/phường/quận", "en": "Street/ward/district" },
+                  "placeholder": { "vi": "Số nhà/đường/xã/phường/quận", "en": "Số nhà/đường/xã/phường/quận" },
+                  "required": true
+                },
+                {
+                  "id": "city",
+                  "name": "city",
+                  "type": "text",
+                  "label": { "vi": "Huyện/Thành phố", "en": "City/District" },
+                  "placeholder": { "vi": "Huyện/Thành phố", "en": "Huyện/Thành phố" },
+                  "required": true
+                },
+                {
+                  "id": "province",
+                  "name": "province",
+                  "type": "text",
+                  "label": { "vi": "Tỉnh/Bang", "en": "State/Province" },
+                  "placeholder": { "vi": "Tỉnh/Bang", "en": "Tỉnh/Bang" },
+                  "required": true
+                },
+                {
+                  "id": "zipCode",
+                  "name": "zipCode",
+                  "type": "text",
+                  "label": { "vi": "Mã Zip", "en": "Zip Code" },
+                  "placeholder": { "vi": "Mã Zip", "en": "Mã Zip" },
+                  "required": false
+                },
+                {
+                  "id": "country",
+                  "name": "country",
+                  "type": "text",
+                  "label": { "vi": "Quốc gia", "en": "Country" },
+                  "placeholder": { "vi": "Quốc gia", "en": "Quốc gia" },
+                  "required": true
+                },
+                {
+                  "id": "dateFrom",
+                  "name": "dateFrom",
+                  "type": "date_parts",
+                  "label": { "vi": "NGÀY NHẬN VIỆC", "en": "NGÀY NHẬN VIỆC" },
+                  "required": true
+                },
+                {
+                  "id": "dateTo",
+                  "name": "dateTo",
+                  "type": "date_parts",
+                  "label": { "vi": "NGÀY NGHỈ VIỆC", "en": "NGÀY NGHỈ VIỆC" },
+                  "required": false
+                }
+              ]
+            },
+            {
+              "id": "schoolList",
+              "name": "schoolList",
+              "columnKey": "Trường học từ sau cấp 2",
+              "type": "residence_period_table",
+              "label": { "en": "Schools attended after secondary school", "vi": "Liệt kê tất cả các trường học từ sau cấp 2 (cấp 3 trở lên):" },
+              "required": false,
+              "isRepeatable": true,
+              "is_repeatable": true,
+              "col_span": 2,
+              "fields_template": [
+                {
+                  "id": "name",
+                  "name": "name",
+                  "type": "text",
+                  "label": { "vi": "TÊN TRƯỜNG", "en": "School Name" },
+                  "placeholder": { "vi": "TÊN TRƯỜNG", "en": "School Name" },
+                  "required": true
+                },
+                {
+                  "id": "course",
+                  "name": "course",
+                  "type": "text",
+                  "label": { "vi": "CHUYÊN NGÀNH", "en": "Course of Study" },
+                  "placeholder": { "vi": "CHUYÊN NGÀNH", "en": "Course of Study" },
+                  "required": true
+                },
+                {
+                  "id": "street",
+                  "name": "street",
+                  "type": "text",
+                  "label": { "vi": "Số nhà/đường/xã/phường/quận", "en": "Street/ward/district" },
+                  "placeholder": { "vi": "Số nhà/đường/xã/phường/quận", "en": "Số nhà/đường/xã/phường/quận" },
+                  "required": true
+                },
+                {
+                  "id": "city",
+                  "name": "city",
+                  "type": "text",
+                  "label": { "vi": "Huyện/Thành phố", "en": "City/District" },
+                  "placeholder": { "vi": "Huyện/Thành phố", "en": "Huyện/Thành phố" },
+                  "required": true
+                },
+                {
+                  "id": "province",
+                  "name": "province",
+                  "type": "text",
+                  "label": { "vi": "Tỉnh/Bang", "en": "State/Province" },
+                  "placeholder": { "vi": "Tỉnh/Bang", "en": "Tỉnh/Bang" },
+                  "required": true
+                },
+                {
+                  "id": "zipCode",
+                  "name": "zipCode",
+                  "type": "text",
+                  "label": { "vi": "Mã Zip", "en": "Zip Code" },
+                  "placeholder": { "vi": "Mã Zip", "en": "Mã Zip" },
+                  "required": false
+                },
+                {
+                  "id": "country",
+                  "name": "country",
+                  "type": "text",
+                  "label": { "vi": "Quốc gia", "en": "Country" },
+                  "placeholder": { "vi": "Quốc gia", "en": "Quốc gia" },
+                  "required": true
+                },
+                {
+                  "id": "dateFrom",
+                  "name": "dateFrom",
+                  "type": "date_parts",
+                  "label": { "vi": "NGÀY NHẬP HỌC", "en": "Date of Attendance From" },
+                  "required": true
+                },
+                {
+                  "id": "dateTo",
+                  "name": "dateTo",
+                  "type": "date_parts",
+                  "label": { "vi": "NGÀY KẾT THÚC", "en": "Date of Attendance To" },
+                  "required": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "part4_family",
+      "title": {
+        "en": "Part 4: Family Information",
+        "vi": "Phần 4: Thông tin Gia đình"
+      },
+      "groups": [
+        {
+          "id": "current_spouse",
+          "title": { "en": "Current Spouse/Domestic Partner Information", "vi": "Thông tin người hôn phối/bạn đời sống chung hiện tại (nếu có):" },
+          "grid_cols": 6,
+          "fields": [
+            {
+              "id": "spouseLastName",
+              "name": "spouseLastName",
+              "columnKey": "Họ:",
+              "type": "text",
+              "label": { "en": "Spouse Last Name", "vi": "Họ:" },
+              "required": false,
+              "col_span": 2
+            },
+            {
+              "id": "spouseMiddleName",
+              "name": "spouseMiddleName",
+              "columnKey": "Tên lót:",
+              "type": "text",
+              "label": { "en": "Spouse Middle Name", "vi": "Tên lót:" },
+              "required": false,
+              "col_span": 2
+            },
+            {
+              "id": "spouseFirstName",
+              "name": "spouseFirstName",
+              "columnKey": "Tên:",
+              "type": "text",
+              "label": { "en": "Spouse First Name", "vi": "Tên:" },
+              "required": false,
+              "col_span": 2
+            },
+            {
+              "id": "spouseBirthDate",
+              "name": "spouseBirthDate",
+              "columnKey": "Ngày sinh:",
+              "type": "date_parts",
+              "label": { "en": "Spouse Date of Birth", "vi": "Ngày sinh:" },
+              "required": false,
+              "col_span": 3
+            },
+            {
+              "id": "spouseBirthPlace",
+              "name": "spouseBirthPlace",
+              "columnKey": "Nơi sinh:",
+              "type": "birth_place_parts",
+              "label": { "en": "Spouse Place of Birth", "vi": "Nơi sinh:" },
+              "required": false,
+              "col_span": 6
+            },
+            {
+              "id": "spouseNationality",
+              "name": "spouseNationality",
+              "columnKey": "Quốc tịch:",
+              "type": "text",
+              "label": { "en": "Spouse Nationality", "vi": "Quốc tịch:" },
+              "required": false,
+              "col_span": 2
+            },
+            {
+              "id": "spouseCurrentAddress",
+              "name": "spouseCurrentAddress",
+              "columnKey": "Nơi ở hiện tại:",
+              "type": "address_parts",
+              "label": { "en": "Spouse Current Address", "vi": "Nơi ở hiện tại:" },
+              "required": false,
+              "col_span": 6
+            },
+            {
+              "id": "spouseOccupation",
+              "name": "spouseOccupation",
+              "columnKey": "Nghề nghiệp:",
+              "type": "text",
+              "label": { "en": "Spouse Occupation", "vi": "Nghề nghiệp:" },
+              "required": false,
+              "col_span": 3
+            },
+            {
+              "id": "marriageDate",
+              "name": "marriageDate",
+              "columnKey": "Ngày kết hôn:",
+              "type": "date_parts",
+              "label": { "en": "Date of Marriage", "vi": "Ngày kết hôn:" },
+              "required": false,
+              "col_span": 3
+            },
+            {
+              "id": "marriagePlace",
+              "name": "marriagePlace",
+              "columnKey": "Nơi kết hôn:",
+              "type": "birth_place_parts",
+              "label": { "en": "Place of Marriage", "vi": "Nơi kết hôn:" },
+              "required": false,
+              "col_span": 6
+            }
+          ]
+        },
+        {
+          "id": "previous_spouse",
+          "title": { "en": "Previous Spouse/Domestic Partner Information", "vi": "Thông tin cuộc hôn nhân cũ/bạn đời sống chung cũ (nếu có):" },
+          "grid_cols": 6,
+          "fields": [
+            {
+              "id": "previousSpouseLastName",
+              "name": "previousSpouseLastName",
+              "columnKey": "Họ:",
+              "type": "text",
+              "label": { "en": "Previous Spouse Last Name", "vi": "Họ:" },
+              "required": false,
+              "col_span": 2
+            },
+            {
+              "id": "previousSpouseMiddleName",
+              "name": "previousSpouseMiddleName",
+              "columnKey": "Tên lót:",
+              "type": "text",
+              "label": { "en": "Previous Spouse Middle Name", "vi": "Tên lót:" },
+              "required": false,
+              "col_span": 2
+            },
+            {
+              "id": "previousSpouseFirstName",
+              "name": "previousSpouseFirstName",
+              "columnKey": "Tên:",
+              "type": "text",
+              "label": { "en": "Previous Spouse First Name", "vi": "Tên:" },
+              "required": false,
+              "col_span": 2
+            },
+            {
+              "id": "previousSpouseBirthDate",
+              "name": "previousSpouseBirthDate",
+              "columnKey": "Ngày sinh:",
+              "type": "date_parts",
+              "label": { "en": "Previous Spouse Date of Birth", "vi": "Ngày sinh:" },
+              "required": false,
+              "col_span": 3
+            },
+            {
+              "id": "previousMarriageDate",
+              "name": "previousMarriageDate",
+              "columnKey": "Ngày kết hôn trước đây:",
+              "type": "date_parts",
+              "label": { "en": "Previous Date of Marriage", "vi": "Ngày kết hôn trước đây:" },
+              "required": false,
+              "col_span": 3
+            },
+            {
+              "id": "divorceDate",
+              "name": "divorceDate",
+              "columnKey": "Ngày kết thúc hôn nhân:",
+              "type": "date_parts",
+              "label": { "en": "Date of Divorce", "vi": "Ngày kết thúc hôn nhân:" },
+              "required": false,
+              "col_span": 3
+            },
+            {
+              "id": "previousSpouseNationality",
+              "name": "previousSpouseNationality",
+              "columnKey": "Quốc tịch:",
+              "type": "text",
+              "label": { "en": "Previous Spouse Nationality", "vi": "Quốc tịch:" },
+              "required": false,
+              "col_span": 3
+            },
+            {
+              "id": "previousMarriageEndReason",
+              "name": "previousMarriageEndReason",
+              "columnKey": "Cuộc hôn nhân kết thúc như thế nào?",
+              "type": "radio",
+              "label": { 
+                "en": "How did the marriage end?", 
+                "vi": "Cuộc hôn nhân kết thúc như thế nào?" 
+              },
+              "required": false,
+              "inline": true,
+              "options": [
+                { "value": "Hủy hôn", "label": { "en": "Annulled", "vi": "Hủy hôn" } },
+                { "value": "Tử vong", "label": { "en": "Death", "vi": "Tử vong" } },
+                { "value": "Ly hôn", "label": { "en": "Divorced", "vi": "Ly hôn" } },
+                { "value": "Khác", "label": { "en": "Other", "vi": "Khác" } }
+              ],
+              "col_span": 6
+            }
+          ]
+        },
+        {
+          "id": "previous_spouse_2",
+          "title": { "en": "Previous Spouse/Domestic Partner Information 2", "vi": "Thông tin cuộc hôn nhân cũ/bạn đời sống chung cũ thứ 2 (nếu có):" },
+          "grid_cols": 6,
+          "fields": [
+            {
+              "id": "previousSpouseLastName_2",
+              "name": "previousSpouseLastName_2",
+              "columnKey": "Họ (cuộc hôn nhân 2):",
+              "type": "text",
+              "label": { "en": "Previous Spouse Last Name 2", "vi": "Họ:" },
+              "required": false,
+              "col_span": 2
+            },
+            {
+              "id": "previousSpouseMiddleName_2",
+              "name": "previousSpouseMiddleName_2",
+              "columnKey": "Tên lót (cuộc hôn nhân 2):",
+              "type": "text",
+              "label": { "en": "Previous Spouse Middle Name 2", "vi": "Tên lót:" },
+              "required": false,
+              "col_span": 2
+            },
+            {
+              "id": "previousSpouseFirstName_2",
+              "name": "previousSpouseFirstName_2",
+              "columnKey": "Tên (cuộc hôn nhân 2):",
+              "type": "text",
+              "label": { "en": "Previous Spouse First Name 2", "vi": "Tên:" },
+              "required": false,
+              "col_span": 2
+            },
+            {
+              "id": "previousSpouseBirthDate_2",
+              "name": "previousSpouseBirthDate_2",
+              "columnKey": "Ngày sinh (cuộc hôn nhân 2):",
+              "type": "date_parts",
+              "label": { "en": "Previous Spouse Date of Birth 2", "vi": "Ngày sinh:" },
+              "required": false,
+              "col_span": 3
+            },
+            {
+              "id": "previousMarriageDate_2",
+              "name": "previousMarriageDate_2",
+              "columnKey": "Ngày kết hôn trước đây (cuộc hôn nhân 2):",
+              "type": "date_parts",
+              "label": { "en": "Previous Date of Marriage 2", "vi": "Ngày kết hôn trước đây:" },
+              "required": false,
+              "col_span": 3
+            },
+            {
+              "id": "divorceDate_2",
+              "name": "divorceDate_2",
+              "columnKey": "Ngày kết thúc hôn nhân (cuộc hôn nhân 2):",
+              "type": "date_parts",
+              "label": { "en": "Date of Divorce 2", "vi": "Ngày kết thúc hôn nhân:" },
+              "required": false,
+              "col_span": 3
+            },
+            {
+              "id": "previousSpouseNationality_2",
+              "name": "previousSpouseNationality_2",
+              "columnKey": "Quốc tịch (cuộc hôn nhân 2):",
+              "type": "text",
+              "label": { "en": "Previous Spouse Nationality 2", "vi": "Quốc tịch:" },
+              "required": false,
+              "col_span": 3
+            },
+            {
+              "id": "previousMarriageEndReason_2",
+              "name": "previousMarriageEndReason_2",
+              "columnKey": "Cuộc hôn nhân kết thúc như thế nào?",
+              "type": "radio",
+              "label": { 
+                "en": "How did the marriage end?", 
+                "vi": "Cuộc hôn nhân kết thúc như thế nào?" 
+              },
+              "required": false,
+              "inline": true,
+              "options": [
+                { "value": "Hủy hôn", "label": { "en": "Annulled", "vi": "Hủy hôn" } },
+                { "value": "Tử vong", "label": { "en": "Death", "vi": "Tử vong" } },
+                { "value": "Ly hôn", "label": { "en": "Divorced", "vi": "Ly hôn" } },
+                { "value": "Khác", "label": { "en": "Other", "vi": "Khác" } }
+              ],
+              "col_span": 6
+            }
+          ]
+        },
+        {
+          "id": "previous_spouse_3",
+          "title": { "en": "Previous Spouse/Domestic Partner Information 3", "vi": "Thông tin cuộc hôn nhân cũ/bạn đời sống chung cũ thứ 3 (nếu có):" },
+          "grid_cols": 6,
+          "fields": [
+            {
+              "id": "previousSpouseLastName_3",
+              "name": "previousSpouseLastName_3",
+              "columnKey": "Họ (cuộc hôn nhân 3):",
+              "type": "text",
+              "label": { "en": "Previous Spouse Last Name 3", "vi": "Họ:" },
+              "required": false,
+              "col_span": 2
+            },
+            {
+              "id": "previousSpouseMiddleName_3",
+              "name": "previousSpouseMiddleName_3",
+              "columnKey": "Tên lót (cuộc hôn nhân 3):",
+              "type": "text",
+              "label": { "en": "Previous Spouse Middle Name 3", "vi": "Tên lót:" },
+              "required": false,
+              "col_span": 2
+            },
+            {
+              "id": "previousSpouseFirstName_3",
+              "name": "previousSpouseFirstName_3",
+              "columnKey": "Tên (cuộc hôn nhân 3):",
+              "type": "text",
+              "label": { "en": "Previous Spouse First Name 3", "vi": "Tên:" },
+              "required": false,
+              "col_span": 2
+            },
+            {
+              "id": "previousSpouseBirthDate_3",
+              "name": "previousSpouseBirthDate_3",
+              "columnKey": "Ngày sinh (cuộc hôn nhân 3):",
+              "type": "date_parts",
+              "label": { "en": "Previous Spouse Date of Birth 3", "vi": "Ngày sinh:" },
+              "required": false,
+              "col_span": 3
+            },
+            {
+              "id": "previousMarriageDate_3",
+              "name": "previousMarriageDate_3",
+              "columnKey": "Ngày kết hôn trước đây (cuộc hôn nhân 3):",
+              "type": "date_parts",
+              "label": { "en": "Previous Date of Marriage 3", "vi": "Ngày kết hôn trước đây:" },
+              "required": false,
+              "col_span": 3
+            },
+            {
+              "id": "divorceDate_3",
+              "name": "divorceDate_3",
+              "columnKey": "Ngày kết thúc hôn nhân (cuộc hôn nhân 3):",
+              "type": "date_parts",
+              "label": { "en": "Date of Divorce 3", "vi": "Ngày kết thúc hôn nhân:" },
+              "required": false,
+              "col_span": 3
+            },
+            {
+              "id": "previousSpouseNationality_3",
+              "name": "previousSpouseNationality_3",
+              "columnKey": "Quốc tịch (cuộc hôn nhân 3):",
+              "type": "text",
+              "label": { "en": "Previous Spouse Nationality 3", "vi": "Quốc tịch:" },
+              "required": false,
+              "col_span": 3
+            },
+            {
+              "id": "previousMarriageEndReason_3",
+              "name": "previousMarriageEndReason_3",
+              "columnKey": "Cuộc hôn nhân kết thúc như thế nào?",
+              "type": "radio",
+              "label": { 
+                "en": "How did the marriage end?", 
+                "vi": "Cuộc hôn nhân kết thúc như thế nào?" 
+              },
+              "required": false,
+              "inline": true,
+              "options": [
+                { "value": "Hủy hôn", "label": { "en": "Annulled", "vi": "Hủy hôn" } },
+                { "value": "Tử vong", "label": { "en": "Death", "vi": "Tử vong" } },
+                { "value": "Ly hôn", "label": { "en": "Divorced", "vi": "Ly hôn" } },
+                { "value": "Khác", "label": { "en": "Other", "vi": "Khác" } }
+              ],
+              "col_span": 6
+            }
+          ]
+        },
+        {
+          "id": "children_info",
+          "title": { "en": "Children Information", "vi": "Thông tin về con:" },
+          "grid_cols": 2,
+          "fields": [
+            {
+              "id": "listChildrenInfo",
+              "name": "listChildrenInfo",
+              "columnKey": "Thông tin về con",
+              "type": "textarea",
+              "label": { "en": "Children Details", "vi": "Thông tin về con:" },
+              "required": false,
+              "col_span": 2
+            }
+          ]
+        },
+        {
+          "id": "father_info",
+          "title": { "en": "Father Information", "vi": "Thông tin cha:" },
+          "grid_cols": 2,
+          "fields": [
+            {
+              "id": "fatherFullName",
+              "name": "fatherFullName",
+              "columnKey": "Họ và tên",
+              "type": "text",
+              "label": { "en": "Father's Full Name", "vi": "Họ và tên:" },
+              "required": false,
+              "col_span": 2
+            },
+            {
+              "id": "fatherBirthDate",
+              "name": "fatherBirthDate",
+              "columnKey": "Ngày sinh",
+              "type": "date_parts",
+              "label": { "en": "Father's Date of Birth", "vi": "Ngày sinh:" },
+              "required": false
+            },
+            {
+              "id": "fatherBirthPlace",
+              "name": "fatherBirthPlace",
+              "columnKey": "Nơi sinh",
+              "type": "birth_place_parts",
+              "label": { "en": "Father's Place of Birth", "vi": "Nơi sinh:" },
+              "required": false,
+              "col_span": 2
+            },
+            {
+              "id": "fatherIsAlive",
+              "name": "fatherIsAlive",
+              "columnKey": "Cha còn sống hay đã mất?",
+              "type": "radio",
+              "inline": true,
+              "label": { "en": "Is Father alive or deceased?", "vi": "Cha còn sống hay đã mất?" },
+              "required": false,
+              "options": [
+                { "value": "Còn sống", "label": { "en": "Alive", "vi": "Còn sống" } },
+                { "value": "Đã mất", "label": { "en": "Deceased", "vi": "Đã mất" } }
+              ],
+              "col_span": 2
+            },
+            {
+              "id": "fatherCurrentAddress",
+              "name": "fatherCurrentAddress",
+              "columnKey": "Nơi ở hiện tại",
+              "type": "address_parts",
+              "label": { "en": "Father's Current Address", "vi": "Nơi ở hiện tại:" },
+              "required": false,
+              "show_if": { "fatherIsAlive": "Còn sống" },
+              "col_span": 2
+            },
+            {
+              "id": "fatherDeathYear",
+              "name": "fatherDeathYear",
+              "columnKey": "Năm mất",
+              "type": "text",
+              "label": { "en": "Year of Death (if deceased)", "vi": "Nếu đã mất, ghi năm mất:" },
+              "required": false,
+              "show_if": { "fatherIsAlive": "Đã mất" }
+            }
+          ]
+        },
+        {
+          "id": "mother_info",
+          "title": { "en": "Mother Information", "vi": "Thông tin mẹ:" },
+          "grid_cols": 2,
+          "fields": [
+            {
+              "id": "motherFullName",
+              "name": "motherFullName",
+              "columnKey": "Họ và tên",
+              "type": "text",
+              "label": { "en": "Mother's Full Name", "vi": "Họ và tên:" },
+              "required": false,
+              "col_span": 2
+            },
+            {
+              "id": "motherBirthDate",
+              "name": "motherBirthDate",
+              "columnKey": "Ngày sinh",
+              "type": "date_parts",
+              "label": { "en": "Mother's Date of Birth", "vi": "Ngày sinh:" },
+              "required": false
+            },
+            {
+              "id": "motherBirthPlace",
+              "name": "motherBirthPlace",
+              "columnKey": "Nơi sinh",
+              "type": "birth_place_parts",
+              "label": { "en": "Mother's Place of Birth", "vi": "Nơi sinh:" },
+              "required": false,
+              "col_span": 2
+            },
+            {
+              "id": "motherIsAlive",
+              "name": "motherIsAlive",
+              "columnKey": "Mẹ còn sống hay đã mất?",
+              "type": "radio",
+              "inline": true,
+              "label": { "en": "Is Mother alive or deceased?", "vi": "Mẹ còn sống hay đã mất?" },
+              "required": false,
+              "options": [
+                { "value": "Còn sống", "label": { "en": "Alive", "vi": "Còn sống" } },
+                { "value": "Đã mất", "label": { "en": "Deceased", "vi": "Đã mất" } }
+              ],
+              "col_span": 2
+            },
+            {
+              "id": "motherCurrentAddress",
+              "name": "motherCurrentAddress",
+              "columnKey": "Nơi ở hiện tại",
+              "type": "address_parts",
+              "label": { "en": "Mother's Current Address", "vi": "Nơi ở hiện tại:" },
+              "required": false,
+              "show_if": { "motherIsAlive": "Còn sống" },
+              "col_span": 2
+            },
+            {
+              "id": "motherDeathYear",
+              "name": "motherDeathYear",
+              "columnKey": "Năm mất",
+              "type": "text",
+              "label": { "en": "Year of Death (if deceased)", "vi": "Nếu đã mất, ghi năm mất:" },
+              "required": false,
+              "show_if": { "motherIsAlive": "Đã mất" }
+            }
+          ]
+        },
+        {
+          "id": "siblings_info",
+          "title": { "en": "Siblings Information", "vi": "Thông tin anh chị em:" },
+          "grid_cols": 2,
+          "fields": [
+            {
+              "id": "hasSiblings",
+              "name": "hasSiblings",
+              "columnKey": "Có anh chị em không?",
+              "type": "radio",
+              "inline": true,
+              "label": {
+                "en": "Do you have any siblings? (including full, half, step and adopted siblings)",
+                "vi": "Có anh chị em không? (bao gồm anh chị em ruột, cùng cha hoặc cùng mẹ, kế, nuôi)"
+              },
+              "required": false,
+              "options": [
+                { "value": "Có", "label": { "en": "Yes", "vi": "Có" } },
+                { "value": "Không", "label": { "en": "No", "vi": "Không" } }
+              ],
+              "col_span": 2
+            },
+            {
+              "id": "siblingsCount",
+              "name": "siblingsCount",
+              "columnKey": "Số lượng anh chị em:",
+              "type": "text",
+              "label": { "en": "Number of Siblings", "vi": "Số lượng anh chị em:" },
+              "required": false,
+              "show_if": { "hasSiblings": "Có" }
+            },
+            {
+              "id": "siblingsList",
+              "name": "siblingsList",
+              "columnKey": "Thông tin từng anh chị em",
+              "type": "residence_period_table",
+              "label": { "en": "Information on each sibling:", "vi": "Thông tin từng anh chị em:" },
+              "required": false,
+              "isRepeatable": true,
+              "is_repeatable": true,
+              "col_span": 2,
+              "show_if": { "hasSiblings": "Có" },
+              "fields_template": [
+                {
+                  "id": "lastName",
+                  "name": "lastName",
+                  "type": "text",
+                  "label": { "vi": "Họ", "en": "Surname" },
+                  "placeholder": { "vi": "Họ", "en": "Surname" },
+                  "required": false
+                },
+                {
+                  "id": "middleName",
+                  "name": "middleName",
+                  "type": "text",
+                  "label": { "vi": "Tên lót", "en": "Middle Name" },
+                  "placeholder": { "vi": "Tên lót", "en": "Middle Name" },
+                  "required": false
+                },
+                {
+                  "id": "firstName",
+                  "name": "firstName",
+                  "type": "text",
+                  "label": { "vi": "Tên", "en": "Given Name" },
+                  "placeholder": { "vi": "Tên", "en": "Given Name" },
+                  "required": false
+                },
+                {
+                  "id": "birthDate",
+                  "name": "birthDate",
+                  "type": "date_parts",
+                  "label": { "vi": "Ngày sinh", "en": "Date of Birth" },
+                  "required": false
+                },
+                {
+                  "id": "nationality",
+                  "name": "nationality",
+                  "type": "text",
+                  "label": { "vi": "Quốc tịch", "en": "Nationality" },
+                  "placeholder": { "vi": "Quốc tịch", "en": "Nationality" },
+                  "required": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sponsor_info",
+          "title": { "en": "Sponsor Information", "vi": "Thông tin Người bảo lãnh:" },
+          "grid_cols": 2,
+          "fields": [
+            {
+              "id": "sponsorFullName",
+              "name": "sponsorFullName",
+              "columnKey": "Họ và tên",
+              "type": "text",
+              "label": { "en": "Sponsor's Full Name", "vi": "Họ và tên:" },
+              "required": false,
+              "col_span": 2
+            },
+            {
+              "id": "sponsorRelationship",
+              "name": "sponsorRelationship",
+              "columnKey": "Mối quan hệ",
+              "type": "text",
+              "label": { "en": "Relationship to Applicant", "vi": "Mối quan hệ:" },
+              "required": false
+            },
+            {
+              "id": "sponsorAddress",
+              "name": "sponsorAddress",
+              "columnKey": "Địa chỉ",
+              "type": "address_parts",
+              "label": { "en": "Sponsor's Address", "vi": "Địa chỉ:" },
+              "required": false,
+              "col_span": 2
+            },
+            {
+              "id": "sponsorPhone",
+              "name": "sponsorPhone",
+              "columnKey": "Số điện thoại",
+              "type": "text",
+              "label": { "en": "Sponsor's Phone", "vi": "Số điện thoại bên Mỹ:" },
+              "required": false
+            },
+            {
+              "id": "sponsorEmail",
+              "name": "sponsorEmail",
+              "columnKey": "Email",
+              "type": "text",
+              "label": { "en": "Sponsor's Email", "vi": "Email liên lạc:" },
+              "required": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "part5_additional",
+      "title": {
+        "en": "Part 5: Additional Information & Signature",
+        "vi": "Phần 5: Thông tin bổ sung & Ký tên"
+      },
+      "groups": [
+        {
+          "id": "additional",
+          "fields": [
+            {
+              "id": "additionalInfo",
+              "name": "additionalInfo",
+              "columnKey": "THÔNG TIN BỔ SUNG",
+              "type": "textarea",
+              "label": { "en": "Additional Information", "vi": "THÔNG TIN BỔ SUNG:" },
+              "required": false
+            }
+          ]
+        },
+        {
+          "id": "signature",
+          "fields": [
+            {
+              "id": "applicantFullName",
+              "name": "applicantFullName",
+              "columnKey": "Họ và tên người điền đơn",
+              "type": "text",
+              "label": { "en": "Applicant Full Name", "vi": "Họ và tên người điền đơn:" },
+              "required": true
+            },
+            {
+              "id": "applicantSignature",
+              "name": "applicantSignature",
+              "columnKey": "Chữ ký",
+              "type": "signature",
+              "label": { "en": "Signature", "vi": "Chữ ký người điền đơn:" },
+              "required": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

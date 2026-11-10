@@ -1,0 +1,1827 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+
+<html lang="" xml:lang="" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="pandoc" name="generator" />
+    <meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport" />
+    <title>PKT-DS-160 - Bản gốc</title>
+
+    <style>
+        :root {
+            --border: #111;
+            --text: #111;
+            --muted: #f3f3f3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background: #ececec;
+            color: var(--text);
+        }
+
+        body {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 12px;
+            line-height: 1.18;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 16px auto;
+            padding: 12mm 10mm;
+            background: #fff;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, .12);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+            margin: 0 0 8px 0;
+        }
+
+        td,
+        th {
+            border: 1px solid var(--border);
+            padding: 4px 5px;
+            vertical-align: middle;
+            word-break: normal;
+            overflow-wrap: anywhere;
+        }
+
+        th {
+            text-align: center;
+            font-weight: 700;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        ul {
+            margin: 0;
+            padding-left: 14px;
+        }
+
+        li p {
+            margin: 0;
+        }
+
+        strong,
+        b {
+            font-weight: 700;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        table:nth-of-type(1) td {
+            text-align: center;
+            font-weight: 700;
+        }
+
+        table:nth-of-type(1) td:first-child {
+            text-align: left;
+        }
+
+        table:nth-of-type(1) td:nth-child(3),
+        table:nth-of-type(1) td:nth-child(4) {
+            text-align: left;
+        }
+
+        table:nth-of-type(2) td,
+        table:nth-of-type(2) th {
+            height: 28px;
+        }
+
+        table:nth-of-type(3) th {
+            background: #fff;
+            text-align: center;
+        }
+
+        table:nth-of-type(3) td[colspan="26"] {
+            text-align: center;
+            font-weight: 700;
+            text-transform: uppercase;
+            background: #f7f7f7;
+            letter-spacing: .2px;
+        }
+
+        /* Căn vùng tiêu đề và mã biểu mẫu */
+        table:nth-of-type(1) td:nth-child(2) {
+            font-size: 16px;
+            line-height: 1.25;
+        }
+
+        @page {
+            size: A4;
+            margin: 10mm;
+        }
+
+        @media print {
+
+            html,
+            body {
+                background: #fff;
+            }
+
+            .page {
+                width: auto;
+                min-height: auto;
+                margin: 0;
+                padding: 0;
+                box-shadow: none;
+            }
+
+            table {
+                page-break-inside: auto;
+            }
+
+            tr {
+                page-break-inside: avoid;
+                page-break-after: auto;
+            }
+        }
+
+        @media screen and (max-width:900px) {
+            .page {
+                width: 100%;
+                margin: 0;
+                padding: 10px;
+                box-shadow: none;
+            }
+
+        }
+    </style>
+    <link rel="stylesheet" href="app-style.css">
+</head>
+
+<body>
+    <div id="app-layout">
+        <aside id="app-sidebar">
+            <div class="sb-header">📋 PKT DS-160 WORKFLOW</div>
+            
+            <div id="sb-create-controls">
+                <div class="sb-section">
+                    <span class="sb-label">1. CHỌN HỒ SƠ DS-160</span>
+                    <select id="ds160-select" class="sb-select" onchange="onDS160Select()">
+                        <option value="">-- Chọn khách hàng --</option>
+                    </select>
+                </div>
+                
+                <div class="sb-section">
+                    <span class="sb-label">2. NHÂN VIÊN ĐIỀN (A)</span>
+                    <input type="text" id="empA" class="sb-input" value="Nhân viên A">
+                    
+                    <span class="sb-label" style="margin-top:15px">3. CHỌN NGƯỜI KIỂM TRA (B)</span>
+                    <select id="empB" class="sb-select">
+                        <option value="">-- Chọn người kiểm tra --</option>
+                        <option value="Trần Thị B">Trần Thị B (Kiểm tra viên)</option>
+                        <option value="Lê Văn C">Lê Văn C (Kiểm tra viên)</option>
+                    </select>
+                </div>
+                
+                <div class="sb-section" style="border-bottom:none">
+                    <button class="sb-btn" onclick="submitForm()">✅ Submit Phiếu</button>
+                    <div style="font-size:11px; color:#a1a7b8; margin-top:10px; text-align:center">
+                        Khi Submit, hệ thống sẽ gửi thông báo cho NV kiểm tra và khóa form của NV A.
+                    </div>
+                </div>
+            </div>
+            
+            <div id="sb-review-controls" style="display:none;">
+                <div class="sb-section">
+                    <div style="background: #23273d; padding: 12px; border-radius: 4px; font-size: 13px; margin-bottom: 20px; border-left: 3px solid #f59e0b">
+                        Bạn đang đăng nhập với tư cách: <br><strong style="color:#f59e0b" id="reviewer-name"></strong>
+                    </div>
+                    <span class="sb-label">SỐ MỤC ĐÃ SỬA</span>
+                    <div style="font-size: 32px; font-weight: bold; margin-bottom: 20px; color:#fca5a5" id="change-count">0</div>
+                    
+                    <button class="sb-btn green" onclick="approveForm()">✅ Hoàn Tất Kiểm Tra</button>
+                </div>
+            </div>
+        </aside>
+        
+        <div id="app-content">
+            <main class="page">
+        <table>
+            <colgroup>
+                <col style="width: 23%" />
+                <col style="width: 42%" />
+                <col style="width: 12%" />
+                <col style="width: 6%" />
+                <col style="width: 6%" />
+                <col style="width: 7%" />
+            </colgroup>
+            <tbody>
+                <tr class="odd">
+                    <td rowspan="3"><img alt="Logo ICAVIET"
+                            src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEA3ADcAAD/2wBDAAIBAQEBAQIBAQECAgICAgQDAgICAgUEBAMEBgUGBgYFBgYGBwkIBgcJBwYGCAsICQoKCgoKBggLDAsKDAkKCgr/2wBDAQICAgICAgUDAwUKBwYHCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgr/wAARCABsAU0DASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9GP8AgrR+1b4u0zxHp/7D/wAN9VuNCm8T+C9W8QePPET2MF0n/CMw6dqRu7O3gk5luZI7W4dfngAeKFPNCzSPF75/wT1u/jpcfsheE7P9pa51CbxxpsmpaZr0mquj3DNaajc2se+RMiY+VFH++yxlH7wu5cu35h3P/BTP/guH+2J8Vk8afsb/ALN3h+38KW58Qad4R8Yab4NddL1aynnFrE66xrqwpJLFNDC8aItr51xEqz2rhfs6fT3/AASA/wCCjH7c/wC0Z8YNc/Ze/b7+DVn4P8TaH4BtNc0RtS8KanomsazbpcC0uL2W2njNtIjSMm542tgshKxQyqZDbe1iODM0wHtMbVrQlyrWCleUVdLWPdNN/N+i93F8fZPmPDOFyDCYH2fLLnlWavKpUtNNqXKmoyjKCcW2r0427v8AQaiiivFPCCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD8Vv8AgrZ/wQw+z/HCz+O/gb9sPRtD0Hxd9qHiDxF+0Z8SvLisdQjaMWenwajOJLm732nmLFHKsjxxaXIZLhy6KPtj/gjF/wAEx9X/AOCfXwGtdS+I3jjxTJ428UaeLnxV4SbxU02g6NdSPuYW9pDiBrryUtYZrljMxa2IhkWJ2D+Rf8HUP/KPjwd/2WTT/wD006tXOf8ABNT/AIL9fs/eHP2AVvf25vjHdN8QPAd02kC18ua/1jxZb+RJPZXCKIlUyMsb2ryyyFRLDHLcTRm7jz+jVp8RZxwjSdOTqR5uWUVH3rL4dVutbP8A7d82fL045Xgs6mpLldrpt6a779eq+fkfqjRXmf7H37VHw+/bY/Z08O/tN/CvRtZ0/QfE32v7BZ+ILeKK8j+z3k1o/mLDLKgzJA5GHbKlScHIHplfntajUw9aVKorSi2muzWjX3n01OcakFOLumrr0YUV8O/8FU/+C3fwP/4J5/b/AIOeDdP/AOEw+LcujGex0OEq2n6JLJs8h9UkWRXTcjtMtvEDLIiLuNuk8Ux/FT9qH/gr9/wUP/a3+3aX8TP2kNZ0/Qb77fE3hXwi40nTzZ3eBJZSpbbXvYBGBGq3bzsELAsTJIW+syTgrNs4pKtpTpvZyvdrul1Xm2k+jZ4uYZ9g8DJ09ZSXRdPV/wDDn9Lfxb/aM/Z8+AP9n/8AC9/jt4N8E/2t5v8AZX/CXeKLTTftnlbPN8r7RInmbPMj3bc7d65xuGbnwr+NPwd+Ovh6bxb8Efiz4Z8ZaTb3jWdxqnhXXrfULeK4VEdoWkt3dVkCSRsVJyA6nGCM/wAgNFfW/wDEMaPs7fWnzd+RW+7mv+J4/wDrZU5v4St/i1++36H9klFfzL/s1f8ABdL/AIKX/s03sK2n7Ql5440lbya6utD+JStrMdy7wCIBrqRhexxptSRY4riNA65KkPIH/er/AIJwf8FBPh9/wUj/AGfJPjv8P/A2s+Hf7P1k6Lrmlaw0Unk6hHaW1xMIJY2PnQD7UqpK6xO+0kxJwK+Kz7hHNMhpqrUtKm9OaPR9E07NX8rrzPdy/OsJmMuSF1Ls/wBLHv1FFFfLnrhXG/Fv9oz9nz4A/wBn/wDC9/jt4N8E/wBreb/ZX/CXeKLTTftvlbPN8r7RInmbPMj3bc7d65xuGeyr+cz/AIOH/wBsS0/ae/b71D4eeEtTupPDfwntX8M28b3Upgl1RJWbUrhIZI08lxNttGI3iQafHIrsrIF+i4ZyGXEGY+wbcYpNya6dF97t8r9jzM2zFZbhfaWu27Jfn+B+5/8Aw8X/AOCfP/R9nwb/APDn6T/8kV29n8ffgTqPwsX46af8avCU/gmTOzxjD4ktW0pv3/2fi7Enkn99+6+99/5fvcV/IRX7Kf8ABA/4haR+3H+wH8Vv+CXvxZ1yzhGgW/27wbcSXSfaIbW7nefzEtYvKknjs9SjS4d2lYOb+OF9iBFb6Difgf8AsXKJ4zC1HNxtdOyVnpfTzt8rvoc3DefYTMs6o4bML06MpJSlFc0lG65mk92o3aXVpLqfqB/w2/8AsW/9He/C/wD8L/Tv/j1b3w8/aM/Z8+LutS+G/hP8dvBvijUYLVrmbT/Dvii0vZo4QyqZWSGRmCBnRSxGAXUZyRX83euaJrXhnWrzw34k0e60/UdPupLbUNPvrdoZraaNirxSIwDI6sCpUgEEEEZr3j/gmB+0vd/st/tm+E/GE+oWtvomu3S+H/FMl9dRW8Kafdyxq00k0iMIkglWG5JBTcLcoXVXY1+I0OJKk68YVIJJuzfY/tbPvo05fgshxGLy7Gzq1YQlOEWopTaV0rrutF0va7S1P3+ooor6w/kUKKKKAOX+JPxw+C3wa+xf8Lf+L/hfwp/aXmf2f/wkniC2sftXl7fM8vz3Xft3pu25xvXOMiuX/wCG3/2Lf+jvfhf/AOF/p3/x6vxv/wCCwf7Q3/DQf7c/if7Lpf2Wx8D58JWPmQ7Jpfsc83nySYkdWzdSXOxhtzF5W5Vbdn5fr5TE8RzpYiUIQTSdr37H9bcMfRrwObcP4XG47GVKdWrBTlFRjaPNqlq27pNX877bH9LHhj44fBbxv4K1D4k+C/i/4X1fw7pHnf2tr+l+ILa4srLyoxLL5s6OY49kbK7biNqkMcA5rl/+G3/2Lf8Ao734X/8Ahf6d/wDHq8pk/Zqsf2R/+CSPjP4FwzQ3F9pfwh8QS67eQsGW51GawuJbl1fy4y8YkdkjLqHESRhslSa/CWuvMM4xGA9mnBXkrvyfY+R8OvB3h3j+eYVKONqRpUKvJTkoxbnHW0nfa+9ltc/pO+Hn7Rn7Pnxd1qXw38J/jt4N8UajBatczaf4d8UWl7NHCGVTKyQyMwQM6KWIwC6jOSKwf+G3/wBi3/o734X/APhf6d/8er8v/wDg3n/5PS8Tf9kvvf8A046bXwfXPU4grQwtOryL3nJb9rf5n0mW/R7ybHcVZhlUsbUUcNChJS5Y3l7VVLprbTkVrd2f0Yf8Nv8A7Fv/AEd78L//AAv9O/8Aj1H/AA2/+xb/ANHe/C//AML/AE7/AOPV/OfRXL/rPX/59r72fT/8SuZB/wBDGr/4DA/ow/4bf/Yt/wCjvfhf/wCF/p3/AMeo/wCG3/2Lf+jvfhf/AOF/p3/x6v5z6KP9Z6//AD7X3sP+JXMg/wChjV/8Bgf0Yf8ADb/7Fv8A0d78L/8Awv8ATv8A49Wp4L/ao/Zh+JHiW28F/Dz9o7wHr2sXm/7HpOi+MLK6uZ9iM77IopWZtqKzHAOFUk8A1/N3X1B/wRl/5SUfDf8A7jH/AKZ76tsPxFWrYiFNwXvNLfu7HicSfRwyTI+HcZmVPHVJSoUqlRJxjZuEHJJ26O1mftJ40/ao/Zh+G/iW58F/EP8AaO8B6DrFns+2aTrXjCytbmDeium+KWVWXcjKwyBlWBHBFZf/AA2/+xb/ANHe/C//AML/AE7/AOPV+N//AAWa/wCUlHxI/wC4P/6Z7Gvl+jEcRVqOInTUF7ra3fR2Dhv6OGSZ5w7g8yqY6pGVelTqNKMbJzhGTSv0V7I/ow/4bf8A2Lf+jvfhf/4X+nf/AB6j/ht/9i3/AKO9+F//AIX+nf8Ax6v5z6Kx/wBZ6/8Az7X3s9v/AIlcyD/oY1f/AAGB/Rh/w2/+xb/0d78L/wDwv9O/+PUf8Nv/ALFv/R3vwv8A/C/07/49X859FH+s9f8A59r72H/ErmQf9DGr/wCAwP6MP+G3/wBi3/o734X/APhf6d/8eo/4bf8A2Lf+jvfhf/4X+nf/AB6v5z6KP9Z6/wDz7X3sP+JXMg/6GNX/AMBgfql/wdQ/8o+PB3/ZZNP/APTTq1fgTX77f8HUP/KPjwd/2WTT/wD006tX4E1/Vfh9/wAk7H/FL8z/ADn4l/5Gj9Ef0t/8G/n/ACiM+Ev/AHHv/T/qNcH/AMF3f+Cslp+w38LJP2b/AITx3UnxR8f+HJmtdRhmlt18NaZMZLc6issbK5uiySrbrGw2PE0shAjSKfr/APgg/wCI/D3g/wD4I1/DPxd4u12z0vSdLs/Ed5qmqaldJBb2dvHrmpPJNLI5CxxoilmZiAoBJIAr+f39sb9pzxf+2V+0/wCNP2mvG9t9mvPFmstcw2G+N/sFmirDaWm+OOMS+TbRww+YUVpPL3t8zMT8nkuQ0844uxlWur06VSba7yc5cq9NG36JPRns4/MZYHJaEKb96cYr0XKrv16L/gHmsssk0jTTSMzsxZmY5JJ7mvb/ANjT/gnL+1/+3n4hXTP2dvhHeX2lR3gt9U8Xal/ouj6cQ8Ak826cbWkjS4jla3i8y4MZLJE4FbP/AASz/YQvv+CiX7X+jfAO51W803w7b2c2seNNW00wfaLPS4CqsYhMwBklmkgt1YLIYzcCUxukbrX9Onwc+Dnww/Z9+GGi/Bj4MeC7Pw94Y8PWYtdI0iwU+XDHksSSxLSSO7M7yOWeR3Z3ZmZmP1fFnF0chaw+HipVWr67RXRu27fRdtX0v4+TZK8xvVqO0Fppu3/l5/0vx6+H/wDwaafELUvCNne/FT9tnRtF15/M+36b4f8AA8up2cOJGCeXczXdq8mYwjHMKbWZlG4KHal8VP8Ag07+MekeHobn4I/ti+GfEOrNeKtxZeKvC1xo1ulvsctIs1vNes0gcRgRmJQQzHeCoVv24or83XHfE3tOb2yt25IW9Nr/AI38z6n/AFdynltyfO7v+dvwP5If2mP2SP2kf2OfHn/Ctf2lvhHqnhTVnhWW1W82S293GURt9vcws8Fwq71VjE7BHyjYZWUf02/8E4P2Q9L/AGG/2M/BH7PEMEP9radpYuvFV3E0b/atXuD5123mJHH5sayMYomdd4ghhVixXJ9L+J/wc+GHxnstH0/4oeC7PWY/D3ibT/EOhNdKfM0/VLKdZra6hdSGjkR1wSpAdHkjcNHI6N01HEXF1fiDA0aEocji25WejdrJrqra6NvfcWWZLTy3ETqKV7qyvul1v+AUUUV8ee4eT/t0/tK2X7H/AOyB8Q/2kbm6s47nwv4Znn0VdSs557efVJMQ2EEqQESGOW7kgjYhlADkl0UF1/k/8R+I/EPjDxDf+LvF2u3mqatql5LeapqmpXTz3F5cSOXkmlkclpJHdizMxJYkkkk1+w3/AAdX/tUf8k7/AGI9N0b+7441rUJ7f/r7sLKKFxL/ANf7Sq0f/PsUf/WLX421+5eHuV/U8neJkvequ/8A26tF97u/mj8+4mxnt8d7JbQX4vV/ogr6K/4JSftfWX7D/wC3d4F+OfifVLy38MLeSaX4yW1vZ4o20u7QwyyzJCkjXEduzR3gg2MZHtIwu1trr9jf8FS/+CRB/Zo/4JP/AAX+LHhnwPYab4p+HdqF+MbLY2AvrmbWHhZnuL2F1+1pZXxWyhRROfKugwcJE7N+V9fSYXGZfxJltRQ1hJzg/wAV+KtJdk0eXWo4jK8VHm0kuWS/P8HdP0P12/4Lmfsz3fwX/a9k+Lelafaw+H/iVa/2haLZ2sUCRahAkcV7GVRyzuzGK5aZlQO94w+Zkdj8W1+k3hnV4v8Agqh/wQi0v4t+LfEdrqHxK+DNteLq+sXKTiZpdMjzPHPcXCSyzyXOlm2uZGjcJLdmIsyBGRPzYwvp+lfxjxRlNXJ86q0JrZv772fyb1Xk0f6x+AfGUeMPDvDOUr1cOlSl6RS9m/8AwDlTe7lGTP3/AP8Agl/+0xaftSfsZeE/GE+oXVxrehWq+H/FMl9dS3Ez6haRRq00k0iKZXniaG5JBfBuChdmRjX0FX5B/wDBv3+0lf8Agv4/63+zPrmv7dH8Z6XJfaLYzLcSf8Ta1UOwiCkxQ+ZaCdpHZQX+yQLvBVVb9fK+mynFfW8DGb3Wj9V/mtT+O/FzhX/VDjzFYSnG1Kb9rT/wTu7LyjLmgt/h1bdwrxv9v39pKw/ZT/ZN8YfFj/hIP7P1hdLksfCbxrA8z6tOhjtTHFOQs3lufPdMMfKglbY4UqfZK/KH/g4U/aYutc8f+Fv2TtBv7WTTtDtU8QeIFt7qKVjqEolit4ZVCb4Hit98gG/94l+jFMKjGs0xX1PBTmt9l6v/AC3Ofwt4VfGPHGEwEo3pKXPUvt7OGsk9/idobbyV9Ltfm7X1p/wRg/Ztv/jz+2xofizUPD/2rw78P/8AifavcStPHGlymRYIskQ2+d9q8uZY3ZVeO1m+8FKN8lYX0/Sv2x/4Ibfsx2vwS/ZDj+LOrafcQ+IPiXcDUrtbq3khaLT4WkjsYwrOVdWVpblZVVC63ig7giMfi8lwv1rHxTWkdX8tvxt8j+3PGzipcK8AYmUJWq4j9zTtveafM7rVctNSafSXKup9Aftvf8mXfF7/ALJf4g/9N09fzn1/Rh+29/yZd8Xv+yX+IP8A03T1/OdhfT9K9Lib/eKfo/zPzT6Lf/IhzD/r7D/0g+8f+Def/k9LxN/2S+9/9OOm18H193/8G8+P+G0vE2B/zS+9/wDTjptfB+F9P0rycR/yLaHrP/20/XuH/wDk5Wef9esH+Vc9l/4J/wD7PPgv9qz9rnwl8A/iHqeqWej699v+2XOizRx3KeRYXFwmxpY5FGXhUHKH5ScYOCP0s/4h5/2Lv+infFD/AMHWnf8AyBXwf/wRkx/w8o+G+B/0GO3/AFBr6v3gr3MhwOExODlKrBN8zWvoj8G+kBx1xdwzxlQwuVYydGnLDwk4xas5OpVTeq3tFL5Hwf8A8Q8/7F3/AEU74of+DrTv/kCj/iHn/Yu/6Kd8UP8Awdad/wDIFfeFFe5/ZOW/8+kfhv8AxFzxK/6GdX71/kfB/wDxDz/sXf8ARTvih/4OtO/+QK7z9mX/AII2/sxfsp/G/RPj58PPHfjy81jQftP2O21rVLKS2fz7aW3fesVpGxwkzEYcfMBnIyD9aUVUMry+nJSjTSa1XyOfGeKPiBmGDqYXE5jUlTqRcZRbVnGSs09Nmm0fJf7TX/BG39mP9qz43638fPiH478eWesa99m+2W2i6pZR2yeRbRW6bFls5GGUhUnLn5icYGAOD/4h5v2Lv+in/FD/AMHWm/8AyBX3hRRPK8vqTcpU029X6hg/FHxAy/B08LhsxqRp04qMYpqyjFJRS02SSSPg/wD4h5v2Lv8Aop/xQ/8AB1pv/wAgV+UP7Rfw80X4RftBeOvhP4burqfTvC/jLVNJ0+a+dWmkhtruWFGkKqqlyqAkhVBOcADiv6Tq/nO/be2/8No/F7j/AJqh4g7f9RGevneIMHhcLRg6UErvof0d9HrjTirijOcbSzXFzrRhTi4qTWjcrNqy7Gr/AME//wBnnwX+1Z+1z4S+AfxD1TVLPR9e+3/bLnRZo47lPIsLi4TY0scijLwqDlD8pOMHBH6Wf8Q837F3/RT/AIof+DrTf/kCvg//AIIyY/4eUfDfA/6DHb/qDX1fvBWmQ4HCYnBylVgm+ZrX0R5f0gOOuLuGeMqGFyrGTo05YeEnGLVnJ1Kqb1W9opfI+D/+Ieb9i7/op/xQ/wDB1pv/AMgUf8Q837F3/RT/AIof+DrTf/kCvvCivc/snLf+fSPw3/iLniV/0M6v3r/I/NH/AIOof+UfHg7/ALLJp/8A6adWr8Ca/fb/AIOof+UfHg7/ALLJp/8A6adWr8Ca/onw+/5J2P8Ail+Z/OnEv/I0foj9xPgV8W2+Cn/BqdfeMV0D+0vtng3xFoP2f7V5Oz+1fEl7pfnbtrZ8r7Z5u3A3+Xtyu7cPw7r9rPAXw98XfE3/AINNJ/DfgrSxeXltoupatNCZ0j22lh4wnvrqTLsAdlvbTPtB3Ns2qGYgH8U634TjT9tmDXxfWKl/TS2nrf8ApEZy5cmGXT2Ufv6/ofu9/wAGqHw/8I6b+x18RPipZaRs17WviY2k6lffaJD51nZafaTW0ewtsXZJf3bblUM3m4YsFQL+o1fmP/was+J9Cvf2GPHPg+HxDaTapp/xWubq60tbtWuLa2n03T1hlePO5I5HguFRiArNDKASUbH6cV+RcXOb4kxPN/N17WVvw28j7TJeX+y6Vu36sKKKK+cPUCiquua5ovhjRbzxJ4k1i10/TtPtZLnUNQvrhYYbaGNSzyyOxCoiqCxYkAAEnivOf+G3v2Lv+jvPhf8A+F/p3/x6olUp0/iaXqztwuW5jjouWGozmlvyxcretkz1CqfiPxH4e8H+Hr/xd4u12z0vSdLs5bzVNU1K6SC3s7eNC8k0sjkLHGiKWZmICgEkgCvOJ/25f2K7ePzJP2uvhkR/0z8d6ex/ITE14h/wUX/aB+Hv7Rn7Hni34Dfssftr/AvSfEPjSz/se+1bxZ8TLO3t7TS5sreBVSG5aSSWHdbhdsZVbhpVkV4kVtMLUwtbEQpzqxim0m21ZJvVv0RvWyHiGnRc44Oq7LReznq+2x/Pr+3T+0rfftgftf8AxD/aRubq8ltvFHiaefRV1KzgguINLjxDYQSpATGJIrSO3jYhmLFCS7sS7e4/8EGv2V/+Gpf+CkXg/wC26x9j034c48cal5Vx5c8/2C5g+zRRZikVt15LaeYrbMwCba6vszpv/wAEPfG6oWX/AIKN/sltgZ2r8YJMn25s6/U//g3w/YG8a/sW/sqa54v+L/h/SbXxf8R9ci1AzaP4iTUkfRYYQunq0lvI9qSXlvJ1eBnDR3Ue5yV8uP8Abc44ryOjw/Uo5dXjOSioRUWrpNWvbsknst7LS5+cUeF8/wAPmEKuY4apTi23ecZRTa1tdrdv8Ln2P+0N8CPh9+098D/FP7P3xU077ToPizRptPv9sMTy2+9fkuIfOR0WeGQJNFIUbZLGjgZUV/JN8Rvh/wCL/hN8Qte+FfxA0j+z9e8M6zdaVrlh9ojl+zXlvK0M0W+NmR9siMu5GZTjIJGDX9hdfgX/AMHPX7KUvwo/bH0b9qPTNTafT/izo+28t5pi0lrqWmQ21rIFURKqQvbNZFMu7tItyTtUIK+a8OM09hmE8DN6VFdf4o7/AHxvf/Cjp4owftMNHELeOj9H/k/zY3/g2E/aqPwm/bL1r9mLUdI86x+LWj5tbqG33SW2o6XDdXUW5jKoSBrZ74NhJHMotwNq7zXMft+/s2337Kf7WXjD4THQP7P0ddUkvvCaRtcPE+kzuZLURyzgNN5aHyHfLDzYJV3uVLH4R+HPxB8X/Cb4haD8VPh/q39n694Z1m11XQ7/AOzxy/Zry3lWaGXZIrI+2RFba6spxggjIr9t/wDgsf4c+G37W37KPwt/4KYfBAXd1Z6lp9rYal5cP2hoNPuRJNCt20M0kNrJa3fnWsijOZ7ry2kzGinwvGfIXzQzGmt9H6qy/GNtP7rP3r6KPGyyXi95RXlaniVyeXPrKm/v5op2etRbK7Pzw+FnxD1j4RfE7w38V/Ddtaz6j4X16z1bT4b5WaGSe2nSZFkCsrFCyAEBlJGcEHmv6RfhX8Q9F+Lvww8N/Fjw1a3UOneKNBs9W0+G+RVmjhuYUmRZArMocK4BAZgDnBI5r+Z2v18/4N/P2k7Dxn8Adb/Zn13xBu1jwZqkl/otjMsEf/EpumDMIgpEs3l3ZnaR2UhPtcC7yGVV/HeG8V7PEOi9pbeq/wCAf0l9JXhV5lw1Rzuivfw0uWe/8Oo0r/8Abs+X5SbvpZ/eHjjxp4a+G/grWPiH401L7Ho+g6Xcajq155LyeRbQRtLLJsQMzbUVjtUFjjABPFfziftDfGXWf2hfjn4s+N2vi6jn8T69c38dreai101nC7nybUSsAWSGLZCnyqAkagKoAUfrn/wXc/aS1D4Ofsm2vwn8La/9j1j4jao1jOsazrK2kwIJLwxyxlVXc7WsDo5IkiuZVCMNzJ+LdXxJiuevGgvs6v1f/A/M5fozcKrBZHiM+qx96vLkg/8Ap3B+81/indPf4Ftrf0X9kX4E3X7TX7THgn4F28F1JB4g16GLVGsbqKGaLT0zLeTRtLlA8dtHNIAQxJQAKxIU/wBGOh6HovhjRbPw34b0e10/TtPtY7bT9PsbdYYbaGNQqRRooCoiqAoUAAAADivzJ/4N3P2ef+R2/avvtT9fCWl2cM3/AF73l1JKhj/68xGyyf8APcMv3DX6gV6fDuF9jg/avef5Lb9Wflf0jOK5Z1xlHK6T/d4SPK99ak7Sm+2i5Y+qeutl5f8Atvf8mXfF7/sl/iD/ANN09fznfL6/rX9GP7b3/Jl3xe/7Jf4g/wDTdPX859ebxN/vFP0f5n6f9Fv/AJEOYf8AX2H/AKQfd/8Awbz4/wCG0vE2D/zS+9/9OOm18H/L6/rX3j/wbz/8npeJv+yX3v8A6cdNr4PrycR/yLaHrP8A9tP17h//AJOVnn/XrB/lXO7/AGZf2hvGf7Kfxv0T4+fDzTdLvNY0H7T9jttahkktn8+2lt33rHJGxwkzEYYfMBnIyD9a/wDEQz+2h/0TL4X/APgl1H/5Pr43+DHwZ+JX7QfxK034QfCDw3/a/iLV/O/s/T/tkNv5vlQvNJ+8mdI1xHG7fMwzjAySAfeP+HMv/BSj/o2//wAvDR//AJMowdTNI02sNzct+ibV9P0sRxjl3hXjMzhPiaWGVfkSj7apCEuTmlaylOL5eZys7WvfXQ9Q/wCIhn9tD/omXwv/APBLqP8A8n0f8RDP7aH/AETL4X/+CXUf/k+vL/8AhzL/AMFKP+jb/wDy8NH/APkyj/hzL/wUo/6Nv/8ALw0f/wCTK6/bcQdp/wDgL/yPk/7D+jx/Pgf/AAfT/wDlh6h/xEM/tof9Ey+F/wD4JdR/+T6/Sz/gn9+0N40/as/ZG8JfHz4h6ZpdnrGvfb/tlvosMkdsnkX9xbpsWSSRhlIVJyx+YnGBgD8g/wDhzL/wUo/6Nv8A/Lw0f/5Mr9aP+CZfwZ+JX7Pn7EPgn4QfF/w3/ZHiLSP7S/tDT/tkNx5Xm6ldTR/vIXeNsxyI3yscZwcEED18lqZpLFNYnm5eV7ppXuvL1Px7xsy7wrwfCtGfDMsM6/toqXsakJy5PZ1L3UZSfLzct3a17K+p7xRRRX0x/LwV/Od+29t/4bR+L3P/ADVDxB3/AOojPX9GNfzn/tvf8no/F7/sqHiD/wBOM9fM8Tf7vT9X+R/Un0W/+R9mP/XqH/pZ6h/wRkx/w8o+G+D/ANBjv/1Br6v3gr8H/wDgjL/yko+G/wD3GP8A0z31fvBWnDP+4y/xP8onj/Sd/wCS9w3/AGDQ/wDTtYKKKK+iP5zPzR/4Oof+UfHg7/ssmn/+mnVq/Amv32/4Oof+UfHg7/ssmn/+mnVq/Amv3nw+/wCSdj/il+Z+dcS/8jR+iP6Qv+CIXw/8I/Fr/giV4C+FfxA0j+0NB8TaN4o0nXLH7RJF9ps7jWdThmj3xsrpujdl3KysM5BBwa/nv/aG+BHxC/Zh+OHin9n74qad9m17wnrM2n3+2GVIrjY3yXEPnIjtBNGUmikKLvikRwMMK/op/wCDfz/lEZ8Jf+49/wCn/Ua+Xv8Ag5L/AOCYt38RvDZ/4KFfBTQrq41zw/p8Nn8RtG0zS4j9p0yISFdYZowJXkt12RSswk/0ZYmzFHaOX+a4fzqnl3F2MwtZ2hVqTS7KSnK333t62PVzLASxWS0K0FrCMfu5Vf7t/vPgb/git/wUWtv+Cen7WkOs/EPWbi3+G/jK3Gl+PEgs5LlrZV3Na36xRupZoJm+YhZGFvNchI3kZBX9K/hzxH4e8Y+HrDxd4R16z1TSdUs4rzS9U026Se3vLeVA8c0UiErJG6MGVlJDAggkGv456+yP+Ca//Ba79qD/AIJ3i1+H6j/hOfhjB9rf/hX+qXi2/wBlmnw/m2d55UklriVd5iw8DedO3lCWXzl9vjDg+pnE/rmDt7VKzT0UkttekumujVtVbXgyPO44GPsK/wAF9H2/4HXTX1uf0uUV+bfwi/4Ohf2AfG93omjfE3wP8QvBN1fWqHWtSvNHgvtM0y48rdIoktp2uZ4w4KLItqGbKs0cYLBcb4uf8HUH7GHhjStXg+DnwQ+IXizWLO68rSv7ShtNK03UUEwVpftHnTTxIY90iBrbeTtVlj3Er+ZLhPiOVX2f1aV/lbtve34+ex9Z/bOVqHN7Vfr92/4H6G/H/wCI/wAFfhJ8FfE3xC/aM1zSdP8AA+n6TKfE1xrsIltXtXHltC8RVvPMpcRLCqs0rSLGqszhT8s3/in/AIIB/Gf4cwx3HjT9muz0zXLO3uU+z61pOg6lGhKSoGKPb3lo/ADxt5bj5o3UZZa/D79vf/gqb+1x/wAFFNVt4Pjn4utbXwzpuofbNE8E+H7X7PptjN5KxGXBLS3Em0OQ88khjM8wi8tJGSvnKvssJ4X0MRhU8dU/ePokmku2q1ffp013fBR8QM2yrEXyypOmk004zlB8y2l7rVrdOvXTY/pU1X/gjL/wTL+Onw/03xB8H9LvdL02/aO9sPFHgfxtLfJf25RgFSS6e6geJiwbci7souHA3Bvzu+Onw7/4I2+D/jh4s+A2n/ty/EHwDqXgHWZdK13UvGXw8l1yz1e8Rik0VkdOjhkj+zSxyxStPGFkZlMJdFLt9G/sCfsl2P8AwRW/4Jn/ABG/4KB/F24s/wDhaXiHwBDfWmn634dn2eH5JV/4lujSKI0u1knvZ7Vbwbo0V0jQ7RbG4f8ADvxH4j8Q+MPEN94t8W67eapq2qXkt5qep6ldPPcXlxI5eSaWRyWkkd2LMzEliSSSTXi5L4b8N5xisSp3lSg1GMorkvLd23Wmiv1ve2x96/HjxUyGlRdDManO7yaqS9to9Ff2ile+6TvZrTVH6TaX/wAE8Ifik0Mf7LH7aHwP+KF9q6/aPCng/RfH0Vp4k1W1I8wM2nXQjNtMlvummgkkDRCORSWZMHn/AIh/8E2v28fhjrUegeJf2U/GV1PNarcLJ4d0ltXhCFmXDTWPnRq+UOYywcAqSAGUn1r/AINZP2Qb3xH8T/Gn7b3ifS7OTSvDtm/hfws11ZQTOdUnEM13cQuX8y2khtTHCW8sCVNSkVXwkiN+3FfA8UcE5NleaywuEqyaile9nZvW23RW673P17hf6UPiBLBxqZhh6NW99eWUJW0S1jLltdN/BfXe1j+ePwX/AMFDv25/AXiS38V6H+1j48nurXf5cWteIp9Stm3IUO+3u2lhk4Y43IdpwwwwBHpXjT/gq948/aL+Ftj8B/25/gH4I+L3hGPUFvNQ+3Q3Gk6rNMjO0UsN3YyIlpIgfy98UKloS8bbhLIW/an4l/A74K/GhbNfjB8IPC/ir+zxINP/AOEk0G3vvsvmbfM8vzkby92xM7cZ2LnoK+SvjB/wQP8A2KPHomvfhpd+J/At1/ZbQWdvpurG9slufnK3Esd4JJpOWUMiTxqVjAGxizn52nl+eZfUVXB4h3TutWmnpqt1fzufaw8VvBni6n7DiPJI0m1bmjCM0lqrOcFTqJWd7KLV2+qTf5e69+zJ/wAEg/2jXOo+FvHvxE/Zv1qZhcXen6lp7eMfDdvDGPK+zWrIY9RaaX5LgyTMY0InjAwYiP0a/wCCU37KHxFX9gPxz+wP8fPiJ8OPiB4HjE9v4R8cfDfxJa6zY2n24yzT2GxreN0u7K52X6yyh8nUYQjDyNq/KPx4/wCCKPx6+HXxLl+GPwZ+Kfgj4h6z/Z8epW/hW21630zxB/Zh/dvqMlhdShUtVuQYBIk0m5mTgEsqeb/sLfF3xX+wX+3P4Z8QfF3QNb8Mw214NM8Z6Tq0dxp8sOn3kQBkuITGZHSLzIbwRlDvMEeMEq49jEcacTVMGsuzlc9OTVpSWq6cykt7ptPfS/c463gt4Y51Sq594e49xxNGMqkaMZc93H3oR5JctWm+ZJRc7+9a+zPD/G/gzxL8OPGmsfDzxnpv2PWNB1S407VrPzkk8i5gkaKWPehZW2urDcpKnGQSOa9u/wCCYH7TF3+y3+2Z4T8YT6ha2+ia7dL4f8UyX11Fbwpp93LGrTSTSIwiSCVYbkkFdwtyhdVdjXtv/Bfr9ngfDj9qTSvj5Zal51r8SdL/ANItpZt0kF7p8VvbybVEahYWga0K5d2MnnZ2rsFfB+F9P0r4GtTqZbj3FbwenpuvvR/TmT43L/Erw/p1q0V7PF0XGaW0ZNOM0r6+5NSUXvdJppn1D/wWC/aG/wCGhP25/E32XS/stj4Hz4SsfMh2TS/Y55vPkkxI6tm6kuNjDbmIRblVt2fmnQ9E1rxNrVn4b8N6PdahqOoXUdtp+n2Nu001zNIwVIo0UFndmIUKASSQBzVTC+n6V9o/8EN/2Yp/jb+15H8WdW0+3m8P/DS3XUroXVvHMsuoTLJHYxhWcMjKyy3KyqrhWs1B2l0YEY1Myx9us393f7l+RWLr5Z4Z8AuenssHRSV9OaSSUV1s6k2lvvLc/Wr9kX4E2n7M37M/gn4GQW9rHP4f0GGLVGsbmWaGXUHzLeTRtLhyklzJNIAQuA4AVQAo9Goor9KpwjTpqEdkrL5H+ZOOxmIzLHVcXiJc1SpKU5PvKTbb+bbPL/23v+TLvi9/2S/xB/6bp6/nPr+jD9t7/ky74vf9kv8AEH/punr+c7C+n6V8fxN/vFP0f5n9k/Rb/wCRDmH/AF9h/wCkH3j/AMG8/wDyel4m/wCyX3v/AKcdNr4Pr7v/AODefH/DaXibA/5pfe/+nHTa+D8L6fpXk4j/AJFtD1n/AO2n69w//wAnKzz/AK9YP8q59Q/8EZf+UlHw3/7jH/pnvq/eCvwL/wCCTHjfwT8OP+CgfgDxn8QvF2l6Do9n/av2zVtav47W2g36VeIm+WUqq7nZVGSMswA5Ir9oZf25f2K4Rl/2uvhl/wAB8dae38pq+j4cq06eBkpSS957vyifzV9JLKs0x3HWGnhqE5r6tBXjGUlf2tbS6T11Wnmep0V4X4n/AOCmf7A/hLP9q/tUeE5tv/QLvGvvT/n3V/Ufr6HHJ/8AD5v/AIJr/wDRyH/ln6z/APIde3LHYOOjqRX/AG8v8z8LocD8a4qHPRyzESXdUajX3qJ9QUV8v/8AD5v/AIJr/wDRyH/ln6z/APIdangf/grR/wAE/PiP400f4eeDPj99s1jXtUt9O0mz/wCEV1aPz7meRYoo972qqu52UbmIUZySBzQsdgZOyqx/8CX+ZpU4C46o03UnlWJUUm23QqpJLVtvl0S6s+jKKKK6j5MK/nP/AG3v+T0fi9/2VDxB/wCnGev6MK/nO/be2/8ADaPxe4/5qh4g7f8AURnr5nib/d6fq/yP6k+i3/yPsx/69Q/9LPUf+CMv/KSj4b/9xj/0z3tfvBX4M/8ABG+7tbH/AIKR/DWa6farSarGp2n7z6TeKo49WIFfvNWnDP8AuMv8T/KJ5H0nU/8AXzDP/qGh/wCnawUUUV9Efzkfmj/wdQ/8o+PB3/ZZNP8A/TTq1fgTX9bH7VH7H37On7bHw9s/hX+058O/+Em0HT9Zj1WzsP7WvLLy7xIpYVl32ksTnEc8q7SxU7skZAI8C/4h/P8AgkX/ANGlf+X5r/8A8n1+mcL8ZZXkmUrC14Tck2/dUWtfWSf4Hymb5FjMwxjrU5RSslq3fT0TD/g38/5RGfCX/uPf+n/Ua+ya439n79n74RfstfCLSfgR8CPCX9heFNC+0f2VpX2+4uvI864kuJf3txJJI26WWRvmY43YGAAB2VfA5niqeMzKtiIJpTnKSvvZybV99de59HhKUsPhadKW8YpP5Kx+TH/BT3/g248M/Ei4vPjV/wAE87fTfDuuTXF1d618O9QvPs+m3mY2kVdMbYVs5WlGwW8jLbYmXa9skO1/x0+O/wCzz8cP2YfiDcfCv9oH4W6z4T1623t9g1izaP7REsskPnwP9y4gaSKRUniZ4n2EozDmv68qxviD8Ofh78WvCN58P/ip4E0bxNoOoeX9u0PxBpcV7Z3OyRZE8yGZWR9siI4yDhlUjkA19hkvH+ZZdTVHFR9rBdW7SXz1v89fM8PH8N4XFSc6T5H6afd0+X3H8elFf06fED/ghv8A8Ep/iZ4uvPG/iP8AY80a2vL7y/Oh8P61qWk2a7I1jHl2ljcw28XCgnZGu5izNlmZjc+Ff/BFX/glp8HPEM3ifwj+xr4ZvLmeza1kj8VXF3rtuI2dHJW31KaeJJMoMSKgcAsoYK7A/WPxKyf2d1Sqc3a0bX9eb8bfI8f/AFVx3N8cbfP8rfqfzl/syfsc/tP/ALZXi6TwR+zL8F9Z8WXltt+3zWMSx2dhujlkT7TdzMlvbbxBKE82RPMZCqbmwp/cT/glZ/wQE+EX7G39n/Gj9qOHRvHnxW0/WRfaHcWM9xJpHh7yt6wtbxyLH9qnO4TGaeL91IsXkojwmaX9CPDnhzw94O8PWHhHwjoNnpek6XZxWel6XptqkFvZ28SBI4Yo0AWONEUKqqAFAAAAFXK+Nz3jrMs2pujRXsqb3s7yfk5aaPskuzbR7mX8PYXBSVSb55LutF6Lv5t+lj8bf+Dq79qkE/Dv9iPTNH6bfHGtahNb/wDX1YWUULiX/r/aVWj/AOfYo/8ArFr8ba/qO/aB/wCCPv8AwTo/al+LurfHf47/ALO/9u+K9d+z/wBq6r/wl2r2vn+Tbx28X7q3u4412xRRr8qjO3JySScX4c/8EPP+CXXwm+IWg/FT4f8A7MP9n694Z1m11XQ7/wD4TXW5fs15byrNDLskvWR9siK211ZTjBBGRXuZDxrkeS5PTwqp1HJK70jZyer15r2vpe23ToefmGQ5hj8dKs5RSb01d0l8t/nv1PQv+Cc37IWl/sMfsb+Cf2c7fyJdU0vTftPii+gZHW71a4Jmu3EixRGSNZXMUTOu8QRQqxJXNe3UUV+Y4jEVcViJ1qjvKTbb827s+sp040aapwWiVl8gooorE0PzG/4OYv2a9Q1D4CeDv26/hbbXmm+MvhX4ltYL7xJo91DZ3NpplxKPInMw23DvBqH2UQCJ8xG9uHC8s6fmj8J/+Czv7WmjeHrL4U/tPy6X8dPh7DvS68LfEy1W6vFEspMtzbaqB9tgvRFJPDDcPJKIFmO2MhIwv9J3xF+H/hH4s/D7XvhX8QNI/tDQfE2jXWla3Y/aJIvtNncRNDNHvjZXTdG7LuVlYZyCDg18of8AEP8Af8Ejf+jS/wDy/Nf/APk+vvMl4kyOnk/1DNsO6qTfL7sZWi9be800027NdH9/hYjBZtQzSOOyyu6U1Z3UpRaktmnFehwHjH4ifDX/AILH/wDBH2/8a/s/+D9WOveEmhe38O61fX17fabrWnQxvcWqzgNJqksllPIsMrBzM13GZBFNvEX5C/L6/rX9EH7Jf7A/7J37DMGvWv7LXwsfwvF4me2fWoz4g1C+W4aASiIgXlxL5ZAmkzs27sjdnauOEu/+CN//AATcvbuW9m/ZtjV5pGdlh8VatGgJOTtVbsKo9AAAOgAFfl3E2UYbMMxdXLvdp9FPRpbpac22qvfZI/qHwV8Z8LwFkdbLs+hUq80+eDpKMrSatO/POFk7RkrX95zb31/Br5fX9a/c3/gi/wDs22HwG/Yn0Pxbf+H/ALL4i+IH/E+1e4laCSR7Z8iwRZIhu8n7L5cyxuzMkl1N90syLqf8OZf+Ca//AEbf/wCXhrH/AMmV9QVxZRk1XA13VqtN2srX+b1S/ps7PGDxryvjzIaWVZRSq04OfPUdRRjdRXuRSjOaabblK9rOMbX1sUUUV9EfzeeX/tvf8mXfF7/sl/iD/wBN09fznfL6/rX9NvjfwZ4a+I/gvWPh54z037Zo+vaXcadq1n5zx+fbTxtFLHvQqy7kZhuUhhnIIPNfOf8Aw5l/4Jr/APRt/wD5eGsf/JleBnGVYjMKkZU2lZW1v+iZ/Qngz4scO+HeWYrDZlSqzlVnGS9nGDSSjbXmqQ19Ez4O/wCDefH/AA2l4mwf+aX3v/px02vg/wCX1/Wv6Hf2ef8Agn9+yN+yn41uviH8A/hL/YOsXmlvp1zef29f3W+2eSOVo9lxPIoy8MZ3ABvlxnBIPB/8OZf+Ca//AEbf/wCXhrH/AMmVw1Mhxk8JTpKUbxcr6vra3TyPusr+kBwbguLsxzWdDEOniIYeMUoU+ZOkqvNzL2qST51y2bvre2l/we+X1/Wj5fX9a/eH/hzL/wAE1/8Ao2//AMvDWP8A5Mo/4cy/8E1/+jb/APy8NY/+TK5P9Wsd/NH73/kfWf8AEzvAX/QNif8AwCl/8uPwe+X1/Wj5fX9a/eH/AIcy/wDBNf8A6Nv/APLw1j/5Mo/4cy/8E1/+jb//AC8NY/8Akyj/AFax380fvf8AkH/EzvAX/QNif/AKX/y4/B75fX9a9Q/Yh2/8No/CHn/mqHh/v/1EYK/ZH/hzL/wTX/6Nv/8ALw1j/wCTK1PBH/BJj/gn58OPGmj/ABD8GfAH7HrGg6pb6jpN5/wlWqyeRcwSLLFJse6ZW2uqnawKnGCCOK0pcOY6FSMnKOjT3f8AkcOafST4Fx2WV8NTw+JUpwlFXhSteUWlf989NddGfRlFFFfaH8RhX8537b23/htH4vc/81Q8Qd/+ojPX9GNfOfjf/gkx/wAE/PiP401j4h+M/gD9s1jXtUuNR1a8/wCEq1WPz7meRpZZNiXSqu52Y7VAUZwABxXj5xl9bMKcY02lZ31v+iZ+zeDPiLkvh3meKxOZU6k41YRivZqLaalfXmnDT0bPxt/4J7a7d+Hf25fhNqGnuokk8faZatuXPyT3CQv+O2Rseh5r+h6vnTwN/wAEmv8Agn98NvGuj/ETwV8AvsWsaDqkGoaTef8ACVarJ5FzDIskb7HumVsOoO1gVOMEEcV9F0ZPl9fL6MoVGnd30v280ifGbxCyPxEzfDYvLadSCp03CXtFFN+82rcs56avdoKKKK9g/Gwrw74/S/Ffxh+1J8Pfgj4F+P8A4m8A6TqngDxVrmrXHhXTdHnuLy4sb7w/b26s2p2N2qxqmo3JIRVLErliFAr3GvnX9oz4L/B346/tzfCrwj8bvhN4Z8ZaTb/CfxzeW+l+KtBt9Qt4rhdT8Josyx3COqyBJJFDAZAdhnBOe7L/AGf1q89lGb2UtoSa0ejs+5z4rm9j7vePVr7S6rU8z1X9pj4sfDrwX+1t4P8AB/7YVn8Trn4S/Cf/AISPwx4ok07SH1Tw1rLWetxT6Vff2fFHZzSW9xo8dwEe1jkQXbRyiRVQ1037QWu/FL9krxP8NdVl/wCCims65qXiT4l6Foq/Dv4jaX4YX/hKNPvdTtdNvRZrp+n2N2J7Vb+O7EsbyInkBZYmSQkdl+2t8Ofh78Jv+CZXxr+H/wAK/AmjeGdB0/4N+K/sOh+H9LisrO236bdyP5cMKqibpHdzgDLMxPJJrjf2jP2Q/wBnz9m288B/tJfsvfDLRvhf4r0P4meGNEubr4faLaaXBrmkaz4g03TL/TtRgiiEd5A0U4lTevmQzwRSRPGQ272cPUwmIqRaglzSaS5Ia2hBau3uXer5U2ru2qu+GpGtSi7vZJ35paXk9lfWy01avZdNBvwe+Jnx9/bt+MPxT1HwF+0xrHwz+H/ws+JWreA7PR/C3g3S21jVtSsoNONxeXV5qaX8H2dZ3u1hihtoXaORHkfcvlir4w+N37VnwE+Dv7Tfwz8e/FCz8SeIvhb8J7nxt8N/iSumW0N/cWV7b60bOHULJLdbP7XZ3GlSoZIkENxEYWaGN/MVvnT/AIK9/tUfEL/gjV8cPD/xq/Y50fRo4vjl/bF14/8ABfiK3ln0ObV7JtP261BbwSwvbX00dy0dw8cgjuBHG8kbSr5p9Ysfh1fXX/BIL4sftcfET4m+JvGXxA+Mn7Ln9r+LNc8RXUAjt418MTyw2Fla2sMNvaWkUt3dyKiR72e6leSSRiCOz6lF0YV+WPspezUVyrmT5knzO2qdpp3bvdXX8uP1iXtJU7vnXM27u1raWV9N49Faz17+s/s/fFv4GeJ/i7pOh+Dv+CwX/C0tSn+0fZ/Af/CTeB7j+08W8jN+70vTIbtvLUNN+6kXHlZbKBlPnPw/+N3jX4i614l/4S79sH9pHR9Qh+KPirRbXTfA/wAAoNR0SztbPxDf2NpHFf8A/CKXccirbwQiSR7qTa4k3spVlX7cr8Ifit/wX5/bF/Yn+PfxU/Zk+Ffw1+GeoaD4Z+MnjP7BeeINH1CW8k+0eIdQu38xob6JDiSdwMIuFCg5OSeLL6ccw9o6cEmuXfk/vX2ptdvs3036G2JlLDcqlJ6325vL+9f8fkfoR8dv2gfjX4C/a/8AiFpH7S37RHj74J/CDTbPwvB8L/F3g/wHY3mj6lJe+bFfT6tqt5pOowafIl60NuBPLZosfluUYP5z637U3x3+L3wr8EfBXWo/2kPFh+GNx4Z1DUPit8d/hf8ADey16e4NrpkMlpePGkF5b2Gn3Ra6uZLiK0uFQwQRhoY5HlHzX/wWK/4K+/tf/wDBND9tOP4bfB+58M+J/DvirwBpmuQ6P440PzY9EuPtV/ayraSWT2srRyi2jkcXLzkPu8sxodg2v2vvjt8X/wDgkZ/wTK+Bfxg/Zc8Zx3K3HiXy9a8K+IvD+nf2Rqn9t2upavMWisbe2kthBdN/o8dpJbxJGAjpIAK9Cjls506FT2cLtLTSzTpSd23BtS05tedObvZJK/NPFRjKpHmlo3rrdPnSt8Vmtbacr5e7Z70v7SWpW/7F958cvgF+3T/wt6z1T4q+DrXRfFVxpOkLeaTp+oaroNrdaTdx2drDEJzHc3MhEttDcQreojKHiWQ9VeeJf2uP2lv2pviD8J/AfxO/4VT8NvhZrGk6dc+JPD+iWGpa54r1G50f7fcW8cl+JrfToIFv9MYhrKZ5SG2Tpl0T5S/Z8P8Awu3/AIJoah/wUT8ffvviV8fPjT4JvfG11b/urOCDS/HllpmnWNpAOIoILaHAZzJPI0jtLLJ8u3u/+Cy/xe8ef8EyIrT/AIKKfswahZ2/ifxx4m0bwl468L6to1rLo3iK3ttP1mW2u7ny4o737XFuVFkjukBjhijdXVAKj+z4/WJ0KUY895pOUY2TiqTeys0lzqL5db83LFu8b+sS9nGpNvl91tJu7Tc0t3fV8rav0tdpa+/fBTxx+1Z8Kv2uT+yX8ePFlp8QPC+teAdS8VeCviXNpNtpeqCS01aG3uNJvbe1fybl4oNR05lu4oLNG+YeVIxdo/Afhh/wUw+P1p+wNrFj+0wbPwr8abz9nXUPHnwt8Y2dvE2l+OLdNDa/W6tVkj8pdStC0f2zT2TAK+fEjW0mIuy/4JC6XfftV/DvRf8Agq98c/Ed5rHxS8feGdS8NrHHHBbaX4f0W28Q37pp9jbwxoxjLxxM0t1Jcz5iUCUAuG5n42/Aj4e/H/8A4N19D0T4g6b5n/CN/s06P4o0O8ihiaey1DTdBiu4XiaRH8vf5bQSMgDtBPMgZd5IUcPhaeYfVsRTi5c9KMnFJJSfNrFbcr0UlZKVm7Rdmh1a0sP7WnJpcs2k3fRW0b3vvZ3bXdq56ZrH7U3xw/4dlfCXxt4P1L+0/jR8ZvBvhnRvCF+2mt5X/CR6rpqTS6nMlvaTxxQWkQvNSlDQiHyrJ0+UMoqnp/7WPxr0T9hn9oTQPHfjyzPxw/Z/8M+IbXWdZt9PsYTfSQ6ZLfaLr4sUnuI4o7y0a2nMbhUFwl1EIwsRQef/ALE/wD+FX7Tx+EOmftCeCdG8Z6D8PP2Nvh/L4Y8K+JvD1hf6fb3mt/axfXpSeB3M/l6DYRo28KiGYBcysa85/wCCongD4c/sU/FmHw3+zJ8ONB8H6J8b/wBm34paB468N+HdNTT9NnGj6BNqdlfJa2ojiN6sks0PnyLIfImdFC53CqeDwUsZ9TcVz3dT4Vayd+W978vImuXltzPeyRMsRiFR9vfSyju+qte3fma1vstrs+9v2LviD4v+LP7HXwn+KnxA1b+0Ne8TfDPQdV1y/wDs8cX2m8uNPgmml2RqqJukdm2oqqM4AAwKPjt8QfF/gz4pfBfw54b1b7NZ+LPiZdaV4gh+zxv9qs08Ma7fLFllJTFzZW0m5Crfu9udrMrfjb/wTo/4L8/ti/8ACwvgT+xH/wAK1+Gf/CKf2z4X8D/2h/Y+of2h/Z/m21h5u/7d5fn+V827y9m/nZj5a/Xr9p7/AJLb+zn/ANlkvv8A1CvE9eXjstlgcynGdrNVGktlaMrdFt07HZh8UsRhYuN7pxTv6q586/8ABPj/AIKDfH74iftf/GT4BftK215feGG+OPibwt8GfFlr4eiW3juNK864udCuprbHlyJYLDc27zxgzCO9BnkaNY10/wBm39v74u/tIf8ABWPXPgzo1tcab8HYfgneax4NjmewuE8Tz23iFNPPiCCaBWljtpWFzFAhlKSwRRXIUeeoHDfsW/sj/A/9tz4H/td/AH4/eF/7Q0bUP2yfG8trdW7Kl5pV4q2givbSUq3lTx7mw2CrKzxurxySRt33hzw54e8H/wDBeyw8I+EdBs9L0nS/2KYrPS9L021SC3s7ePxSEjhijQBY40RQqqoAUAAAAV62Ko5b7bEclJKSptWsuVOMYvmjr8Tur6aNNr4vd46NTFezpXnpzLrq7t6PyVu+ui6a81/wSN/4Kp638bv2RdQ8Q/tua99h8V+EfBt9401DxPO1kf8AhIvC8d/qMD6nDY2CLJH9klsJ7SWIQZ/d20gLm6VRB8Nv26/2wfGPw6/bW8W+PZh4Z1D4aeC4/EPwt0Wfw7Fb3nhq2u/Dk+p2UV7DMrlr1EFs9zFKZUS58+Nf3QRRg/8ABJv9iX9m/wDbH/4JNfs23n7Q3w6s/ECeAvE2va3o9tdW8bJPJ/bGqxm1nLIWktHcwzSW4ZUme0gEokjVo2o/EH/ktv8AwVQ/7I34d/8AUK1Cuivhsr/tPFwp0kmpbWXLFLEQh7v+JNtqyST5VoZ06uM+q0JSne63vq705S19NLd93qfVPxr1b9p74y/tVQ/s3/BD4zwfDLwz4R8J6X4p8beKtO0m11LWtY/tC71G1ttLtIr6CW1tIlGm3U0ty6yyFzbokYXzS2b8W9a+PH7M37NP7QmtT/tif8Jzr3hj4Z3/AIo8E/214Z0qDXPDW3S7vynuvsccVteQSXdlNJAWsosGKeNmuAvycH/wV5tNW/ZR+Geuf8FUvgV4r1DR/iZ4F8O6X4dmtXENzpPiLR5/EFkxsb+2mjdgitNOVltXtpx5zgykbQvz/wDskftKfE/9vP8A4Jiftiftz/HC6s4vE+teAda8HR6LodmLfS9O0vSfDtxd26wI5ecyPcazfSSPNNKSXRV2KgWvPwuXyrYOliIqPsvdTTiuZvnipXdm2m3de9t7tktDorYmMMRKk78+rvd2tytrS9r6dt9b3PVde+On7VfwP/YH+E37eM/7ZuteMPE3iTR/DN/cfCfxd4a0YWfja81SzjZ9D0z+ydJiv4r53mMlsytcBTb/AL9Gi82RPbf22/i/8d9a8feG/wBjX9jfx9Y6D8TfE/h3WfEd9r04sJ18O6TZWrx2txPDciVhHdatNp9ruW2nJhF8UCvCHT5W8f8Agf4O/sW/8EYPhf8A8FD/ANn/APZ98A6N8WvA/gHwNrmm+Krfwnbw3F7cXsdhY36XkkKxyXUdza393HIHcnM3mqyTRxSp6x+xd8Kvgf8At1/F39o/43/tVfAPwb4317w/8ftW8BaDJ4o0VdUg0zQ9Gt7aK1t7WG9MyWu+Sa5uJvJCCWe5kdhgIqVWp4OLliXFctOVRfBFXd4qKcFaLjHmum3eT91qyV5pyxErUru8lF/E9rNt3eqbtayVlundnTfEX9p7xX+01/wS/m/4KC/s2/HTxN8PrrTPhRrniRNH0TT9MvLeTVLS0lMtjdnVdMlklS2u7SaDfALcSjewLBo2Xyf9oD45fthfA3/gjL/w3/of7Z/jLVfHGtfDPwlqsVrrHhvwydP0681K80o3EsEUGkxOcRzzxIsskqhJSSGdUkXmbHw94f8Agtpv/BTT9ln4UaDZ6D8P/DPgGHX/AA/4X021VLewv9X8H3Ut+8XG5I5Ht4dsIPlRBAsSRrkG5+3Z/wAqwuh/9kb+HP8A6U6LXZh8LhaWKoUowi4Tr07c0Yt+zqRjNRk2m3ZSs9dfQxqVq0qNSbk1JU53s2lzRbi2lfTVXX+Z9Fa/8bfjX+1H+234w/ZF+BnxQvPhn4d+C9npd38SvFWn6bY3ms67e6rZST2Fhp6Xtvc2tvaRxgzT3EsbzPIiQxxxpvma74N+LPxd/Zs/bN0D9k/4/fHP/hPtB+LWjalqXwr8QazpNva65ZahpcNs2oaTdLptnDZzwPBK13Bc7IHQxzwOJCYGPhn/AAWr+KPiT/gm1b+H/wDgo9+y5Fa6b468SeKLPwh470u8iMmj+LdP+wXs9tJqFsjI0l1atbKsF1G8cyxSSQs7xFUX0D/gkXf+L/2tfg34b/4KYfHz4gazrnjzxho+taNYaP50dvofhfTV16532unWcKLjzfsdn5k9y9xcuLSFTNtUg+dPBwWVrFqMfY8iVrLn59Y83Na9vaJy+L4Pdt26o1pfXHRu+fmve75eXR2tffldtvi1M3/gk7+3J8ePiJ4E8K/B/wDb71+1PxE8b6Aviv4YeJotLhtLPxroM1vFcPFC8ISFtRsWkkjuLVYoXWAQTKsyGS4P0h+xd8QfF/xZ/Y6+E/xU+IGrf2hr3ib4Z6DquuX/ANnji+03lxp8E00uyNVRN0js21FVRnAAGBXiv7KX7Nfww/ar/wCCSnwT+F/xQtLyOOP4c+H9R0HXdGvDa6p4f1SC0ja21PT7lRutruFzuSRcggsjh43dG9S/4J0f8o+PgT/2Rvwv/wCmm2rlzeOFl7arSgov2nK0krK3N8PZPS8dk1o7NJa4KVaPs4Tldct7vfW2/dro+z76v5n/AGef2pfG/ijx14W+E/7Un/BQ7xl8L/jpfazDqWufB/xd8NdF0nQ7qAa55Emk6XNPYu+oQTxq9pa3Nvqk88wxcgFkkgRdW/ao+LviH/gov+0J8CPGP7Tvxk8M+FPh/wD8In/whulfCT4O2/iLyvt2kC4u/tcqeH9SkTMoVo/NaPO6QLuCYT5b8Pftq/H79vz/AIKA3H/BFr9qbxDZ+IPhbb/FjxBYeIteg0uKy1/xNYaJNqF9aWd5PbBLeKNpbK1WR7O3tpWWLCyIWdm5r9vL/gqj+0H/AMEzv+Cuf7RX/CiPB3g3Vv8AhNv+ER/tX/hLtPu7jyvsegW/leV9nuoNuftUm7duzhcYwc/RvK4qtVjKEed05NJKPKv3tNXi/Z3X2lZxk0vtPmdvM+uS9nBqT5eZK93d+5J2a5vR3TV300V/u74+/E/9obRP2mf2Tf2Zvh3+1l4/07RfixZ+MrrxV4n1Lwjolv4gvo7PTYdQshLBd6QsVnJGZDE0f2SJwmVlXzAXElx4t/bRuv2iPip+w18Jf2x7bxVf2vwrbxJ4d8daj4Xsk1jwN4geS0jsNJ1eW2046W9reAXFyii1F79n+0HaAlvO/wA4+E/jH/w8x+Lv/BPf4t/tUfCvwbq3/Cbf8LY/t7wz/Yf2jSJfsduYYf8ARrx592PssUnzs2JBuGMAD6i+CF54d/Zt/wCCrHiL9iL4FfDjw34V+HXib4G2/wARrzQ9D0lbWO31+PVRpEk8CRFY4UmtIrZZI1TaXtUkUI8k7TeXWhRwuGh7kXNU5Sa5I2bVecbt2u7JWUbJNJJ6XR1U5VK1WXvPlckvid7OnF2te27ve7d79dTa+Iv7b3jT4g/sI+Gfid8BfCl5ovxS+LF5F4O8H+HdU068L+HPFcrzW18t2HsHYR6S9rqNxO8tssbppcnQSLnyfxD/AMFHPiV+yP8AEn9sbVPjX4k1n4heFPgHo3w9j8IaS1np1peXN5qmnCOV5p7e3iX/AEi8kiklfYywqXMMIAWE+kfB/wDZX+Fnhz/gqr8SfiJYWX/IJ8I6d4r0PRTpdgtppmueI3ubDV9QgKW6zLPPB4ZsdzmUktc3xOftLAcL8Dfg58MP2gv+Ckn7enwY+M/guz8Q+GPENn8N7XV9Iv1PlzR/2DMwIKkNHIjqrpIhV43RXRlZVYFOjlmHVRTp80FCFR7cyU6tH3Yy30g2r6NuUugSqYupyuMrS5nFdrxhPVrzlrbXRLqeyeHP2dP29rrwHYeI/F3/AAUNvLH4gSXkWoappOm/D3Rbrwfbk3Qmk02K2e1i1Oa0WDNqszahHcNgTFkY+WPDtW/ao+LviH/gov8AtCfAjxj+078ZPDPhT4f/APCJ/wDCG6V8JPg7b+IvK+3aQLi7+1yp4f1KRMyhWj81o87pAu4JhPmz9k7/AIKMftyfED/gpLH/AMEmNQ/aP1WDwr4d+JHijRLX4kDSdOuvF1zp2kWmora29xc3ltNZzljaQvLO1oZ5G3EyjcRXE/t5f8FUf2g/+CZ3/BXP9or/AIUR4O8G6t/wm3/CI/2r/wAJdp93ceV9j0C38ryvs91Btz9qk3bt2cLjGDnvp5NiqNatDEKnJum3HljFWftaab1g7aNpaOybStds55Y6jUpwlTcl7yTu27+5J/zd99V03sfs98HLW+tfhhorah4/8TeKJLizF0uueMtHg0/VLiOYmVBc2sNpaLbyIjrH5Zt4nUIBIvmByemrwH/gl7+1R8Qv22P2F/A/7TfxU0bRtP17xN/af2+z8P28sVnH9n1O7tE8tZpZXGY4EJy7ZYsRgYA9+r4bERlTxE4y3Ta0236aL8l6I+gpSUqcWuqX9dT/2Q=="
+                            style="width:1.51389in;height:0.49097in" /></td>
+                    <td rowspan="3">
+                        <p>PHIẾU KIỂM TRA</p>
+                        <p>DS160</p>
+                        <p>VER 01-12/23</p>
+                    </td>
+                    <td>- MÃ ĐƠN</td>
+                    <td colspan="3">PKT – DS160</td>
+                </tr>
+                <tr class="even">
+                    <td>- LẦN</td>
+                    <td colspan="3">01</td>
+                </tr>
+                <tr class="odd">
+                    <td>
+                        <ul>
+                            <li>
+                                <p>NGÀY LÀM</p>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>DD</td>
+                    <td>MM</td>
+                    <td>YY</td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <colgroup>
+                <col style="width: 25%" />
+                <col style="width: 6%" />
+                <col style="width: 30%" />
+                <col style="width: 16%" />
+                <col style="width: 1%" />
+                <col style="width: 19%" />
+            </colgroup>
+            <thead>
+                <tr class="header">
+                    <th colspan="2"><strong>Tên đương đơn:</strong></th>
+                    <th colspan="2"><strong>Số ID:</strong></th>
+                    <th colspan="2"><strong>MS:</strong></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="odd">
+                    <td colspan="2"></td>
+                    <td colspan="2"></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="even">
+                    <td rowspan="2"><strong>PHỤ TRÁCH</strong></td>
+                    <td colspan="2" rowspan="2"><strong>HỌ VÀ TÊN</strong></td>
+                    <td colspan="3"><strong>CHỮ KÝ</strong></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="2"><strong>GIẤY</strong></td>
+                    <td><strong>NVC</strong></td>
+                </tr>
+                <tr class="even">
+                    <td><strong>Điền đơn</strong></td>
+                    <td colspan="2"></td>
+                    <td colspan="2"></td>
+                    <td></td>
+                </tr>
+                <tr class="odd">
+                    <td><strong>Kiểm tra</strong></td>
+                    <td colspan="2"></td>
+                    <td colspan="2"></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <colgroup>
+                <col style="width: 4%" />
+                <col style="width: 0%" />
+                <col style="width: 0%" />
+                <col style="width: 1%" />
+                <col style="width: 0%" />
+                <col style="width: 0%" />
+                <col style="width: 0%" />
+                <col style="width: 0%" />
+                <col style="width: 1%" />
+                <col style="width: 0%" />
+                <col style="width: 0%" />
+                <col style="width: 2%" />
+                <col style="width: 35%" />
+                <col style="width: 11%" />
+                <col style="width: 1%" />
+                <col style="width: 1%" />
+                <col style="width: 0%" />
+                <col style="width: 1%" />
+                <col style="width: 11%" />
+                <col style="width: 0%" />
+                <col style="width: 2%" />
+                <col style="width: 1%" />
+                <col style="width: 1%" />
+                <col style="width: 8%" />
+                <col style="width: 0%" />
+                <col style="width: 9%" />
+            </colgroup>
+            <thead>
+                <tr class="header">
+                    <th colspan="2"><strong>#</strong></th>
+                    <th colspan="11"><strong>HẠNG MỤC</strong></th>
+                    <th colspan="11"><strong>THÔNG TIN</strong></th>
+                    <th colspan="2"><strong>NOTE</strong></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="odd">
+                    <td colspan="26"><strong>THÔNG</strong> <strong>TIN</strong>
+                        <strong>CÁ</strong> <strong>NHÂN</strong>
+                    </td>
+                </tr>
+                <tr class="even">
+                    <td colspan="2" rowspan="11"><strong>1</strong></td>
+                    <td colspan="11">Surnames </td>
+                    <td colspan="11"><em>Tên + tên lót</em></td>
+                    <td colspan="2" rowspan="4"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="11">Given Names </td>
+                    <td colspan="11"><em>Họ</em></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="11">Full Name in Native Language</td>
+                    <td colspan="11"><em>Họ và tên ghi theo tiếng việt</em></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="11">Have ever used other names?</td>
+                    <td colspan="11"><strong>YES/NO</strong></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="7" rowspan="2"></td>
+                    <td colspan="4">Other Surnames used</td>
+                    <td colspan="11"></td>
+                    <td colspan="2" rowspan="2">YES điền</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="4">Other Given Names used</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="11">Do you have a telecode that represents your name?</td>
+                    <td colspan="11"><strong>YES/NO</strong></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="7"></td>
+                    <td colspan="4">Telecode surnames</td>
+                    <td colspan="11"></td>
+                    <td colspan="2" rowspan="2">YES điền</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="7"></td>
+                    <td colspan="4">Telecode Given Names</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="11"><strong>Sex </strong></td>
+                    <td colspan="11"><strong>MALE/FEMALE</strong></td>
+                    <td colspan="2" rowspan="2"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="11"><strong>Current Marital Status:</strong></td>
+                    <td colspan="11"><strong>DIVORCED/MARRIED/SINGLE</strong></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="2" rowspan="4"><strong>2</strong></td>
+                    <td colspan="11">Date of Birth</td>
+                    <td colspan="5"><strong>Ngày</strong></td>
+                    <td colspan="5"><strong>Tháng (chữ)</strong></td>
+                    <td><strong>Năm</strong></td>
+                    <td colspan="2" rowspan="4"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="11">City of Birth</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="11">State/Province of Birth </td>
+                    <td colspan="11">Bang / Tỉnh</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="11">Country/Region of Birth </td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="26"><strong>QUỐC TỊCH</strong></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="2"><strong>3</strong></td>
+                    <td colspan="11"><strong>Country/Region of Origin
+                            (<em>Nationality</em>)</strong></td>
+                    <td colspan="11"></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="2" rowspan="4"><strong>4</strong></td>
+                    <td colspan="11"><strong>Do you hold or have you held any nationality
+                            other than the one you have indicated above?</strong></td>
+                    <td colspan="11"><strong>YES/NO</strong></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="7"></td>
+                    <td colspan="4">Other Country/Region of Origin
+                        (<em>Nationality</em>)</td>
+                    <td colspan="11"></td>
+                    <td colspan="2">YES điền</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="4"></td>
+                    <td colspan="7">Do you hold a passport from the country/region of origin
+                        (nationality) above?</td>
+                    <td colspan="11"><strong>YES/NO</strong></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="4"></td>
+                    <td colspan="7">Passport Number</td>
+                    <td colspan="11"></td>
+                    <td colspan="2">YES điền</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="2"><strong>5</strong></td>
+                    <td colspan="11">Are you a permanent resident of a country/region other
+                        than your original nationality? Which countries/regions?</td>
+                    <td colspan="11"><strong>YES/NO</strong></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="2"><strong>6</strong></td>
+                    <td colspan="11">National Identification Number</td>
+                    <td colspan="11"></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="2"><strong>7</strong></td>
+                    <td colspan="11">U.S. Social Security Number </td>
+                    <td colspan="11"></td>
+                    <td colspan="2">Nếu có</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="2"><strong>8</strong></td>
+                    <td colspan="11">U.S. Taxpayer ID Number </td>
+                    <td colspan="11"></td>
+                    <td colspan="2">Nếu có</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="26"><strong>THÔNG TIN CHUYẾN ĐI</strong></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="2"><strong>9</strong></td>
+                    <td colspan="11">Visa class</td>
+                    <td colspan="13"><strong>TEMP. BUSINESS PLEASURE FOR VISITOR (B)<br />
+                        </strong></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="2"></td>
+                    <td colspan="4"></td>
+                    <td colspan="7">Specify</td>
+                    <td colspan="13"><strong>BUSINESS &amp; TOURISM (TEMPORARY VISITOR)
+                            (B1/B2)</strong></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="2" rowspan="3"></td>
+                    <td colspan="11">Application Receipt/Petition Number</td>
+                    <td colspan="11"></td>
+                    <td colspan="2"><strong>(K)</strong> điền</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="11">Surnames</td>
+                    <td colspan="11"></td>
+                    <td colspan="2"><strong>(K2) (K4)</strong> điền</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="11">Given Names</td>
+                    <td colspan="11"></td>
+                    <td colspan="2"><strong>(K2) (K4)</strong> điền</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="2"><strong>10</strong></td>
+                    <td colspan="11"><strong>Have you made specific travel
+                            plans?</strong></td>
+                    <td colspan="11"><strong>YES/NO</strong></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="2" rowspan="2"></td>
+                    <td colspan="4" rowspan="2"></td>
+                    <td colspan="7">Intended Date of Arrival</td>
+                    <td colspan="2"><strong>Ngày</strong></td>
+                    <td colspan="4"><strong>Tháng<br />
+                            (chữ)</strong></td>
+                    <td colspan="5"><strong>Năm</strong></td>
+                    <td colspan="2" rowspan="2">NO điền</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="7">Intended Length of Stay in U.S.</td>
+                    <td colspan="5"></td>
+                    <td colspan="6"><strong>MONTHS</strong></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="2" rowspan="7"></td>
+                    <td colspan="4" rowspan="7"></td>
+                    <td colspan="7">Date of Arrival in US</td>
+                    <td colspan="2"><strong>Ngày</strong></td>
+                    <td colspan="4"><strong>Tháng<br />
+                            (chữ)</strong></td>
+                    <td colspan="5"><strong>Năm</strong></td>
+                    <td colspan="2" rowspan="7">YES điền</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="7">Arrival Flight (if known)</td>
+                    <td colspan="11">Thông tin chuyến bay đến Mỹ</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="7">Arrival City</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="7">Date of Departure from U.S.</td>
+                    <td colspan="2"><strong>Ngày</strong></td>
+                    <td colspan="4"><strong>Tháng<br />
+                            (chữ)</strong></td>
+                    <td colspan="5"><strong>Năm</strong></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="7">Departure Flight (if known)</td>
+                    <td colspan="11">Thông tin chuyến bay về</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="7">Departure City</td>
+                    <td colspan="11">Thành phố rời đi</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="7">Location</td>
+                    <td colspan="11">Các nơi sẽ đi ở Mỹ</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="2"><strong>11</strong></td>
+                    <td colspan="22"><strong>THÔNG TIN ĐỊA CHỈ Ở BÊN MỸ</strong></td>
+                    <td colspan="2" rowspan="6"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="2" rowspan="5"></td>
+                    <td colspan="11">Street Address (Line 1)</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="11">Street Address (Line 2)</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="11">City</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="11">State</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="11">ZIP Code</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="2"><strong>10</strong></td>
+                    <td colspan="11">Person/Entity Paying for Your Trip</td>
+                    <td colspan="11"><strong>SELF/</strong></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="2" rowspan="6"></td>
+                    <td colspan="4" rowspan="6"></td>
+                    <td colspan="7">Surnames of Person Paying for Trip</td>
+                    <td colspan="11"></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="7">Given names of Person Paying for Trip</td>
+                    <td colspan="11"></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="7">Telephone number</td>
+                    <td colspan="11"></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="7">Email address</td>
+                    <td colspan="11"></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="7">Relationship to You</td>
+                    <td colspan="11"></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="7">Is the address of the party paying for your trip the
+                        same as your Home or Mailing Address?</td>
+                    <td colspan="11"><strong>YES/NO</strong></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="4" rowspan="6"></td>
+                    <td colspan="8" rowspan="6"></td>
+                    <td>Street Address (Line 1)</td>
+                    <td colspan="11"></td>
+                    <td colspan="2" rowspan="6">NO điền</td>
+                </tr>
+                <tr class="odd">
+                    <td>Street Address (Line 2)</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="even">
+                    <td>City</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="odd">
+                    <td>State/Province</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="even">
+                    <td>Postal Zone/ZIP Code</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="odd">
+                    <td>Country/Region</td>
+                    <td colspan="11"><strong>Quốc gia</strong></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="26"><strong>THÔNG TIN NGƯỜI ĐI CÙNG</strong></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="2"><strong>11</strong></td>
+                    <td colspan="11"><strong>Are there other person traveling with
+                            you?</strong></td>
+                    <td colspan="11"><strong>YES/NO</strong></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="2"><strong>12</strong></td>
+                    <td colspan="11"><strong>Are you travelling as part of a group or
+                            organization?</strong></td>
+                    <td colspan="11"><strong>YES/NO</strong></td>
+                    <td colspan="2">YES điền</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="3"></td>
+                    <td colspan="5"></td>
+                    <td colspan="5">Group Name</td>
+                    <td colspan="11"></td>
+                    <td colspan="2">YES điền</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="3" rowspan="3"></td>
+                    <td colspan="6" rowspan="3"></td>
+                    <td colspan="4">Surnames of Person Traveling With You</td>
+                    <td colspan="11"></td>
+                    <td colspan="2" rowspan="3">NO điền</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="4">Given Names of Person Traveling With You</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="4">Relationship with Person</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="26"><strong>THÔNG TIN VISA MỸ TRƯỚC ĐÂY</strong></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="2" rowspan="6"><strong>13</strong></td>
+                    <td colspan="11"><strong>Have you ever been in the U.S.? </strong></td>
+                    <td colspan="11"><strong>YES/NO</strong></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="11">Date Arrived</td>
+                    <td colspan="5"><strong>Ngày</strong></td>
+                    <td colspan="4"><strong>Tháng<br />
+                            (chữ)</strong></td>
+                    <td colspan="2"><strong>Năm</strong></td>
+                    <td colspan="2" rowspan="2">YES điền</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="11">Length of Stay</td>
+                    <td colspan="5"></td>
+                    <td colspan="6"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="11">Do you or did you ever hold a U.S. Driver’s
+                        License</td>
+                    <td colspan="11"><strong>YES/NO</strong></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="4"></td>
+                    <td colspan="7">Driver’s License Number</td>
+                    <td colspan="11"></td>
+                    <td colspan="2" rowspan="2">YES điền</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="4"></td>
+                    <td colspan="7">State of Driver’s License</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="2" rowspan="12"><strong>14</strong></td>
+                    <td colspan="11"><strong>Have you ever been issued a US
+                            Visa?</strong></td>
+                    <td colspan="11"><strong>YES/NO</strong></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="7" rowspan="3"></td>
+                    <td colspan="4">Date issued</td>
+                    <td colspan="5"><strong>Ngày</strong></td>
+                    <td colspan="4"><strong>Tháng<br />
+                            (chữ)</strong></td>
+                    <td colspan="2"><strong>Năm</strong></td>
+                    <td colspan="2">YES điền</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="4">Visa classification</td>
+                    <td colspan="11"></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="4">Visa number</td>
+                    <td colspan="11"></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="7"></td>
+                    <td colspan="4">Are you applying for the same type of visa?</td>
+                    <td colspan="11"><strong>NO</strong></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="7"></td>
+                    <td colspan="4">Are you applying in the same country or location where
+                        the visa above were issued, and is this country or location your place
+                        of principal of residence?</td>
+                    <td colspan="11"><strong>NO</strong></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="7"></td>
+                    <td colspan="4">Have you been ten-printed</td>
+                    <td colspan="11"><strong>NO</strong></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="7"></td>
+                    <td colspan="4">Have any your US visa ever been lost or stolen?</td>
+                    <td colspan="11"><strong>NO</strong></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="10"></td>
+                    <td>Year</td>
+                    <td colspan="11"></td>
+                    <td colspan="2" rowspan="2">YES điền</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="10"></td>
+                    <td>Explain</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="7"></td>
+                    <td colspan="4">Have any of your U.S visas ever been cancelled or
+                        revoked</td>
+                    <td colspan="11"><strong>NO</strong></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="10"></td>
+                    <td>Explain</td>
+                    <td colspan="11"></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="2"><strong>15</strong></td>
+                    <td colspan="11"><strong>Have you ever been refused a US Visa, been
+                            refused admission to the United States, or withdrawn your application
+                            for admission at the port of entry?</strong></td>
+                    <td colspan="11"><strong>NO</strong></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="2"></td>
+                    <td colspan="7"></td>
+                    <td colspan="4">Explain</td>
+                    <td colspan="11"></td>
+                    <td colspan="2">YES điền</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="2"><strong>16</strong></td>
+                    <td colspan="11"><strong>Has anyone ever filed an immigrant petition on
+                            your behalf with the United States Citizenship and Immigration
+                            Services?</strong></td>
+                    <td colspan="11"><strong>NO</strong></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="2"></td>
+                    <td colspan="7"></td>
+                    <td colspan="4">Explain</td>
+                    <td colspan="11"></td>
+                    <td colspan="2">YES điền</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="26"><strong>ĐỊA CHỈ Ở HIỆN TẠI</strong></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="2" rowspan="13"><strong>17</strong></td>
+                    <td colspan="11">Street Address (Line 1)</td>
+                    <td colspan="11">Số nhà + Đường + Quận/Phường/Xã</td>
+                    <td colspan="2" rowspan="6"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="11">Street Address (Line 2)</td>
+                    <td colspan="11">Số nhà + Đường + Quận/Phường/Xã</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="11">City</td>
+                    <td colspan="11">Thành phố / Huyện</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="11">State/Province </td>
+                    <td colspan="11">Bang / Tỉnh</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="11">Postal Zone/ZIP Code </td>
+                    <td colspan="11">Mã bưu điện</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="11">Country/Region  </td>
+                    <td colspan="11"><strong>Quốc gia</strong></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="11">Is your Mailing Address the same as your Home
+                        Address  </td>
+                    <td colspan="11"><strong>YES/NO</strong></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="8" rowspan="6"></td>
+                    <td colspan="3">Street Address (Line 1)</td>
+                    <td colspan="11">Số nhà + Đường + Quận/Phường/Xã</td>
+                    <td colspan="2" rowspan="6">NO điền</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="3">Street Address (Line 2)</td>
+                    <td colspan="11">Số nhà + Đường + Quận/Phường/Xã</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="3">City</td>
+                    <td colspan="11">Thành phố / Huyện</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="3">State/Province</td>
+                    <td colspan="11">Bang / Tỉnh</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="3">Postal Zone/ZIP Code </td>
+                    <td colspan="11">Mã bưu điện</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="3">Country/Region  </td>
+                    <td colspan="11"><strong>Quốc gia</strong></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="26"><strong>SỐ ĐIỆN THOẠI</strong></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="2" rowspan="6"><strong>18</strong></td>
+                    <td colspan="11">Primary Phone Number</td>
+                    <td colspan="11"><em>Số điện thoại chính</em></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="11">Secondary Phone Number </td>
+                    <td colspan="11"></td>
+                    <td colspan="2" rowspan="2"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="11">Work Phone Number</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="11"><strong>Have you used any other telephone numbers
+                            during the last five years?</strong></td>
+                    <td colspan="11"><strong>YES/NO</strong></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="8"></td>
+                    <td colspan="3">Additional Phone Number</td>
+                    <td colspan="11"></td>
+                    <td colspan="2">YES điền</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="8"></td>
+                    <td colspan="3">Additional Phone Number</td>
+                    <td colspan="11"></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="26"><strong>ĐỊA CHỈ EMAIL</strong></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="2" rowspan="4"><strong>19</strong></td>
+                    <td colspan="11">Email Address</td>
+                    <td colspan="11">Địa chỉ Email đang sử dụng</td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="11"><strong>Have you used any other email addresses during
+                            the last five years? </strong></td>
+                    <td colspan="11"><strong>YES/NO</strong></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="4"></td>
+                    <td colspan="7">Email Address</td>
+                    <td colspan="11"></td>
+                    <td colspan="2" rowspan="2">YES điền</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="4"></td>
+                    <td colspan="7">Email Address</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="26"><strong>MẠNG XÃ HỘI</strong></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="2"><strong>20</strong></td>
+                    <td colspan="11"><strong>Social Media Provider/Platform:</strong></td>
+                    <td colspan="11"></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="2"></td>
+                    <td colspan="11"><strong>Social Media Identifier</strong></td>
+                    <td colspan="11"></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="2" rowspan="2"></td>
+                    <td colspan="4"></td>
+                    <td colspan="7">Social Media Provider/Platform:</td>
+                    <td colspan="11"></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="4"></td>
+                    <td colspan="7">Social Media Identifier:</td>
+                    <td colspan="11"></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="2"><strong>21</strong></td>
+                    <td colspan="11"><strong>Other Social Media</strong></td>
+                    <td colspan="11"><strong>YES/NO</strong></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="2" rowspan="2"></td>
+                    <td colspan="4" rowspan="2"></td>
+                    <td colspan="7">Social Media Provider/Platform:</td>
+                    <td colspan="11"></td>
+                    <td colspan="2" rowspan="2">YES điền</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="7">Social Media Identifier (1)</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="2" rowspan="2"></td>
+                    <td colspan="4" rowspan="2"></td>
+                    <td colspan="7">Social Media Provider/Platform:</td>
+                    <td colspan="11"></td>
+                    <td colspan="2" rowspan="2"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="7">Social Media Identifier (2)</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="26"><strong>THÔNG TIN HỘ CHIẾU</strong></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="2" rowspan="9"><strong>22</strong></td>
+                    <td colspan="11">Passport/Travel Document Type</td>
+                    <td colspan="11"><strong>REGULAR</strong></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="11">Passport/Travel Document Number</td>
+                    <td colspan="11">Số hộ chiếu</td>
+                    <td colspan="2" rowspan="8"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="11">Passport Book Number</td>
+                    <td colspan="11">Số sổ hộ chiếu</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="11">Country/Authority that Issued Passport/Travel
+                        Document</td>
+                    <td colspan="11">Nơi cấp</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="11">City of Issuance</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="11">State/Province of Issuance</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="11">Country of Issuance</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="11">Issuance Date</td>
+                    <td colspan="4"><strong>Ngày</strong></td>
+                    <td colspan="4"><strong>Tháng (chữ)</strong></td>
+                    <td colspan="3"><strong>Năm</strong></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="11">Expiration Date</td>
+                    <td colspan="4"><strong>Ngày</strong></td>
+                    <td colspan="4"><strong>Tháng (chữ)</strong></td>
+                    <td colspan="3"><strong>Năm</strong></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="2"><strong>23</strong></td>
+                    <td colspan="11"><strong>Have you ever lost a passport or had one
+                            stolen?</strong></td>
+                    <td colspan="11"><strong>NO</strong></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="2" rowspan="2"></td>
+                    <td colspan="9" rowspan="2"></td>
+                    <td colspan="2">Passport/Travel Document Number</td>
+                    <td colspan="11"><strong>YES/NO</strong></td>
+                    <td colspan="2" rowspan="2">YES điền</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="2">Country/Authority that Issued Passport/Travel
+                        Document</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="26"><strong>THÔNG TIN LIÊN LẠC BÊN MỸ</strong></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="2" rowspan="13"><strong>24</strong></td>
+                    <td colspan="22"><strong>Contact Person</strong></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="9" rowspan="2"></td>
+                    <td colspan="2">Surnames</td>
+                    <td colspan="11"></td>
+                    <td colspan="2" rowspan="2"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="2">Given Names</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="22"><strong>Contact Organization</strong></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="9"></td>
+                    <td colspan="2">Organization Name</td>
+                    <td colspan="11"></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="11">Relationship to you</td>
+                    <td colspan="11"><strong>CHILD</strong></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="11">U.S. Street Address (Line 1)</td>
+                    <td colspan="11">Số nhà + Đường + Quận/Phường/Xã</td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="11">U.S. Street Address (Line 2)</td>
+                    <td colspan="11">Số nhà + Đường + Quận/Phường/Xã</td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="11">City</td>
+                    <td colspan="11">Thành phố / Huyện</td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="11">State</td>
+                    <td colspan="11">Bang / Tỉnh</td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="11">ZIP Code</td>
+                    <td colspan="11">Mã bưu điện</td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="11">Phone Number</td>
+                    <td colspan="11"><strong>Quốc gia</strong></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="11">Email Address</td>
+                    <td colspan="11">Số nhà + Đường + Quận/Phường/Xã</td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="26">
+                        <h2 id="thông-tin-gia-đình"><strong>THÔNG TIN GIA
+                                ĐÌNH</strong></h2>
+                    </td>
+                </tr>
+                <tr class="even">
+                    <td rowspan="13"><strong>25</strong></td>
+                    <td colspan="12">Father's Surnames</td>
+                    <td colspan="11">Họ</td>
+                    <td colspan="2" rowspan="3"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="12">Father's Given Names</td>
+                    <td colspan="11">Tên lót và tên chính</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="12">Date of Birth</td>
+                    <td><strong>Ngày</strong></td>
+                    <td colspan="7"><strong>Tháng (chữ)</strong></td>
+                    <td colspan="3"><strong>Năm</strong></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="12"><strong>Is your father still living</strong></td>
+                    <td colspan="11"><strong>YES/NO</strong></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="4" rowspan="7"></td>
+                    <td colspan="8"><strong>Year of Death</strong></td>
+                    <td colspan="11"></td>
+                    <td colspan="2">No điền</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="8">U.S. Street Address (Line 1)</td>
+                    <td colspan="11">Số nhà + Đường + Quận/Phường/Xã</td>
+                    <td colspan="2" rowspan="6">Yes điền</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="8">U.S. Street Address (Line 2)</td>
+                    <td colspan="11">Số nhà + Đường + Quận/Phường/Xã</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="8">City</td>
+                    <td colspan="11">Thành phố / Huyện</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="8">State</td>
+                    <td colspan="11">Bang / Tỉnh</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="8">ZIP Code</td>
+                    <td colspan="11">Mã bưu điện</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="8">Country/Region  </td>
+                    <td colspan="11"><strong>Quốc gia</strong></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="12"><strong>Is your father in the US?</strong></td>
+                    <td colspan="11"><strong>YES/NO</strong></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="5"></td>
+                    <td colspan="7">Father’s Status</td>
+                    <td colspan="11"><strong>NONIMMIGRANT/IMMIGRANT</strong></td>
+                    <td colspan="2">YES điền</td>
+                </tr>
+                <tr class="odd">
+                    <td rowspan="13"><strong>27</strong></td>
+                    <td colspan="12">Mother’s Surnames</td>
+                    <td colspan="11">Họ</td>
+                    <td colspan="2" rowspan="3"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="12">Mother’s Given Names</td>
+                    <td colspan="11">Tên lót và tên chính</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="12">Date of birth</td>
+                    <td colspan="4"><strong>Ngày</strong></td>
+                    <td colspan="4"><strong>Tháng (chữ)</strong></td>
+                    <td colspan="3"><strong>Năm</strong></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="12"><strong>Is your mother still living</strong></td>
+                    <td colspan="11"><strong>YES/NO</strong></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="4" rowspan="7"></td>
+                    <td colspan="8"><strong>Year of Death</strong></td>
+                    <td colspan="11"></td>
+                    <td colspan="2">No điền</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="8">U.S. Street Address (Line 1)</td>
+                    <td colspan="11">Số nhà + Đường + Quận/Phường/Xã</td>
+                    <td colspan="2" rowspan="6">Yes điền</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="8">U.S. Street Address (Line 2)</td>
+                    <td colspan="11">Số nhà + Đường + Quận/Phường/Xã</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="8">City</td>
+                    <td colspan="11">Thành phố / Huyện</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="8">State</td>
+                    <td colspan="11">Bang / Tỉnh</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="8">ZIP Code</td>
+                    <td colspan="11">Mã bưu điện</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="8">Country/Region  </td>
+                    <td colspan="11"><strong>Quốc gia</strong></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="12"><strong>Is your mother in the US?</strong></td>
+                    <td colspan="11"><strong>NO</strong></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="5"></td>
+                    <td colspan="7">Mother’s Status</td>
+                    <td colspan="11"><strong>NONIMMIGRANT</strong></td>
+                    <td colspan="2">YES điền</td>
+                </tr>
+                <tr class="even">
+                    <td rowspan="5"><strong>28</strong></td>
+                    <td colspan="12">Do you have any immediate relatives, not including
+                        parents, in the U.S.?</td>
+                    <td colspan="11"><strong>YES</strong></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="5" rowspan="4"></td>
+                    <td colspan="7">Surnames</td>
+                    <td colspan="11">Họ</td>
+                    <td colspan="2" rowspan="4">YES điền</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="7">Given Names</td>
+                    <td colspan="11">Tên lót và tên chính</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="7">Relationship to You</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="7">Relative’s Status</td>
+                    <td colspan="11">U.S. LEGAL PERMANENT RESIDENT (LPR)/</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="26"><strong>THÔNG TIN VỢ/CHỒNG/HÔN PHU/HÔN
+                            THÊ</strong></td>
+                </tr>
+                <tr class="even">
+                    <td rowspan="13"><strong>29</strong></td>
+                    <td colspan="12">Spouse/Fiancé/ Fiancée's Surnames</td>
+                    <td colspan="11"></td>
+                    <td colspan="2" rowspan="6"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="12">Spouse/Fiancé/ Fiancée's Given Names</td>
+                    <td colspan="11">Tên lót và tên chính</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="12">Spouse/Fiancé/ Fiancée’s Date of birth</td>
+                    <td colspan="4"><strong>Ngày</strong></td>
+                    <td colspan="4"><strong>Tháng (chữ)</strong></td>
+                    <td colspan="3"><strong>Năm</strong></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="12">Spouse/Fiancé/ Fiancée’s Country of Origin</td>
+                    <td colspan="11"><strong>Quốc tịch</strong></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="12">Spouse/Fiancé/ Fiancée’s City of Birth</td>
+                    <td colspan="11"><strong>Thành phố sinh ra</strong></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="12">Spouse/Fiancé/ Fiancée’s Country/Region of Birth</td>
+                    <td colspan="11"><strong>Quốc gia sinh ra</strong></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="12">Spouse/Fiancé/ Fiancée’s’s Address</td>
+                    <td colspan="11">
+                        <p><strong>SAME AS HOME ADDRESS<br />
+                                SAME AS MAILING ADDRESS</strong></p>
+                        <p><strong>SAME AS U.S. CONTACT ADDRESS</strong></p>
+                        <p><strong>DO NOT KNOW</strong></p>
+                        <p><strong>OTHER</strong></p>
+                    </td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="6"></td>
+                    <td colspan="6">Street Address (Line 1)</td>
+                    <td colspan="11">Số nhà + Đường + Quận/Phường/Xã</td>
+                    <td colspan="2" rowspan="6">OTHER điền</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="6"></td>
+                    <td colspan="6">Street Address (Line 2)</td>
+                    <td colspan="11">Số nhà + Đường + Quận/Phường/Xã</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="6"></td>
+                    <td colspan="6">City</td>
+                    <td colspan="11">Thành phố / Huyện</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="6"></td>
+                    <td colspan="6">State/Province</td>
+                    <td colspan="11">Bang / Tỉnh</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="6"></td>
+                    <td colspan="6">Postal Zone/ZIP Code</td>
+                    <td colspan="11">Mã bưu điện</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="6"></td>
+                    <td colspan="6">Country/Region</td>
+                    <td colspan="11"><strong>Quốc gia</strong></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="26"><strong>THÔNG TIN CHỒNG TRƯỚC</strong></td>
+                </tr>
+                <tr class="even">
+                    <td rowspan="13"><strong>30</strong></td>
+                    <td colspan="12">Do you have any former spouse</td>
+                    <td colspan="11"><strong>YES/NO</strong></td>
+                    <td colspan="2" rowspan="13"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="12">Number of Former Spouses</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="6"></td>
+                    <td colspan="6">Surname</td>
+                    <td colspan="11"><strong>Họ</strong></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="6"></td>
+                    <td colspan="6">Given name</td>
+                    <td colspan="11"><strong>Tên lót</strong></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="6"></td>
+                    <td colspan="6">Date of birth</td>
+                    <td colspan="11"><strong>Ngày sinh</strong></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="6"></td>
+                    <td colspan="6">Country/Region of Origin(Nationality)</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="6"></td>
+                    <td colspan="17"><em><strong>Former Spouse’s Place of
+                                Birth</strong></em></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="6"></td>
+                    <td colspan="6">City</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="6"></td>
+                    <td colspan="6">Country/Region</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="6"></td>
+                    <td colspan="6">Date of Marriage</td>
+                    <td colspan="11"><strong>MM/DD/YYYY</strong></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="6"></td>
+                    <td colspan="6">Date Marriage Ended</td>
+                    <td colspan="11"><strong>MM/DD/YYYY</strong></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="6"></td>
+                    <td colspan="6">How the Marriage Ended</td>
+                    <td colspan="11"><strong>DIVORCED/MARRIED/SINGLE</strong></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="6"></td>
+                    <td colspan="6">Country/Region Marriage was Terminated</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="26"><strong>THÔNG TIN CON CÁI</strong></td>
+                </tr>
+                <tr class="even">
+                    <td rowspan="10"><strong>31</strong></td>
+                    <td colspan="12">Do you have any children?</td>
+                    <td colspan="11"><strong>YES/NO</strong></td>
+                    <td colspan="2" rowspan="10"><strong>K điền</strong></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="12">Number of children</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="6"></td>
+                    <td colspan="6">Surname</td>
+                    <td colspan="11"><em>Tên + tên lót</em></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="6"></td>
+                    <td colspan="6">Given name</td>
+                    <td colspan="11"><em>Họ</em></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="6"></td>
+                    <td colspan="6">Date of birth</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="6"></td>
+                    <td colspan="6">City</td>
+                    <td colspan="11">Thành phố / Huyện</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="6"></td>
+                    <td colspan="6">State/Province</td>
+                    <td colspan="11">Bang / Tỉnh</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="6"></td>
+                    <td colspan="6">Country/Region</td>
+                    <td colspan="11">Quốc gia</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="6"></td>
+                    <td colspan="6">Is this child traveling to the US with you?</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="6"></td>
+                    <td colspan="6">Is this child traveling to the US at a later date to
+                        join you?</td>
+                    <td colspan="11"></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="26"><strong>THÔNG TIN CÔNG VIỆC</strong></td>
+                </tr>
+                <tr class="odd">
+                    <td><strong>32</strong></td>
+                    <td colspan="12">Primary Occupation</td>
+                    <td colspan="12">Nghề nghiệp</td>
+                    <td></td>
+                </tr>
+                <tr class="even">
+                    <td rowspan="9"></td>
+                    <td colspan="12">Present Employer or School Name </td>
+                    <td colspan="12">Tên công ty / SELF – EMPLOYER</td>
+                    <td rowspan="9"></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="12">Street Address (Line 1)</td>
+                    <td colspan="12">Số nhà + Đường + Quận/Phường/ Xã</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="12">Street Address (Line 2)</td>
+                    <td colspan="12">Số nhà + Đường + Quận/Phường/ Xã</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="12">City </td>
+                    <td colspan="12">Thành phố / Huyện</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="12">State/Province </td>
+                    <td colspan="12">Bang / Tỉnh</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="12">Postal Zone/ZIP Code </td>
+                    <td colspan="12">Mã bưu điện</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="12">Country/Region  </td>
+                    <td colspan="12"><strong>Quốc gia</strong></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="12">Start Date</td>
+                    <td colspan="3"><strong>Ngày</strong></td>
+                    <td colspan="4"><strong>Tháng(Chữ)</strong></td>
+                    <td colspan="5"><strong>Năm</strong></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="12">Briefly describe your duties</td>
+                    <td colspan="12">Mô tả công việc</td>
+                </tr>
+                <tr class="odd">
+                    <td rowspan="15"><strong>33</strong></td>
+                    <td colspan="12"><strong>Were you previously employed</strong></td>
+                    <td colspan="12"><strong>YES / NO</strong></td>
+                    <td></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="6" rowspan="14"></td>
+                    <td colspan="6">Employer Name</td>
+                    <td colspan="12">Tên công ty</td>
+                    <td rowspan="14">YES điền</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="6">Employer Street Address (Line 1)</td>
+                    <td colspan="12">Số nhà + Đường + Quận/Phường/ Xã</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="6">Employer Street Address (Line 2)</td>
+                    <td colspan="12">Số nhà + Đường + Quận/Phường/ Xã</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="6">City</td>
+                    <td colspan="12">Thành phố / Huyện</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="6">State/Province</td>
+                    <td colspan="12">Bang / Tỉnh</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="6">Postal Zone/ZIP Code</td>
+                    <td colspan="12"><strong>DOES NOT APPLY</strong></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="6">Country</td>
+                    <td colspan="12"><strong>Quốc gia</strong></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="6">Telephone Number</td>
+                    <td colspan="12">Số điện thoại</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="6">Job title</td>
+                    <td colspan="12">Chức danh công việc</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="6">Supervisor’s Surname</td>
+                    <td colspan="12">Họ</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="6">Supervisor’s Given Names</td>
+                    <td colspan="12">Tên chính + tên lót</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="6">Employment Date From</td>
+                    <td colspan="3"><strong>Ngày</strong></td>
+                    <td colspan="4"><strong>Tháng(Chữ)</strong></td>
+                    <td colspan="5"><strong>Năm</strong></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="6">Employment Date To</td>
+                    <td colspan="3"><strong>Ngày</strong></td>
+                    <td colspan="4"><strong>Tháng(Chữ)</strong></td>
+                    <td colspan="5"><strong>Năm</strong></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="6">Briefly describe your duties</td>
+                    <td colspan="12">Mô tả công việc</td>
+                </tr>
+                <tr class="even">
+                    <td><strong>34</strong></td>
+                    <td colspan="12"><strong>Have you attended any educational institutions
+                            at a secondary level or above?</strong></td>
+                    <td colspan="12"><strong>YES / NO</strong></td>
+                    <td></td>
+                </tr>
+                <tr class="odd">
+                    <td rowspan="10"></td>
+                    <td colspan="6" rowspan="10"></td>
+                    <td colspan="6">Name of Institution</td>
+                    <td colspan="12">Tên trường</td>
+                    <td rowspan="10">YES điền</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="6">Street Address (Line 1)</td>
+                    <td colspan="12">Số nhà + Đường + Quận/Phường/ Xã</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="6">Street Address (Line 2)</td>
+                    <td colspan="12">Số nhà + Đường + Quận/Phường/ Xã</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="6">City</td>
+                    <td colspan="12">Thành phố / Huyện</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="6">State/Province</td>
+                    <td colspan="12">Bang / Tỉnh</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="6">Postal Zone/ZIP Code</td>
+                    <td colspan="12"><strong>DOES NOT APPLY</strong></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="6">Country/region</td>
+                    <td colspan="12"><strong>Quốc gia</strong></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="6">Course of Study</td>
+                    <td colspan="12">Chuyên ngành học</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="6">Date of Attendance From</td>
+                    <td colspan="3"><strong>Ngày</strong></td>
+                    <td colspan="4"><strong>Tháng<br />
+                            (Chữ)</strong></td>
+                    <td colspan="5"><strong>Năm</strong></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="6">Date of Attendance To</td>
+                    <td colspan="3"><strong>Ngày</strong></td>
+                    <td colspan="4"><strong>Tháng<br />
+                            (Chữ)</strong></td>
+                    <td colspan="5"><strong>Năm</strong></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="26"><strong>THÔNG TIN THÊM</strong></td>
+                </tr>
+                <tr class="even">
+                    <td rowspan="2"><strong>35</strong></td>
+                    <td colspan="12"><strong>Do you belong to a clan or tribe?</strong></td>
+                    <td colspan="12"><strong>YES / NO</strong></td>
+                    <td></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="6"></td>
+                    <td colspan="6">Clan or Tribe Name</td>
+                    <td colspan="12">Tên bộ tộc</td>
+                    <td>YES điền</td>
+                </tr>
+                <tr class="even">
+                    <td><strong>36</strong></td>
+                    <td colspan="12">Languages</td>
+                    <td colspan="12">Liệt kê các ngôn ngữ có thể sử dụng</td>
+                    <td></td>
+                </tr>
+                <tr class="odd">
+                    <td rowspan="2"><strong>37</strong></td>
+                    <td colspan="12"><strong>Have you traveled to any countries/regions
+                            within the last five years?</strong></td>
+                    <td colspan="12"><strong>YES / NO</strong></td>
+                    <td></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="6"></td>
+                    <td colspan="6">Country/Region</td>
+                    <td colspan="12">Liệt kê các nước đã đi trong 5 năm qua</td>
+                    <td>YES điền</td>
+                </tr>
+                <tr class="odd">
+                    <td><strong>38</strong></td>
+                    <td colspan="12"><strong>Have you resided in any county/region for six
+                            months or longer since you attained 16 years of age?</strong></td>
+                    <td colspan="12"></td>
+                    <td></td>
+                </tr>
+                <tr class="even">
+                    <td></td>
+                    <td colspan="6"></td>
+                    <td colspan="6">Country/Region</td>
+                    <td colspan="12"></td>
+                    <td></td>
+                </tr>
+                <tr class="odd">
+                    <td rowspan="2"><strong>39</strong></td>
+                    <td colspan="12"><strong>Have you belonged to, contributed to, or worked
+                            for any professional, social, or charitable organization?</strong></td>
+                    <td colspan="12"><strong>YES / NO</strong></td>
+                    <td></td>
+                </tr>
+                <tr class="even">
+                    <td colspan="6"></td>
+                    <td colspan="6">Explain</td>
+                    <td colspan="12">Mô tả</td>
+                    <td>YES điền</td>
+                </tr>
+                <tr class="odd">
+                    <td><strong>40</strong></td>
+                    <td colspan="12"><strong>Do you have any specialized skills or training,
+                            such as firearms, explosives, nuclear, biological, or chemical
+                            experience?</strong></td>
+                    <td colspan="12"></td>
+                    <td></td>
+                </tr>
+                <tr class="even">
+                    <td></td>
+                    <td colspan="6"></td>
+                    <td colspan="6">Explain</td>
+                    <td colspan="12"></td>
+                    <td>YES điền</td>
+                </tr>
+                <tr class="odd">
+                    <td rowspan="7"><strong>41</strong></td>
+                    <td colspan="12"><strong>Have you ever served in the
+                            military?</strong></td>
+                    <td colspan="12"><strong>YES / NO</strong></td>
+                    <td rowspan="7">YES điền</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="6" rowspan="6"></td>
+                    <td colspan="6">Name of Country/Region</td>
+                    <td colspan="12">Quốc gia</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="6">Branch of Service</td>
+                    <td colspan="12">Nơi thực hiện</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="6">Rank/Position</td>
+                    <td colspan="12">Quân hàm</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="6">Military Specialty</td>
+                    <td colspan="12">Đơn vị</td>
+                </tr>
+                <tr class="even">
+                    <td colspan="6">Date of Service From</td>
+                    <td colspan="3"><strong>Ngày</strong></td>
+                    <td colspan="4"><strong>Tháng<br />
+                            (Chữ)</strong></td>
+                    <td colspan="5"><strong>Năm</strong></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="6">Date of Service To</td>
+                    <td colspan="3"><strong>Ngày</strong></td>
+                    <td colspan="4"><strong>Tháng<br />
+                            (Chữ)</strong></td>
+                    <td colspan="5"><strong>Năm</strong></td>
+                </tr>
+                <tr class="even">
+                    <td rowspan="2"><strong>42</strong></td>
+                    <td colspan="12"><strong>Are you a member of or affiliated with the
+                            Communist or other totalitarian party</strong></td>
+                    <td colspan="12"><strong>YES / NO</strong></td>
+                    <td></td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="6"></td>
+                    <td colspan="6">Explain</td>
+                    <td colspan="12">Mô tả</td>
+                    <td>YES điền</td>
+                </tr>
+            </tbody>
+        </table>
+            </main>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <script src="app-logic.js"></script>
+</body>
+
+</html>

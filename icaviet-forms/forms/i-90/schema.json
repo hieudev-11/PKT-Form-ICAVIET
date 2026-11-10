@@ -1,0 +1,1424 @@
+{
+    "id": "i90",
+    "code": "I-90",
+    "slug": "i-90",
+    "sections": [
+        {
+            "id": "part1_applicant_info",
+            "title": {
+                "en": "Part 1: Information About the Applicant",
+                "vi": "Phần 1: Thông tin về đương đơn"
+            },
+            "groups": [
+                {
+                    "id": "legal_name",
+                    "title": {
+                        "en": "Legal Name (as in documents)",
+                        "vi": "Họ tên theo giấy tờ"
+                    },
+                    "fields": [
+                        {
+                            "id": "legal_first_name",
+                            "name": "legal_first_name",
+                            "columnKey": "Tên",
+                            "type": "text",
+                            "label": {
+                                "en": "First Name",
+                                "vi": "Tên"
+                            },
+                            "required": true
+                        },
+                        {
+                            "id": "legal_middle_name",
+                            "name": "legal_middle_name",
+                            "columnKey": "Tên lót",
+                            "type": "text",
+                            "label": {
+                                "en": "Middle Name",
+                                "vi": "Tên lót"
+                            },
+                            "required": true
+                        },
+                        {
+                            "id": "legal_last_name",
+                            "name": "legal_last_name",
+                            "columnKey": "Họ",
+                            "type": "text",
+                            "label": {
+                                "en": "Last Name",
+                                "vi": "Họ"
+                            },
+                            "required": true
+                        }
+                    ]
+                },
+                {
+                    "id": "name_change_info",
+                    "title": {
+                        "en": "Name Change Information",
+                        "vi": "Thông tin đổi tên"
+                    },
+                    "fields": [
+                        {
+                            "id": "has_name_changed_since_green_card",
+                            "name": "has_name_changed_since_green_card",
+                            "columnKey": "Đã từng đổi tên kể từ khi được cấp thẻ xanh?",
+                            "type": "radio",
+                            "label": {
+                                "en": "Have you ever changed your name since receiving your green card?",
+                                "vi": "Đã từng đổi tên kể từ khi được cấp thẻ xanh?"
+                            },
+                            "required": true,
+                            "options": [
+                                {
+                                    "value": "Có",
+                                    "label": {
+                                        "en": "Yes",
+                                        "vi": "Có"
+                                    }
+                                },
+                                {
+                                    "value": "Không",
+                                    "label": {
+                                        "en": "No",
+                                        "vi": "Không"
+                                    }
+                                },
+                                {
+                                    "value": "Không biết do tôi không nhận được thẻ xanh của mình",
+                                    "label": {
+                                        "en": "I don't know because I never received my green card",
+                                        "vi": "Không biết do tôi không nhận được thẻ xanh của mình"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "current_gc_first_name",
+                            "name": "current_gc_first_name",
+                            "columnKey": "Tên trên thẻ xanh hiện tại_Tên",
+                            "type": "text",
+                            "label": {
+                                "en": "First Name on current green card",
+                                "vi": "Tên trên thẻ xanh hiện tại"
+                            },
+                            "required": true,
+                            "conditions": {
+                                "showWhen": {
+                                    "field": "has_name_changed_since_green_card",
+                                    "value": "Có"
+                                }
+                            }
+                        },
+                        {
+                            "id": "current_gc_middle_name",
+                            "name": "current_gc_middle_name",
+                            "columnKey": "Tên lót trên thẻ xanh hiện tại",
+                            "type": "text",
+                            "label": {
+                                "en": "Middle Name on current green card",
+                                "vi": "Tên lót trên thẻ xanh hiện tại"
+                            },
+                            "required": true,
+                            "conditions": {
+                                "showWhen": {
+                                    "field": "has_name_changed_since_green_card",
+                                    "value": "Có"
+                                }
+                            }
+                        },
+                        {
+                            "id": "current_gc_last_name",
+                            "name": "current_gc_last_name",
+                            "columnKey": "Họ trên thẻ xanh hiện tại",
+                            "type": "text",
+                            "label": {
+                                "en": "Last Name on current green card",
+                                "vi": "Họ trên thẻ xanh hiện tại"
+                            },
+                            "required": true,
+                            "conditions": {
+                                "showWhen": {
+                                    "field": "has_name_changed_since_green_card",
+                                    "value": "Có"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "personal_info",
+                    "title": {
+                        "en": "Personal Information",
+                        "vi": "Thông tin cá nhân"
+                    },
+                    "fields": [
+                        {
+                            "id": "gender",
+                            "name": "gender",
+                            "columnKey": "Giới tính",
+                            "type": "radio",
+                            "label": {
+                                "en": "Gender",
+                                "vi": "Giới tính"
+                            },
+                            "required": true,
+                            "options": [
+                                {
+                                    "value": "Nam",
+                                    "label": {
+                                        "en": "Male",
+                                        "vi": "Nam"
+                                    }
+                                },
+                                {
+                                    "value": "Nữ",
+                                    "label": {
+                                        "en": "Female",
+                                        "vi": "Nữ"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "date_of_birth_month",
+                            "name": "date_of_birth_month",
+                            "columnKey": "Ngày sinh_Tháng",
+                            "type": "text",
+                            "label": {
+                                "en": "Month",
+                                "vi": "Tháng"
+                            },
+                            "placeholder": {
+                                "en": "MM",
+                                "vi": "Tháng"
+                            },
+                            "required": true,
+                            "colSpan": 1
+                        },
+                        {
+                            "id": "date_of_birth_day",
+                            "name": "date_of_birth_day",
+                            "columnKey": "Ngày sinh_Ngày",
+                            "type": "text",
+                            "label": {
+                                "en": "Day",
+                                "vi": "Ngày"
+                            },
+                            "placeholder": {
+                                "en": "DD",
+                                "vi": "Ngày"
+                            },
+                            "required": true,
+                            "colSpan": 1
+                        },
+                        {
+                            "id": "date_of_birth_year",
+                            "name": "date_of_birth_year",
+                            "columnKey": "Ngày sinh_Năm",
+                            "type": "text",
+                            "label": {
+                                "en": "Year",
+                                "vi": "Năm"
+                            },
+                            "placeholder": {
+                                "en": "YYYY",
+                                "vi": "Năm"
+                            },
+                            "required": true,
+                            "colSpan": 1
+                        },
+                        {
+                            "id": "place_of_birth_city",
+                            "name": "place_of_birth_city",
+                            "columnKey": "Nơi sinh_Huyện/Thành phố",
+                            "type": "text",
+                            "label": {
+                                "en": "District/City",
+                                "vi": "Huyện/Thành phố"
+                            },
+                            "required": true,
+                            "colSpan": 1
+                        },
+                        {
+                            "id": "place_of_birth_province",
+                            "name": "place_of_birth_province",
+                            "columnKey": "Nơi sinh_Tỉnh",
+                            "type": "text",
+                            "label": {
+                                "en": "Province/State",
+                                "vi": "Tỉnh"
+                            },
+                            "required": true,
+                            "colSpan": 1
+                        },
+                        {
+                            "id": "place_of_birth_country",
+                            "name": "place_of_birth_country",
+                            "columnKey": "Nơi sinh_Quốc gia",
+                            "type": "text",
+                            "label": {
+                                "en": "Country",
+                                "vi": "Quốc gia"
+                            },
+                            "required": true,
+                            "colSpan": 1
+                        },
+                        {
+                            "id": "citizenship_country",
+                            "name": "citizenship_country",
+                            "columnKey": "Quốc tịch",
+                            "type": "text",
+                            "label": {
+                                "en": "Country of Citizenship",
+                                "vi": "Quốc tịch"
+                            },
+                            "required": true
+                        }
+                    ]
+                },
+                {
+                    "id": "contact_info",
+                    "title": {
+                        "en": "Contact Information",
+                        "vi": "Thông tin liên hệ"
+                    },
+                    "fields": [
+                        {
+                            "id": "phone_primary",
+                            "name": "phone_primary",
+                            "columnKey": "Số điện thoại",
+                            "type": "text",
+                            "label": {
+                                "en": "Primary Phone Number",
+                                "vi": "Số điện thoại"
+                            },
+                            "required": true
+                        },
+                        {
+                            "id": "phone_secondary",
+                            "name": "phone_secondary",
+                            "columnKey": "Số điện thoại khác (nếu có)",
+                            "type": "text",
+                            "label": {
+                                "en": "Other Phone Number (if any)",
+                                "vi": "Số điện thoại khác (nếu có)"
+                            },
+                            "required": false
+                        },
+                        {
+                            "id": "email",
+                            "name": "email",
+                            "columnKey": "Địa chỉ email (nếu có)",
+                            "type": "text",
+                            "label": {
+                                "en": "Email Address (if any)",
+                                "vi": "Địa chỉ email (nếu có)"
+                            },
+                            "required": true
+                        },
+                        {
+                            "id": "mailing_address_street",
+                            "name": "mailing_address_street",
+                            "columnKey": "Địa chỉ nhận thư - Số nhà/Đường/Xã/Phường/Quận",
+                            "type": "text",
+                            "label": {
+                                "en": "Street/Ward/District",
+                                "vi": "Số nhà/Đường/Xã/Phường/Quận"
+                            },
+                            "required": true
+                        },
+                        {
+                            "id": "mailing_address_city",
+                            "name": "mailing_address_city",
+                            "columnKey": "Địa chỉ nhận thư - Huyện/Thành phố",
+                            "type": "text",
+                            "label": {
+                                "en": "District/City",
+                                "vi": "Huyện/Thành phố"
+                            },
+                            "required": true
+                        },
+                        {
+                            "id": "mailing_address_province",
+                            "name": "mailing_address_province",
+                            "columnKey": "Địa chỉ nhận thư - Tỉnh/Bang",
+                            "type": "text",
+                            "label": {
+                                "en": "Province/State",
+                                "vi": "Tỉnh/Bang"
+                            },
+                            "required": true
+                        },
+                        {
+                            "id": "mailing_address_zip",
+                            "name": "mailing_address_zip",
+                            "columnKey": "Địa chỉ nhận thư - Mã ZIP",
+                            "type": "text",
+                            "label": {
+                                "en": "ZIP Code",
+                                "vi": "Mã ZIP"
+                            },
+                            "required": true
+                        },
+                        {
+                            "id": "mailing_address_country",
+                            "name": "mailing_address_country",
+                            "columnKey": "Địa chỉ nhận thư - Quốc gia",
+                            "type": "text",
+                            "label": {
+                                "en": "Country",
+                                "vi": "Quốc gia"
+                            },
+                            "required": true
+                        },
+                        {
+                            "id": "lives_at_mailing_address",
+                            "name": "lives_at_mailing_address",
+                            "columnKey": "Đương đơn đang sống ở địa chỉ nhận thư?",
+                            "type": "radio",
+                            "label": {
+                                "en": "Do you currently live at your mailing address?",
+                                "vi": "Đương đơn đang sống ở địa chỉ nhận thư?"
+                            },
+                            "required": true,
+                            "options": [
+                                {
+                                    "value": "Có",
+                                    "label": {
+                                        "en": "Yes",
+                                        "vi": "Có"
+                                    }
+                                },
+                                {
+                                    "value": "Không",
+                                    "label": {
+                                        "en": "No",
+                                        "vi": "Không"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "physical_address_street",
+                            "name": "physical_address_street",
+                            "columnKey": "Địa chỉ ở hiện tại - Số nhà/Đường/Xã/Phường/Quận",
+                            "type": "text",
+                            "label": {
+                                "en": "Street/Ward/District",
+                                "vi": "Số nhà/Đường/Xã/Phường/Quận"
+                            },
+                            "required": true,
+                            "conditions": {
+                                "showWhen": {
+                                    "field": "lives_at_mailing_address",
+                                    "value": "Không"
+                                }
+                            }
+                        },
+                        {
+                            "id": "physical_address_city",
+                            "name": "physical_address_city",
+                            "columnKey": "Địa chỉ ở hiện tại - Huyện/Thành phố",
+                            "type": "text",
+                            "label": {
+                                "en": "District/City",
+                                "vi": "Huyện/Thành phố"
+                            },
+                            "required": true,
+                            "conditions": {
+                                "showWhen": {
+                                    "field": "lives_at_mailing_address",
+                                    "value": "Không"
+                                }
+                            }
+                        },
+                        {
+                            "id": "physical_address_province",
+                            "name": "physical_address_province",
+                            "columnKey": "Địa chỉ ở hiện tại - Tỉnh/Bang",
+                            "type": "text",
+                            "label": {
+                                "en": "Province/State",
+                                "vi": "Tỉnh/Bang"
+                            },
+                            "required": true,
+                            "conditions": {
+                                "showWhen": {
+                                    "field": "lives_at_mailing_address",
+                                    "value": "Không"
+                                }
+                            }
+                        },
+                        {
+                            "id": "physical_address_zip",
+                            "name": "physical_address_zip",
+                            "columnKey": "Địa chỉ ở hiện tại - Mã ZIP",
+                            "type": "text",
+                            "label": {
+                                "en": "ZIP Code",
+                                "vi": "Mã ZIP"
+                            },
+                            "required": true,
+                            "conditions": {
+                                "showWhen": {
+                                    "field": "lives_at_mailing_address",
+                                    "value": "Không"
+                                }
+                            }
+                        },
+                        {
+                            "id": "physical_address_country",
+                            "name": "physical_address_country",
+                            "columnKey": "Địa chỉ ở hiện tại - Quốc gia",
+                            "type": "text",
+                            "label": {
+                                "en": "Country",
+                                "vi": "Quốc gia"
+                            },
+                            "required": true,
+                            "conditions": {
+                                "showWhen": {
+                                    "field": "lives_at_mailing_address",
+                                    "value": "Không"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "identifiers_and_family",
+                    "title": {
+                        "en": "Identifiers and Family Information",
+                        "vi": "Thông tin hồ sơ & gia đình"
+                    },
+                    "fields": [
+                        {
+                            "id": "uscis_online_account_number",
+                            "name": "uscis_online_account_number",
+                            "columnKey": "Số tài khoản USCIS online",
+                            "type": "text",
+                            "label": {
+                                "en": "USCIS Online Account Number (if any)",
+                                "vi": "Số tài khoản USCIS online (nếu đã có tài khoản)"
+                            },
+                            "required": false
+                        },
+                        {
+                            "id": "ssn",
+                            "name": "ssn",
+                            "columnKey": "Số SSN",
+                            "type": "text",
+                            "label": {
+                                "en": "SSN (Social Security Number)",
+                                "vi": "Số SSN (Số An sinh xã hội)"
+                            },
+                            "required": true
+                        },
+                        {
+                            "id": "alien_number",
+                            "name": "alien_number",
+                            "columnKey": "Số A",
+                            "type": "text",
+                            "label": {
+                                "en": "A-Number",
+                                "vi": "Số A (xem trên thẻ xanh hoặc giấy nhập tịch)"
+                            },
+                            "required": true
+                        },
+                        {
+                            "id": "mother_first_name",
+                            "name": "mother_first_name",
+                            "columnKey": "Tên mẹ - Tên",
+                            "type": "text",
+                            "label": {
+                                "en": "First Name",
+                                "vi": "Tên"
+                            },
+                            "required": true
+                        },
+                        {
+                            "id": "mother_middle_name",
+                            "name": "mother_middle_name",
+                            "columnKey": "Tên mẹ - Tên lót",
+                            "type": "text",
+                            "label": {
+                                "en": "Middle Name",
+                                "vi": "Tên lót"
+                            },
+                            "required": true
+                        },
+                        {
+                            "id": "mother_last_name",
+                            "name": "mother_last_name",
+                            "columnKey": "Tên mẹ - Họ",
+                            "type": "text",
+                            "label": {
+                                "en": "Last Name",
+                                "vi": "Họ"
+                            },
+                            "required": true
+                        },
+                        {
+                            "id": "father_first_name",
+                            "name": "father_first_name",
+                            "columnKey": "Tên cha - Tên",
+                            "type": "text",
+                            "label": {
+                                "en": "First Name",
+                                "vi": "Tên"
+                            },
+                            "required": true
+                        },
+                        {
+                            "id": "father_middle_name",
+                            "name": "father_middle_name",
+                            "columnKey": "Tên cha - Tên lót",
+                            "type": "text",
+                            "label": {
+                                "en": "Middle Name",
+                                "vi": "Tên lót"
+                            },
+                            "required": true
+                        },
+                        {
+                            "id": "father_last_name",
+                            "name": "father_last_name",
+                            "columnKey": "Tên cha - Họ",
+                            "type": "text",
+                            "label": {
+                                "en": "Last Name",
+                                "vi": "Họ"
+                            },
+                            "required": true
+                        },
+                        {
+                            "id": "sponsorship_category",
+                            "name": "sponsorship_category",
+                            "columnKey": "Diện bảo lãnh",
+                            "type": "text",
+                            "label": {
+                                "en": "Category (see on green card)",
+                                "vi": "Diện bảo lãnh (xem trên thẻ xanh)"
+                            },
+                            "required": true
+                        }
+                    ]
+                },
+                {
+                    "id": "green_card_and_entry_info",
+                    "title": {
+                        "en": "Green Card and Entry Information",
+                        "vi": "Thông tin thẻ xanh / nhập cảnh"
+                    },
+                    "fields": [
+                        {
+                            "id": "date_of_entry_month",
+                            "name": "date_of_entry_month",
+                            "columnKey": "Ngày nhập cảnh - Tháng",
+                            "type": "select",
+                            "label": {
+                                "en": "Month",
+                                "vi": "Tháng"
+                            },
+                            "required": true
+                        },
+                        {
+                            "id": "date_of_entry_day",
+                            "name": "date_of_entry_day",
+                            "columnKey": "Ngày nhập cảnh - Ngày",
+                            "type": "select",
+                            "label": {
+                                "en": "Day",
+                                "vi": "Ngày"
+                            },
+                            "required": true
+                        },
+                        {
+                            "id": "date_of_entry_year",
+                            "name": "date_of_entry_year",
+                            "columnKey": "Ngày nhập cảnh - Năm",
+                            "type": "select",
+                            "label": {
+                                "en": "Year",
+                                "vi": "Năm"
+                            },
+                            "required": true
+                        },
+                        {
+                            "id": "current_status",
+                            "name": "current_status",
+                            "columnKey": "Bạn là",
+                            "type": "radio",
+                            "label": {
+                                "en": "You are:",
+                                "vi": "Bạn là:"
+                            },
+                            "required": true,
+                            "options": [
+                                {
+                                    "value": "Thường trú nhân",
+                                    "label": {
+                                        "en": "Lawful Permanent Resident",
+                                        "vi": "Thường trú nhân"
+                                    }
+                                },
+                                {
+                                    "value": "Thường trú nhân - diện đi làm (dành cho công dân Canada hoặc Mexico)",
+                                    "label": {
+                                        "en": "Lawful Permanent Resident - In Commuter Status (for Canadian or Mexican citizens)",
+                                        "vi": "Thường trú nhân - diện đi làm (dành cho công dân Canada hoặc Mexico)"
+                                    }
+                                },
+                                {
+                                    "value": "Thường trú nhân có điều kiện (thẻ xanh 2 năm)",
+                                    "label": {
+                                        "en": "Conditional Permanent Resident (2-year green card)",
+                                        "vi": "Thường trú nhân có điều kiện (thẻ xanh 2 năm)"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "reason_lpr",
+                            "name": "reason_lpr",
+                            "columnKey": "Lý do làm đơn (dành cho Thường trú nhân)",
+                            "type": "radio",
+                            "label": {
+                                "en": "Reason for application (for LPR)",
+                                "vi": "Lý do làm đơn (dành cho Thường trú nhân)"
+                            },
+                            "required": true,
+                            "options": [
+                                {
+                                    "value": "Thẻ xanh của tôi bị mất, đánh cắp, bị hư hại.",
+                                    "label": {
+                                        "en": "My green card was lost, stolen, or damaged",
+                                        "vi": "Thẻ xanh của tôi bị mất, đánh cắp, bị hư hại."
+                                    }
+                                },
+                                {
+                                    "value": "Thẻ xanh của tôi đã được cấp nhưng tôi không nhận được.",
+                                    "label": {
+                                        "en": "My green card was issued but I never received it",
+                                        "vi": "Thẻ xanh của tôi đã được cấp nhưng tôi không nhận được."
+                                    }
+                                },
+                                {
+                                    "value": "Thẻ xanh của tôi bị cắt xén.",
+                                    "label": {
+                                        "en": "My green card was mutilated",
+                                        "vi": "Thẻ xanh của tôi bị cắt xén."
+                                    }
+                                },
+                                {
+                                    "value": "Thẻ xanh của tôi có thông tin sai lệch do lỗi của DHS.",
+                                    "label": {
+                                        "en": "My green card has incorrect information due to DHS error",
+                                        "vi": "Thẻ xanh của tôi có thông tin sai lệch do lỗi của DHS."
+                                    }
+                                },
+                                {
+                                    "value": "Tên tôi hoặc thông tin của tôi đã thay đổi kể từ ngày cấp thẻ xanh.",
+                                    "label": {
+                                        "en": "My name or information has changed since the green card was issued",
+                                        "vi": "Tên tôi hoặc thông tin của tôi đã thay đổi kể từ ngày cấp thẻ xanh."
+                                    }
+                                },
+                                {
+                                    "value": "Thẻ xanh của tôi đã hết hạn hoặc sắp hết hạn trong vòng 6 tháng.",
+                                    "label": {
+                                        "en": "My green card has expired or will expire within 6 months",
+                                        "vi": "Thẻ xanh của tôi đã hết hạn hoặc sắp hết hạn trong vòng 6 tháng."
+                                    }
+                                },
+                                {
+                                    "value": "Tôi đã qua ngày sinh nhật 14 tuổi và đang đăng ký theo yêu cầu. Thẻ xanh của tôi sẽ hết hạn SAU sinh nhật 16 tuổi.",
+                                    "label": {
+                                        "en": "I have turned 14 years old and am registering as required. My green card will expire AFTER my 16th birthday",
+                                        "vi": "Tôi đã qua ngày sinh nhật 14 tuổi và đang đăng ký theo yêu cầu. Thẻ xanh của tôi sẽ hết hạn SAU sinh nhật 16 tuổi."
+                                    }
+                                },
+                                {
+                                    "value": "Tôi đã qua ngày sinh nhật 14 tuổi và đang đăng ký theo yêu cầu. Thẻ xanh của tôi sẽ hết hạn TRƯỚC sinh nhật 16 tuổi.",
+                                    "label": {
+                                        "en": "I have turned 14 years old and am registering as required. My green card will expire BEFORE my 16th birthday",
+                                        "vi": "Tôi đã qua ngày sinh nhật 14 tuổi và đang đăng ký theo yêu cầu. Thẻ xanh của tôi sẽ hết hạn TRƯỚC sinh nhật 16 tuổi."
+                                    }
+                                },
+                                {
+                                    "value": "Tôi là thường trú nhân sẽ đăng ký diện đi làm.",
+                                    "label": {
+                                        "en": "I am a lawful permanent resident is talking up commuter status.",
+                                        "vi": "Tôi là thường trú nhân sẽ đăng ký diện đi làm."
+                                    }
+                                },
+                                {
+                                    "value": "Tôi là người đi làm sẽ định cư ở Mỹ.",
+                                    "label": {
+                                        "en": "I am a commuter who is taking up actual residence in the United States.",
+                                        "vi": "Tôi là người đi làm sẽ định cư ở Mỹ."
+                                    }
+                                },
+                                {
+                                    "value": "Tôi đã được tự động chuyển thành thường trú nhân.",
+                                    "label": {
+                                        "en": "I was automatically converted to a lawful permanent resident",
+                                        "vi": "Tôi đã được tự động chuyển thành thường trú nhân."
+                                    }
+                                },
+                                {
+                                    "value": "Tôi có thẻ xanh phiên bản cũ hoặc tôi nộp đơn gia hạn thẻ xanh với lý do khác các lý do nêu trên.",
+                                    "label": {
+                                        "en": "I have an old version green card or I am applying for renewal for reasons other than those listed above",
+                                        "vi": "Tôi có thẻ xanh phiên bản cũ hoặc tôi nộp đơn gia hạn thẻ xanh với lý do khác các lý do nêu trên."
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "reason_cpr",
+                            "name": "reason_cpr",
+                            "columnKey": "Lý do làm đơn (dành cho Thường trú nhân có điều kiện)",
+                            "type": "radio",
+                            "label": {
+                                "en": "Reason for application (for Conditional Permanent Resident)",
+                                "vi": "Lý do làm đơn (dành cho Thường trú nhân có điều kiện)"
+                            },
+                            "required": true,
+                            "options": [
+                                {
+                                    "value": "Thẻ xanh của tôi bị mất, đánh cắp, bị hư hại.",
+                                    "label": {
+                                        "en": "My green card was lost, stolen, or damaged",
+                                        "vi": "Thẻ xanh của tôi bị mất, đánh cắp, bị hư hại."
+                                    }
+                                },
+                                {
+                                    "value": "Thẻ xanh của tôi đã được cấp nhưng tôi không nhận được.",
+                                    "label": {
+                                        "en": "My green card was issued but I never received it",
+                                        "vi": "Thẻ xanh của tôi đã được cấp nhưng tôi không nhận được."
+                                    }
+                                },
+                                {
+                                    "value": "Thẻ xanh của tôi bị cắt xén.",
+                                    "label": {
+                                        "en": "My green card was mutilated",
+                                        "vi": "Thẻ xanh của tôi bị cắt xén."
+                                    }
+                                },
+                                {
+                                    "value": "Thẻ xanh của tôi có thông tin sai lệch do lỗi của DHS.",
+                                    "label": {
+                                        "en": "My green card has incorrect information due to DHS error",
+                                        "vi": "Thẻ xanh của tôi có thông tin sai lệch do lỗi của DHS."
+                                    }
+                                },
+                                {
+                                    "value": "Tên tôi hoặc thông tin của tôi đã thay đổi kể từ ngày cấp thẻ xanh.",
+                                    "label": {
+                                        "en": "My name or information has changed since the green card was issued",
+                                        "vi": "Tên tôi hoặc thông tin của tôi đã thay đổi kể từ ngày cấp thẻ xanh."
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "intended_port_of_entry_city_state",
+                            "name": "intended_port_of_entry_city_state",
+                            "columnKey": "Nơi bạn sẽ nhập cảnh vào Mỹ",
+                            "type": "text",
+                            "label": {
+                                "en": "Where you entered the U.S. (city, state)",
+                                "vi": "Nơi bạn đã nhập cảnh vào Mỹ (thành phố và tiểu bang)"
+                            },
+                            "required": true
+                        },
+                        {
+                            "id": "place_submitted_immigrant_visa_or_adjustment",
+                            "name": "place_submitted_immigrant_visa_or_adjustment",
+                            "columnKey": "Nơi bạn đã nộp đơn xin visa định cư hoặc chuyển diện",
+                            "type": "text",
+                            "label": {
+                                "en": "Location where you applied for your immigrant visa or adjustment of status.",
+                                "vi": "Nơi bạn đã nộp đơn xin visa định cư hoặc chuyển diện"
+                            },
+                            "required": true
+                        },
+                        {
+                            "id": "place_issued_immigrant_visa_or_approved_adjustment",
+                            "name": "place_issued_immigrant_visa_or_approved_adjustment",
+                            "columnKey": "Nơi visa định cư được cấp hoặc văn phòng USCIS đã cho bạn chuyển diện",
+                            "type": "text",
+                            "label": {
+                                "en": "Location where your immigrant visa was issued or USCIS office where you were granted adjustment of status.",
+                                "vi": "Nơi visa định cư được cấp hoặc văn phòng USCIS đã cho bạn chuyển diện"
+                            },
+                            "required": true
+                        },
+                        {
+                            "id": "entered_with_immigrant_visa",
+                            "name": "entered_with_immigrant_visa",
+                            "columnKey": "Bạn nhập cảnh Mỹ với visa định cư (không phải chuyển diện)?",
+                            "type": "radio",
+                            "label": {
+                                "en": "Did you enter the U.S. with an immigrant visa (not adjustment)?",
+                                "vi": "Bạn nhập cảnh Mỹ với visa định cư (không phải chuyển diện)?"
+                            },
+                            "required": true,
+                            "options": [
+                                {
+                                    "value": "Có",
+                                    "label": {
+                                        "en": "Yes",
+                                        "vi": "Có"
+                                    }
+                                },
+                                {
+                                    "value": "Không",
+                                    "label": {
+                                        "en": "No",
+                                        "vi": "Không"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "first_us_state_of_residence",
+                            "name": "first_us_state_of_residence",
+                            "columnKey": "Nơi đến của bạn khi nhập cảnh (tiểu bang)",
+                            "type": "text",
+                            "label": {
+                                "en": "First U.S. state of residence",
+                                "vi": "Nơi đến của bạn khi nhập cảnh (tiểu bang đầu tiên bạn cư trú sau khi nhập cảnh)"
+                            },
+                            "required": true
+                        },
+                        {
+                            "id": "port_of_entry_city_state",
+                            "name": "port_of_entry_city_state",
+                            "columnKey": "Thành phố và tiểu bang của cảng nhập cảnh",
+                            "type": "text",
+                            "label": {
+                                "en": "Port of entry (city, state)",
+                                "vi": "Thành phố và tiểu bang của cảng nhập cảnh"
+                            },
+                            "required": true
+                        }
+                    ]
+                },
+                {
+                    "id": "removal_and_i407",
+                    "title": {
+                        "en": "Removal / Abandonment History",
+                        "vi": "Lịch sử trục xuất / từ bỏ thường trú nhân"
+                    },
+                    "fields": [
+                        {
+                            "id": "ever_in_removal_proceedings",
+                            "name": "ever_in_removal_proceedings",
+                            "columnKey": "Bạn đã từng bị trục xuất, loại bỏ, hay bị lên tòa để trục xuất khỏi Mỹ chưa?",
+                            "type": "radio",
+                            "label": {
+                                "en": "Have you ever been in removal proceedings?",
+                                "vi": "Bạn đã từng bị trục xuất, loại bỏ, hay bị lên tòa để trục xuất khỏi Mỹ chưa?"
+                            },
+                            "required": true,
+                            "options": [
+                                {
+                                    "value": "Có",
+                                    "label": {
+                                        "en": "Yes",
+                                        "vi": "Có"
+                                    }
+                                },
+                                {
+                                    "value": "Không",
+                                    "label": {
+                                        "en": "No",
+                                        "vi": "Không"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "removal_reason",
+                            "name": "removal_reason",
+                            "columnKey": "Lý do bị trục xuất",
+                            "type": "textarea",
+                            "label": {
+                                "en": "Reason for removal",
+                                "vi": "Lý do bị trục xuất"
+                            },
+                            "required": true,
+                            "conditions": {
+                                "showWhen": {
+                                    "field": "ever_in_removal_proceedings",
+                                    "value": "Có"
+                                }
+                            }
+                        },
+                        {
+                            "id": "ever_filed_i407_or_intended_abandon_lpr",
+                            "name": "ever_filed_i407_or_intended_abandon_lpr",
+                            "columnKey": "Bạn có bao giờ nộp đơn I-407 hoặc có ý định từ bỏ tư cách thường trú nhân chưa?",
+                            "type": "radio",
+                            "label": {
+                                "en": "Since becoming a permanent resident, have you ever filed Form I-407 or intended to abandon LPR status?",
+                                "vi": "Kể từ ngày trở thành thường trú nhân, bạn có bao giờ nộp đơn I-407 hoặc có ý định từ bỏ tư cách thường trú nhân chưa?"
+                            },
+                            "required": true,
+                            "options": [
+                                {
+                                    "value": "Có",
+                                    "label": {
+                                        "en": "Yes",
+                                        "vi": "Có"
+                                    }
+                                },
+                                {
+                                    "value": "Không",
+                                    "label": {
+                                        "en": "No",
+                                        "vi": "Không"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "i407_detail_reason",
+                            "name": "i407_detail_reason",
+                            "columnKey": "Lý do chi tiết",
+                            "type": "textarea",
+                            "label": {
+                                "en": "Detailed reason",
+                                "vi": "Lý do chi tiết"
+                            },
+                            "required": true,
+                            "conditions": {
+                                "showWhen": {
+                                    "field": "ever_filed_i407_or_intended_abandon_lpr",
+                                    "value": "Có"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "part2_other_info",
+            "title": {
+                "en": "Part 2: Other Information About the Applicant",
+                "vi": "Phần 2: Thông tin khác về đương đơn"
+            },
+            "groups": [
+                {
+                    "id": "ethnicity_race",
+                    "title": {
+                        "en": "Ethnicity and Race",
+                        "vi": "Dân tộc và chủng tộc"
+                    },
+                    "fields": [
+                        {
+                            "id": "ethnicity",
+                            "name": "ethnicity",
+                            "columnKey": "Dân tộc",
+                            "type": "radio",
+                            "label": {
+                                "en": "Ethnicity",
+                                "vi": "Dân tộc"
+                            },
+                            "required": true,
+                            "options": [
+                                {
+                                    "value": "Gốc Latinh và Tây Ban Nha",
+                                    "label": {
+                                        "en": "Hispanic or Latino",
+                                        "vi": "Gốc Latinh và Tây Ban Nha"
+                                    }
+                                },
+                                {
+                                    "value": "Không phải gốc Latinh và Tây Ban Nha",
+                                    "label": {
+                                        "en": "Not Hispanic or Latino",
+                                        "vi": "Không phải gốc Latinh và Tây Ban Nha"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "race",
+                            "name": "race",
+                            "columnKey": "Chủng tộc",
+                            "type": "radio",
+                            "label": {
+                                "en": "Race",
+                                "vi": "Chủng tộc"
+                            },
+                            "required": true,
+                            "options": [
+                                {
+                                    "value": "Người da đen/châu Phi",
+                                    "label": {
+                                        "en": "Black or African",
+                                        "vi": "Người da đen/châu Phi"
+                                    }
+                                },
+                                {
+                                    "value": "Người da trắng",
+                                    "label": {
+                                        "en": "White",
+                                        "vi": "Người da trắng"
+                                    }
+                                },
+                                {
+                                    "value": "Người da vàng/châu Á",
+                                    "label": {
+                                        "en": "Asian",
+                                        "vi": "Người da vàng/châu Á"
+                                    }
+                                },
+                                {
+                                    "value": "Người Hawai Bản Địa/người dân đảo Thái Bình Dương",
+                                    "label": {
+                                        "en": "Native Hawaiian or Pacific Islander",
+                                        "vi": "Người Hawai Bản Địa/người dân đảo Thái Bình Dương"
+                                    }
+                                },
+                                {
+                                    "value": "Người Mỹ/Alaska Bản Địa",
+                                    "label": {
+                                        "en": "American Indian or Alaska Native",
+                                        "vi": "Người Mỹ/Alaska Bản Địa"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "physical_characteristics",
+                    "title": {
+                        "en": "Physical Characteristics",
+                        "vi": "Đặc điểm thể chất"
+                    },
+                    "fields": [
+                        {
+                            "id": "height",
+                            "name": "height",
+                            "columnKey": "Chiều cao",
+                            "type": "text",
+                            "label": {
+                                "en": "Height (feet, inches)",
+                                "vi": "Chiều cao (feet, inches)"
+                            },
+                            "required": true
+                        },
+                        {
+                            "id": "weight",
+                            "name": "weight",
+                            "columnKey": "Cân nặng",
+                            "type": "text",
+                            "label": {
+                                "en": "Weight (pounds)",
+                                "vi": "Cân nặng (pounds)"
+                            },
+                            "required": true
+                        },
+                        {
+                            "id": "eye_color",
+                            "name": "eye_color",
+                            "columnKey": "Màu mắt",
+                            "type": "radio",
+                            "label": {
+                                "en": "Eye Color",
+                                "vi": "Màu mắt"
+                            },
+                            "required": true,
+                            "options": [
+                                {
+                                    "value": "Đen",
+                                    "label": {
+                                        "en": "Black",
+                                        "vi": "Đen"
+                                    }
+                                },
+                                {
+                                    "value": "Hồng",
+                                    "label": {
+                                        "en": "Pink",
+                                        "vi": "Hồng"
+                                    }
+                                },
+                                {
+                                    "value": "Không biết/Khác",
+                                    "label": {
+                                        "en": "Unknown/Other",
+                                        "vi": "Không biết/Khác"
+                                    }
+                                },
+                                {
+                                    "value": "Lục vàng ánh kim",
+                                    "label": {
+                                        "en": "Maroon",
+                                        "vi": "Lục vàng ánh kim"
+                                    }
+                                },
+                                {
+                                    "value": "Nâu",
+                                    "label": {
+                                        "en": "Brown",
+                                        "vi": "Nâu"
+                                    }
+                                },
+                                {
+                                    "value": "Nâu hạt dẻ",
+                                    "label": {
+                                        "en": "Hazel",
+                                        "vi": "Nâu hạt dẻ"
+                                    }
+                                },
+                                {
+                                    "value": "Xám",
+                                    "label": {
+                                        "en": "Gray",
+                                        "vi": "Xám"
+                                    }
+                                },
+                                {
+                                    "value": "Xanh dương",
+                                    "label": {
+                                        "en": "Blue",
+                                        "vi": "Xanh dương"
+                                    }
+                                },
+                                {
+                                    "value": "Xanh lá",
+                                    "label": {
+                                        "en": "Green",
+                                        "vi": "Xanh lá"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "hair_color",
+                            "name": "hair_color",
+                            "columnKey": "Màu tóc",
+                            "type": "radio",
+                            "label": {
+                                "en": "Hair Color",
+                                "vi": "Màu tóc"
+                            },
+                            "required": true,
+                            "options": [
+                                {
+                                    "value": "Đen",
+                                    "label": {
+                                        "en": "Black",
+                                        "vi": "Đen"
+                                    }
+                                },
+                                {
+                                    "value": "Đỏ",
+                                    "label": {
+                                        "en": "Red",
+                                        "vi": "Đỏ"
+                                    }
+                                },
+                                {
+                                    "value": "Không biết/Khác",
+                                    "label": {
+                                        "en": "Unknown/Other",
+                                        "vi": "Không biết/Khác"
+                                    }
+                                },
+                                {
+                                    "value": "Nâu",
+                                    "label": {
+                                        "en": "Brown",
+                                        "vi": "Nâu"
+                                    }
+                                },
+                                {
+                                    "value": "Trắng",
+                                    "label": {
+                                        "en": "White",
+                                        "vi": "Trắng"
+                                    }
+                                },
+                                {
+                                    "value": "Trọc (Không có tóc)",
+                                    "label": {
+                                        "en": "Bald (No hair)",
+                                        "vi": "Trọc (Không có tóc)"
+                                    }
+                                },
+                                {
+                                    "value": "Vàng",
+                                    "label": {
+                                        "en": "Blonde",
+                                        "vi": "Vàng"
+                                    }
+                                },
+                                {
+                                    "value": "Vàng cát",
+                                    "label": {
+                                        "en": "Sandy Blonde",
+                                        "vi": "Vàng cát"
+                                    }
+                                },
+                                {
+                                    "value": "Xám",
+                                    "label": {
+                                        "en": "Gray",
+                                        "vi": "Xám"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "disability",
+                    "title": {
+                        "en": "Disability",
+                        "vi": "Tình trạng khuyết tật"
+                    },
+                    "fields": [
+                        {
+                            "id": "has_disability",
+                            "name": "has_disability",
+                            "columnKey": "Bạn có phải là người khuyết tật không?",
+                            "type": "radio",
+                            "label": {
+                                "en": "Do you have a disability?",
+                                "vi": "Bạn có phải là người khuyết tật không?"
+                            },
+                            "required": true,
+                            "options": [
+                                {
+                                    "value": "Có",
+                                    "label": {
+                                        "en": "Yes",
+                                        "vi": "Có"
+                                    }
+                                },
+                                {
+                                    "value": "Không",
+                                    "label": {
+                                        "en": "No",
+                                        "vi": "Không"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "disability_details",
+                            "name": "disability_details",
+                            "columnKey": "Vui lòng ghi rõ tình trạng khuyết tật",
+                            "type": "textarea",
+                            "label": {
+                                "en": "Please describe your disability",
+                                "vi": "Vui lòng ghi rõ tình trạng khuyết tật"
+                            },
+                            "required": true,
+                            "conditions": {
+                                "showWhen": {
+                                    "field": "has_disability",
+                                    "value": "Có"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "part3_additional_info",
+            "title": {
+                "en": "Additional Information",
+                "vi": "Bổ sung thêm"
+            },
+            "groups": [
+                {
+                    "id": "additional_info_group",
+                    "title": {
+                        "en": "Additional Information",
+                        "vi": "Thông tin bổ sung"
+                    },
+                    "fields": [
+                        {
+                            "id": "has_additional_information",
+                            "name": "has_additional_information",
+                            "columnKey": "Bạn có cần bổ sung thêm thông tin nào khác không?",
+                            "type": "radio",
+                            "label": {
+                                "en": "Do you need to provide any additional information?",
+                                "vi": "Bạn có cần bổ sung thêm thông tin nào khác không?"
+                            },
+                            "required": true,
+                            "options": [
+                                {
+                                    "value": "Có",
+                                    "label": {
+                                        "en": "Yes",
+                                        "vi": "Có"
+                                    }
+                                },
+                                {
+                                    "value": "Không",
+                                    "label": {
+                                        "en": "No",
+                                        "vi": "Không"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "additional_information",
+                            "name": "additional_information",
+                            "columnKey": "Thông tin cần bổ sung",
+                            "type": "textarea",
+                            "label": {
+                                "en": "Additional information",
+                                "vi": "Thông tin cần bổ sung"
+                            },
+                            "required": true,
+                            "conditions": {
+                                "showWhen": {
+                                    "field": "has_additional_information",
+                                    "value": "Có"
+                                }
+                            }
+                        },
+                        {
+                            "id": "applicant_full_name",
+                            "name": "applicant_full_name",
+                            "columnKey": "Họ và tên của người điền đơn",
+                            "type": "text",
+                            "label": {
+                                "en": "Full name of person filling out the form",
+                                "vi": "Họ và tên của người điền đơn"
+                            },
+                            "required": true
+                        },
+                        {
+                            "id": "applicant_signature",
+                            "name": "applicant_signature",
+                            "columnKey": "Chữ ký",
+                            "type": "signature",
+                            "label": {
+                                "en": "Signature",
+                                "vi": "Chữ ký"
+                            },
+                            "required": true
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
