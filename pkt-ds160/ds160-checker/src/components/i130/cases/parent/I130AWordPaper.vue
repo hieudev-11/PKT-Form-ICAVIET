@@ -2139,8 +2139,8 @@ function syncSiblingPetitionSectionVisibility(data = props.customerData || {}) {
   )
   setI130ASectionHiddenByRule(
     'THONG TIN CON',
-    isSibling,
-    'SiblingPetition'
+    true,
+    'ParentPetition'
   )
 }
 
