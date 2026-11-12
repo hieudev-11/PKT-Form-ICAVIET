@@ -738,6 +738,55 @@ if (!function_exists('icaviet_ds260_pdf_child_field_value')) {
     }
 }
 
+if (!function_exists('icaviet_ds260_pdf_child_address')) {
+    function icaviet_ds260_pdf_child_address($row)
+    {
+        $address_keys = array('currentAddress', 'address', 'childCurrentAddress');
+        $part_value = function ($flat_keys, $nested_keys) use ($row, $address_keys) {
+            foreach ($flat_keys as $key) {
+                if (isset($row[$key]) && is_scalar($row[$key])) {
+                    $value = icaviet_ds260_pdf_text($row[$key]);
+                    if ($value !== '') {
+                        return $value;
+                    }
+                }
+            }
+            foreach ($address_keys as $address_key) {
+                if (empty($row[$address_key]) || !is_array($row[$address_key])) {
+                    continue;
+                }
+                foreach ($nested_keys as $key) {
+                    if (isset($row[$address_key][$key]) && is_scalar($row[$address_key][$key])) {
+                        $value = icaviet_ds260_pdf_text($row[$address_key][$key]);
+                        if ($value !== '') {
+                            return $value;
+                        }
+                    }
+                }
+            }
+            return '';
+        };
+
+        $parts = array(
+            $part_value(array('addressStreet', 'childCurrentAddressStreet'), array('street', 'line1', 'addressLine1')),
+            $part_value(array('addressCity', 'childCurrentAddressCity'), array('city', 'town')),
+            $part_value(array('addressProvince', 'addressState', 'childCurrentAddressProvince', 'childCurrentAddressState'), array('province', 'state')),
+            $part_value(array('addressZipCode', 'addressZip', 'childCurrentAddressZip', 'childCurrentAddressPostalCode'), array('zip', 'zipCode', 'postalCode')),
+            $part_value(array('addressCountry', 'childCurrentAddressCountry'), array('country')),
+        );
+        $parts = array_values(array_filter($parts, function ($part) { return $part !== ''; }));
+        if (!empty($parts)) {
+            return implode(', ', $parts);
+        }
+        foreach ($address_keys as $key) {
+            if (isset($row[$key]) && is_scalar($row[$key]) && icaviet_ds260_pdf_text($row[$key]) !== '') {
+                return icaviet_ds260_pdf_text($row[$key]);
+            }
+        }
+        return '';
+    }
+}
+
 if (!function_exists('icaviet_ds260_pdf_parse_children_info')) {
     function icaviet_ds260_pdf_parse_children_info($value)
     {
@@ -790,12 +839,13 @@ if (!function_exists('icaviet_ds260_pdf_parse_children_info')) {
                         $place = implode(', ', $place_parts);
                     }
                     $living = '';
-                    foreach (array('livingWithYou', 'isLivingWithYou', 'songCung') as $key) {
-                        if (!empty($row[$key]) && is_scalar($row[$key])) {
-                            $living = icaviet_ds260_pdf_text((string) $row[$key]);
+                    foreach (array('livingWithYou', 'isLivingWithYou', 'livesWithYou', 'childLivesWithYou', 'songCung') as $key) {
+                        if (isset($row[$key]) && is_scalar($row[$key]) && (is_bool($row[$key]) || trim((string) $row[$key]) !== '')) {
+                            $living = is_bool($row[$key]) ? ($row[$key] ? 'Có' : 'Không') : icaviet_ds260_pdf_text((string) $row[$key]);
                             break;
                         }
                     }
+                    $address = icaviet_ds260_pdf_child_address($row);
                     $immigrating_with = '';
                     foreach (array('immigratingWithYou', 'isImmigratingWithYou', 'nhapCuCung') as $key) {
                         if (!empty($row[$key]) && is_scalar($row[$key])) {
@@ -811,10 +861,10 @@ if (!function_exists('icaviet_ds260_pdf_parse_children_info')) {
                         }
                     }
                     if ($last !== '' || $middle !== '' || $first !== '' || $birth !== '' || $place !== '' || $living !== '' || $immigrating_with !== '' || $immigrating_later !== '') {
-                        $lines[] = array($last, $middle, $first, $birth, $place, $living, $immigrating_with, $immigrating_later);
+                        $lines[] = array($last, $middle, $first, $birth, $place, $living, $immigrating_with, $immigrating_later, $address);
                     }
                 } elseif (is_scalar($row)) {
-                    $text .= ' ' . (string) $row;
+                    $text .= "\n" . (string) $row;
                 }
             }
             if (!empty($lines)) {
@@ -829,7 +879,8 @@ if (!function_exists('icaviet_ds260_pdf_parse_children_info')) {
             return array();
         }
 
-        $entries = preg_split('/(?=\b\d{1,3}\s*-\s*)/u', $text, -1, PREG_SPLIT_NO_EMPTY);
+        // Chi tach so thu tu dau dong, tranh tach nham so nha hoac ZIP+4 trong dia chi.
+        $entries = preg_split('/^\h*\d{1,3}\h*-\h*/mu', $text, -1, PREG_SPLIT_NO_EMPTY);
         $rows = array();
         foreach ($entries as $entry) {
             $entry = trim($entry);
@@ -846,13 +897,14 @@ if (!function_exists('icaviet_ds260_pdf_parse_children_info')) {
             $birth = isset($parts[1]) ? icaviet_ds260_pdf_format_date($parts[1]) : '';
             $place = isset($parts[2]) ? $parts[2] : '';
             $living = icaviet_ds260_pdf_child_field_value($parts, 'Sống cùng');
+            $address = icaviet_ds260_pdf_child_field_value($parts, 'Địa chỉ con');
             $immigrating_with = icaviet_ds260_pdf_child_field_value($parts, 'Nhập cư cùng');
             $immigrating_later = icaviet_ds260_pdf_child_field_value($parts, 'Nhập cư sau');
 
             if ($last === '' && $middle === '' && $first === '' && $birth === '' && $place === '' && $living === '' && $immigrating_with === '' && $immigrating_later === '') {
                 continue;
             }
-            $rows[] = array($last, $middle, $first, $birth, $place, $living, $immigrating_with, $immigrating_later);
+            $rows[] = array($last, $middle, $first, $birth, $place, $living, $immigrating_with, $immigrating_later, $address);
         }
 
         return $rows;
@@ -867,20 +919,37 @@ if (!function_exists('icaviet_ds260_pdf_children_info_table')) {
             return false;
         }
 
-        if ($pdf->GetY() > 250) {
-            $pdf->AddPage();
+        $widths = array(8, 20, 20, 20, 20, 34, 16, 16, 16);
+        $headers = array('STT', 'Họ', 'Tên lót', 'Tên', 'Ngày sinh', 'Nơi sinh', 'Sống cùng', 'Nhập cư cùng', 'Nhập cư sau');
+        $line_h = 4.2;
+        $left = $pdf->GetX();
+        $table_width = array_sum($widths);
+        $table_rows = array();
+        $pdf->SetFont('DejaVu', '', 7.2);
+        foreach ($clean_rows as $index => $row) {
+            list($last, $middle, $first, $birth, $place, $living, $immigrating_with, $immigrating_later, $address) = $row;
+            $values = array((string) ($index + 1), $last, $middle, $first, $birth, $place, $living, $immigrating_with, $immigrating_later);
+            $row_lines = 1;
+            foreach ($values as $i => $value) {
+                $row_lines = max($row_lines, icaviet_ds260_pdf_cell_lines($pdf, $widths[$i], $value));
+            }
+            $h = max(8, ($row_lines * $line_h) + 2);
+            $lives_separately = in_array(mb_strtolower($living, 'UTF-8'), array('không', 'khong', 'no', 'false', '0'), true);
+            $address_text = $lives_separately && $address !== '' ? 'Địa chỉ hiện tại (không sống cùng): ' . $address : '';
+            $address_h = $address_text !== '' ? max(8, icaviet_ds260_pdf_cell_lines($pdf, $table_width, $address_text) * $line_h + 2) : 0;
+            $table_rows[] = array($values, $h, $address_text, $address_h);
         }
 
         $label = rtrim(icaviet_ds260_pdf_text($label), ':');
         $pdf->SetTextColor(20, 38, 75);
         $pdf->SetFont('DejaVu', 'B', 8.5);
+        $label_h = icaviet_ds260_pdf_cell_lines($pdf, $table_width, $label . ':') * 5.2 + 1;
+        // Giu tieu de bang, thong tin con dau tien va dia chi tren cung mot trang.
+        if (($pdf->GetY() + $label_h + 12 + $table_rows[0][1] + $table_rows[0][3]) > 270) {
+            $pdf->AddPage();
+        }
         $pdf->MultiCell(0, 5.2, $label . ':', 0, 'L');
         $pdf->Ln(1);
-
-        $widths = array(8, 20, 20, 20, 20, 34, 16, 16, 16);
-        $headers = array('STT', 'Họ', 'Tên lót', 'Tên', 'Ngày sinh', 'Nơi sinh', 'Sống cùng', 'Nhập cư cùng', 'Nhập cư sau');
-        $line_h = 4.2;
-        $left = $pdf->GetX();
 
         $draw_header = function () use ($pdf, $widths, $headers, $left) {
             if ($pdf->GetY() > 258) {
@@ -903,16 +972,9 @@ if (!function_exists('icaviet_ds260_pdf_children_info_table')) {
 
         $pdf->SetFont('DejaVu', '', 7.2);
         $pdf->SetTextColor(72, 78, 94);
-        foreach ($clean_rows as $index => $row) {
-            list($last, $middle, $first, $birth, $place, $living, $immigrating_with, $immigrating_later) = $row;
-            $values = array((string) ($index + 1), $last, $middle, $first, $birth, $place, $living, $immigrating_with, $immigrating_later);
-            $row_lines = 1;
-            foreach ($values as $i => $value) {
-                $row_lines = max($row_lines, icaviet_ds260_pdf_cell_lines($pdf, $widths[$i], $value));
-            }
-            $h = max(8, ($row_lines * $line_h) + 2);
-
-            if (($pdf->GetY() + $h) > 270) {
+        foreach ($table_rows as $row) {
+            list($values, $h, $address_text, $address_h) = $row;
+            if (($pdf->GetY() + $h + $address_h) > 270) {
                 $pdf->AddPage();
                 $draw_header();
                 $pdf->SetFont('DejaVu', '', 7.2);
@@ -927,6 +989,10 @@ if (!function_exists('icaviet_ds260_pdf_children_info_table')) {
                 $x += $widths[$i];
             }
             $pdf->SetY($y + $h);
+            if ($address_h > 0) {
+                icaviet_ds260_pdf_table_cell($pdf, $left, $y + $h, $table_width, $address_h, $address_text);
+                $pdf->SetY($y + $h + $address_h);
+            }
         }
 
         $pdf->Ln(2);
