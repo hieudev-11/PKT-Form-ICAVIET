@@ -256,7 +256,7 @@ class ICAVIET_Router
 
     /**
      * Mot so form can render lai PDF moi moi lan tai, vi PDF cu da duoc luu trong uploads.
-     * Bao-lanh dang doi template PDF nen neu doc file da luu thi nguoi dung se thay mau cu.
+     * Bao-lanh va DS-260 can dung template hien tai, ke ca voi ho so da luu PDF cu.
      */
     private static function should_use_saved_pdf($row, $slug = '', $lang = 'en')
     {
@@ -266,7 +266,7 @@ class ICAVIET_Router
 
         $slug = $slug !== '' ? sanitize_key($slug) : sanitize_key(isset($row['form_slug']) ? $row['form_slug'] : '');
 
-        if ($slug === 'bao-lanh') {
+        if ($slug === 'bao-lanh' || $slug === 'ds-260') {
             return false;
         }
 
